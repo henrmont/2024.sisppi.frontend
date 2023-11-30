@@ -1,0 +1,138 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <section>
+    <div class="main-toolbar">
+      <button mat-icon-button>
+        <mat-icon>pets</mat-icon>
+      </button>
+      <div>
+        @if (searchBar) {
+          <mat-form-field appearance="outline" color="accent">
+            <input matInput>
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        } @else {
+          <h1>Teste</h1>
+        }
+      </div>
+      <div class="menu">
+        <button mat-icon-button class="btn-main" (click)="searchBar = !searchBar">
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-icon-button class="btn-main" [matMenuTriggerFor]="fullMenu">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #fullMenu="matMenu" xPosition="before" class="fullmenu">
+          <div class="menu-content">
+            <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
+              <h3>Grupo 01</h3>
+              <button mat-menu-item>
+                <mat-icon>sync</mat-icon>
+                <span>Item 01</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>error_outline</mat-icon>
+                <span>Item 02</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>event_note</mat-icon>
+                <span>Item 03</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>vpn_lock</mat-icon>
+                <span>Item 04</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>time_to_leave</mat-icon>
+                <span>Item 05</span>
+              </button>
+            </div>
+            <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
+              <h3>Grupo 02</h3>
+              <button mat-menu-item disabled>
+                <mat-icon>wc</mat-icon>
+                <span>Item 01</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>mms</mat-icon>
+                <span>Item 02</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>no_encryption_gmailerrorred</mat-icon>
+                <span>Item 03</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>do_disturb_off</mat-icon>
+                <span>Item 04</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>phone_missed</mat-icon>
+                <span>Item 05</span>
+              </button>
+            </div>
+            <div class="menu-column">
+              <h3>Grupo 03</h3>
+              <button mat-menu-item disabled>
+                <mat-icon>done</mat-icon>
+                <span>Item 01</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>radio_button_checked</mat-icon>
+                <span>Item 02</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>calendar_month</mat-icon>
+                <span>Item 03</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>add_task</mat-icon>
+                <span>Item 04</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>expand_circle_down</mat-icon>
+                <span>Item 05</span>
+              </button>
+            </div>
+          </div>
+        </mat-menu>
+        <button mat-fab extended color="accent" class="btn-main" (click)="drawer.toggle()">
+          <mat-icon matBadge="15" matBadgeColor="warn" aria-hidden="false">person_outline</mat-icon>
+          Jorge Monteiro
+        </button>
+      </div>
+    </div>
+    <div class="menu-toolbar">
+      <button mat-fab extended color="accent">
+        <mat-icon>favorite_border</mat-icon>
+        Adicionar aos favoritos
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+      <button mat-button>
+        <mat-icon>chevron_right</mat-icon>
+        Accent
+      </button>
+    </div>
+  </section>
+</mat-toolbar>
