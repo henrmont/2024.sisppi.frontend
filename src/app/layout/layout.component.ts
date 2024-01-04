@@ -25,15 +25,11 @@ export class LayoutComponent implements OnInit {
   user: any
   title!: string
 
-  changeTitle(title: string) {
-    console.log(title)
-    this.title = title
-  }
-
   ngOnInit(): void {
     this.route.data.subscribe({
       next: (response: any) => {
         this.user = response.auth
+        this.title = response.title
       }
     })
   }

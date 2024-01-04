@@ -54,7 +54,6 @@ export class AddFavoriteModalComponent implements OnInit {
     this.favoriteService.getLinks().subscribe({
       next: (response: any) => {
         this.options = response.data
-        console.log(response.data)
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map(link => (link ? this._filter(link) : this.options.slice())),

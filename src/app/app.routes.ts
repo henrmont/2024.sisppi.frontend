@@ -3,6 +3,7 @@ import { noAuthGuard } from './guards/no-auth.guard';
 import { LayoutComponent } from './layout/layout.component';
 import { authGuard } from './guards/auth.guard';
 import { authResolve } from './resolves/auth-resolve.guard';
+import { titleResolve } from './resolves/title-resolve.guard';
 
 export const routes: Routes = [
   {
@@ -36,12 +37,11 @@ export const routes: Routes = [
     path: 'dashboard',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve},
+    resolve: {auth: authResolve, title: titleResolve},
     children: [
       {
         path: 'principal',
         loadComponent: () => import('./pages/dashboard/main-dashboard-page/main-dashboard-page.component').then((m) => m.MainDashboardPageComponent),
-        data: {title: 'Dashboard'}
       },
       {
         path: '',
@@ -51,15 +51,14 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'settings',
+    path: 'configuracoes',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve},
+    resolve: {auth: authResolve, title: titleResolve},
     children: [
       {
         path: 'principal',
         loadComponent: () => import('./pages/settings/main-settings-page/main-settings-page.component').then((m) => m.MainSettingsPageComponent),
-        data: {title: 'Configurações'}
       },
       {
         path: '',
@@ -72,12 +71,11 @@ export const routes: Routes = [
     path: 'notificacoes',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve},
+    resolve: {auth: authResolve, title: titleResolve},
     children: [
       {
         path: 'todas',
         loadComponent: () => import('./pages/notification/all-notifications-page/all-notifications-page.component').then((m) => m.AllNotificationsPageComponent),
-        data: {title: 'Notificações'}
       },
       {
         path: '',

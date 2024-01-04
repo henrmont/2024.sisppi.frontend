@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { NotificationsListComponent } from '../../../components/notification/notifications-list/notifications-list.component';
 
 @Component({
@@ -12,14 +11,6 @@ import { NotificationsListComponent } from '../../../components/notification/not
   styleUrl: './all-notifications-page.component.scss'
 })
 
-export class AllNotificationsPageComponent implements OnInit {
-
-  @Output() titleEvent: EventEmitter<string> = new EventEmitter();
-  route = inject(ActivatedRoute)
-  title: string = this.route.snapshot.data['title']
-
-  ngOnInit(): void {
-    this.titleEvent.emit(this.title);
-  }
+export class AllNotificationsPageComponent {
 
 }

@@ -5,7 +5,7 @@
   <mat-drawer-content>
     <app-main-toolbar [drawer]="drawer" [user]="user" [title]="title"></app-main-toolbar>
     <section>
-      <router-outlet (activate)="changeTitle($event.title)"></router-outlet>
+      <router-outlet></router-outlet>
     </section>
   </mat-drawer-content>
 </mat-drawer-container>
