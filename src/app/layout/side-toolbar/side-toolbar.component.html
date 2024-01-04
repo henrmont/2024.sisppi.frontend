@@ -5,15 +5,15 @@
   <div class="content">
     <img src="assets/img/emptyprofile.png" class="picture mat-elevation-z8">
     <div class="title">
-      <h3>Jorge Monteiro</h3>
-      <h5>Desenvolvedor</h5>
+      <h3>{{user.name}}</h3>
+      <h5>{{user.email}}</h5>
     </div>
     <mat-divider></mat-divider>
     <div class="actions">
-      <button mat-icon-button color="primary">
+      <button mat-icon-button color="primary" [routerLink]="['/settings']" (click)="drawer.toggle()">
         <mat-icon>tune</mat-icon>
       </button>
-      <button mat-icon-button color="primary">
+      <button mat-icon-button color="primary" (click)="sharedService.logout()">
         <mat-icon>logout</mat-icon>
       </button>
     </div>
@@ -23,26 +23,25 @@
         <mat-icon color="warn">notifications</mat-icon>
         Notificações
       </div>
-      <mat-list-item>
-        <mat-icon matListItemIcon>notifications_none</mat-icon>
-        <div matListItemTitle>Notificação 01</div>
-        <div matListItemLine>Teste</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon matListItemIcon>notifications_none</mat-icon>
-        <div matListItemTitle>Notificação 02</div>
-        <div matListItemLine>Teste</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon matListItemIcon>notifications_none</mat-icon>
-        <div matListItemTitle>Notificação 03</div>
-        <div matListItemLine>Teste</div>
-      </mat-list-item>
+      @if (notificationsCount != 0) {
+        @for (item of notifications; track item.id) {
+          <mat-list-item>
+            <mat-icon matListItemIcon>notifications_none</mat-icon>
+            <div matListItemTitle>{{item.title}}</div>
+            <div matListItemLine>{{item.content}}</div>
+          </mat-list-item>
+        }
+      }
+      @else {
+        <h3 style="text-align: center;">
+          Sem novas notificações
+        </h3>
+      }
     </mat-list>
     <div class="section-footer">
-      <button mat-button>Ver todas as notificações</button>
+      <button mat-button [routerLink]="['/notificacoes']" (click)="drawer.toggle()">Ver todas as notificações</button>
     </div>
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider>
     <mat-list>
       <div mat-subheader class="section-title">
         <mat-icon color="warn">chat</mat-icon>
@@ -61,7 +60,7 @@
     </mat-list>
     <div class="section-footer">
       <button mat-button>Ver todas as mensagens</button>
-    </div>
+    </div> -->
   </div>
   <mat-toolbar class="footer-toolbar">
     <span>Versão: 1.0.0</span>

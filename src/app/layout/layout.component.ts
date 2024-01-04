@@ -1,22 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SideToolbarComponent } from './side-toolbar/side-toolbar.component';
 
-
-
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MainToolbarComponent, SideToolbarComponent, MatSidenavModule],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatSidenavModule,
+    MainToolbarComponent,
+    SideToolbarComponent,
+  ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
-export class LayoutComponent {
+
+export class LayoutComponent implements OnInit {
+
+  route = inject(ActivatedRoute);
+  user: any
+  title!: string
+
+  changeTitle(title: string) {
+    console.log(title)
+    this.title = title
+  }
+
+  ngOnInit(): void {
+    this.route.data.subscribe({
+      next: (response: any) => {
+        this.user = response.auth
+      }
+    })
+  }
 
 }

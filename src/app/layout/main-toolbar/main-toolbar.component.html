@@ -11,7 +11,7 @@
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         } @else {
-          <h1>Teste</h1>
+          <h1>{{title}}</h1>
         }
       </div>
       <div class="menu">
@@ -94,45 +94,30 @@
             </div>
           </div>
         </mat-menu>
-        <button mat-fab extended color="accent" class="btn-main" (click)="drawer.toggle()">
-          <mat-icon matBadge="15" matBadgeColor="warn" aria-hidden="false">person_outline</mat-icon>
-          Jorge Monteiro
+        <button mat-fab extended color="accent" class="btn-main" (click)="drawer.toggle() && readNotifications()">
+          <mat-icon [matBadge]="notifications" matBadgeColor="warn" aria-hidden="false">person_outline</mat-icon>
+          {{user.name}}
         </button>
       </div>
     </div>
     <div class="menu-toolbar">
-      <button mat-fab extended color="accent">
-        <mat-icon>favorite_border</mat-icon>
-        Adicionar aos favoritos
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
-      <button mat-button>
-        <mat-icon>chevron_right</mat-icon>
-        Accent
-      </button>
+      @if (disabled) {
+        <button mat-fab extended color="accent" (click)="addFavorite(user.id)">
+          <mat-icon>favorite_border</mat-icon>
+          Adicionar aos favoritos
+        </button>
+      } @else {
+        <button mat-fab extended color="accent" disabled>
+          <mat-icon>favorite_border</mat-icon>
+          Adicionar aos favoritos
+        </button>
+      }
+      @for (item of links; track item.id) {
+        <button mat-button [routerLink]="[item.link.url]">
+          <mat-icon>{{item.link.icon}}</mat-icon>
+          {{item.link.name}}
+        </button>
+      }
     </div>
   </section>
 </mat-toolbar>

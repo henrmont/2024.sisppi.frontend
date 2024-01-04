@@ -1,11 +1,11 @@
 <mat-drawer-container>
   <mat-drawer #drawer mode="over" position="end" [autoFocus]="false">
-    <app-side-toolbar></app-side-toolbar>
+    <app-side-toolbar [user]="user" [drawer]="drawer"></app-side-toolbar>
   </mat-drawer>
   <mat-drawer-content>
-    <app-main-toolbar [drawer]="drawer"></app-main-toolbar>
+    <app-main-toolbar [drawer]="drawer" [user]="user" [title]="title"></app-main-toolbar>
     <section>
-      <router-outlet></router-outlet>
+      <router-outlet (activate)="changeTitle($event.title)"></router-outlet>
     </section>
   </mat-drawer-content>
 </mat-drawer-container>
