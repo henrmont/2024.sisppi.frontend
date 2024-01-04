@@ -1,0 +1,13 @@
+@for (item of items; track $index) {
+  @if (item.link) {
+    <button mat-button [routerLink]="[item.link]" color="primary">
+      <mat-icon>chevron_right</mat-icon>
+      {{item.name}}
+    </button>
+  } @else {
+    <button mat-button>
+      <mat-icon>chevron_right</mat-icon>
+      {{item.name}}
+    </button>
+  }
+}

@@ -83,5 +83,17 @@ export const routes: Routes = [
         pathMatch: 'full'
       }
     ]
+  },
+  {
+    path: 'usuarios',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/user/all-users-page/all-users-page.component').then((m) => m.AllUsersPageComponent),
+      }
+    ]
   }
 ];

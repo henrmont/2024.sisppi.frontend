@@ -24,14 +24,14 @@
         <mat-menu #fullMenu="matMenu" xPosition="before" class="fullmenu">
           <div class="menu-content">
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
-              <h3>Grupo 01</h3>
-              <button mat-menu-item>
-                <mat-icon>sync</mat-icon>
-                <span>Item 01</span>
+              <h3>Usuários</h3>
+              <button mat-menu-item [routerLink]="['/usuarios']">
+                <mat-icon>groups</mat-icon>
+                <span>Usuários</span>
               </button>
               <button mat-menu-item>
-                <mat-icon>error_outline</mat-icon>
-                <span>Item 02</span>
+                <mat-icon>rule</mat-icon>
+                <span>Regras e permissões</span>
               </button>
               <button mat-menu-item disabled>
                 <mat-icon>event_note</mat-icon>
