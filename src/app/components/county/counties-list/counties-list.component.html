@@ -1,0 +1,60 @@
+<mat-form-field appearance="outline">
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" style="width: 100%;">
+
+  <ng-container matColumnDef="ibge">
+    <th mat-header-cell *matHeaderCellDef style="width: 10%;"> IBGE </th>
+    <td mat-cell *matCellDef="let element"> {{element.ibge}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef style="width: 30%;"> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="health">
+    <th mat-header-cell *matHeaderCellDef style="width: 25%;"> Região </th>
+    <td mat-cell *matCellDef="let element"> {{element.health_region}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="managers">
+    <th mat-header-cell *matHeaderCellDef style="width: 15%; text-align: center;"> Gestores </th>
+    <td mat-cell *matCellDef="let element" style="text-align: center;">
+      <button mat-mini-fab color="primary" matTooltip="Adicionar gestor" (click)="countyManager(element.id)">
+      @if (element.users_count == 0) {
+          <mat-icon [matBadge]="element.users_count" matBadgeColor="warn" aria-hidden="false">manage_accounts</mat-icon>
+      } @else {
+          <mat-icon [matBadge]="element.users_count" aria-hidden="false">manage_accounts</mat-icon>
+      }
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef style="width: 20%; text-align: center;"> Ações </th>
+    <td mat-cell *matCellDef="let element">
+      <div class="actions">
+        <button mat-icon-button color="primary" matTooltip="Ver" (click)="showCounty(element.id)">
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" matTooltip="Editar" (click)="editCounty(element.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteCounty(element.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="5">Nenhum resultado encontrado "{{input.value}}"</td>
+  </tr>
+</table>

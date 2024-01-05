@@ -24,7 +24,7 @@
         <mat-menu #fullMenu="matMenu" xPosition="before" class="fullmenu">
           <div class="menu-content">
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
-              <h3>Usuários</h3>
+              <h3>Usuários e Munícipios</h3>
               <button mat-menu-item [routerLink]="['/usuarios']">
                 <mat-icon>groups</mat-icon>
                 <span>Usuários</span>
@@ -33,9 +33,9 @@
                 <mat-icon>rule</mat-icon>
                 <span>Regras e permissões</span>
               </button>
-              <button mat-menu-item disabled>
-                <mat-icon>event_note</mat-icon>
-                <span>Item 03</span>
+              <button mat-menu-item [routerLink]="['/municipios']">
+                <mat-icon>place</mat-icon>
+                <span>Municípios</span>
               </button>
               <button mat-menu-item>
                 <mat-icon>vpn_lock</mat-icon>

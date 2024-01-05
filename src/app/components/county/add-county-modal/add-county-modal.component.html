@@ -1,0 +1,83 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>add_location_alt</mat-icon>
+    <span>Adicionar município</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+
+  <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+    <mat-form-field appearance="outline">
+      <mat-label>IBGE</mat-label>
+      <input matInput type="text" placeholder="código IBGE" formControlName="ibge">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Município</mat-label>
+      <input matInput type="text" placeholder="nome do município" formControlName="name">
+    </mat-form-field>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Unidade federativa</mat-label>
+      <input matInput type="text" placeholder="unidade federativa" formControlName="fu">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Data base</mat-label>
+      <input matInput type="text" placeholder="data base" formControlName="tcu_population_base_year">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>População</mat-label>
+      <input matInput type="text" placeholder="população" formControlName="population">
+    </mat-form-field>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Região</mat-label>
+      <input matInput type="text" placeholder="região" formControlName="health_region">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Código da região</mat-label>
+      <input matInput type="text" placeholder="código da região" formControlName="health_region_code">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Macrorregião</mat-label>
+      <input matInput type="text" placeholder="macroregião" formControlName="macroregion">
+    </mat-form-field>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Polo municipal</mat-label>
+      <input matInput type="text" placeholder="polo municipal" formControlName="pole_municipality">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Distância do polo municipal</mat-label>
+      <input matInput type="text" placeholder="distância do polo" formControlName="distance_from_pole_municipality">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Distância da capital</mat-label>
+      <input matInput type="text" placeholder="distância da capital" formControlName="distance_from_the_capital">
+    </mat-form-field>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Link da imagem</mat-label>
+      <input matInput type="text" placeholder="link da imagem" formControlName="img_map">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button class="btn" color="primary" type="submit">ADICIONAR MUNICÍPIO</button>
+</form>

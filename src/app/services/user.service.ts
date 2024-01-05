@@ -19,4 +19,8 @@ export class UserService {
   getUser(data: any): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/users/get/${data}`)
   }
+
+  getEmptyManagerUsers(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/get/empty/manager`)
+  }
 }

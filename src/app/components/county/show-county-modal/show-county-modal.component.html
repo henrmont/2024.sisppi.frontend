@@ -1,0 +1,86 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>place</mat-icon>
+    <span>Informações do município</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+
+  <div class="row" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+    <div>
+      <h2>IBGE</h2>
+      <span>{{county.ibge}}</span>
+    </div>
+
+    <div>
+      <h2>Município</h2>
+      <span>{{county.name}}</span>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <div>
+      <h2>Unidade federativa</h2>
+      <span>{{county.fu}}</span>
+    </div>
+
+    <div>
+      <h2>Data base</h2>
+      <span>{{county.tcu_population_base_year}}</span>
+    </div>
+
+    <div>
+      <h2>População</h2>
+      <span>{{county.population}}</span>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <div>
+      <h2>Região</h2>
+      <span>{{county.health_region}}</span>
+    </div>
+
+    <div>
+      <h2>Código da região</h2>
+      <span>{{county.health_region_code}}</span>
+    </div>
+
+    <div>
+      <h2>Macrorregião</h2>
+      <span>{{county.macroregion}}</span>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+    <div>
+      <h2>Polo municipal</h2>
+      <span>{{county.pole_municipality}}</span>
+    </div>
+
+    <div>
+      <h2>Distância do polo municipal</h2>
+      <span>{{county.distance_from_pole_municipality}}</span>
+    </div>
+
+    <div>
+      <h2>Distância da capital</h2>
+      <span>{{county.distance_from_the_capital}}</span>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+    <div>
+      <h2>Link da imagem</h2>
+      <span>{{county.img_map}}</span>
+    </div>
+  </div>
+
+</div>

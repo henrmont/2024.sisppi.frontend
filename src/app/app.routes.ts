@@ -95,5 +95,17 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/user/all-users-page/all-users-page.component').then((m) => m.AllUsersPageComponent),
       }
     ]
+  },
+  {
+    path: 'municipios',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/county/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
+      }
+    ]
   }
 ];

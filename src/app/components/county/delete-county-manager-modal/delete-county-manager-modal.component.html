@@ -1,0 +1,13 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>person_off</mat-icon>
+    <span>Excluir gestor</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  <h2>Deseja excluir o gestor {{user.name}}?</h2>
+  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR GESTOR</button>
+</div>
