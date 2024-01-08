@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -11,6 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SharedService } from '../../../services/shared.service';
 import { Observable, map, startWith } from 'rxjs';
 import { UserService } from '../../../services/user.service';
+
+const notificationChannel = new BroadcastChannel('notification-channel');
+const listCountyChannel = new BroadcastChannel('list-county-channel');
 
 @Component({
   selector: 'app-add-county-manager-modal',
@@ -37,14 +40,16 @@ export class AddCountyManagerModalComponent {
   sharedService = inject(SharedService)
   userService = inject(UserService)
   formBuilder = inject(FormBuilder);
+  dialogRef = inject(MatDialog)
 
   myControl = new FormControl('');
   options!: any[]
   filteredOptions!: Observable<any[]>;
+  isKeyUp: boolean = false
 
   formulario: FormGroup = this.formBuilder.group({
-    link_id: [null, Validators.required],
-    user_id: [this.data.id, Validators.required],
+    county_id: [this.data.id, Validators.required],
+    user_id: [null, Validators.required],
   });
 
   ngOnInit(): void {
@@ -68,12 +73,29 @@ export class AddCountyManagerModalComponent {
 
   onSelect(id: number) {
     this.formulario.patchValue({
-      link_id: id,
+      user_id: id,
     })
+    this.isKeyUp = false
+  }
+
+  onKeyUp() {
+    this.isKeyUp = true
   }
 
   onSubmit() {
-
+    this.userService.changeNoEmptyManagerUser(this.formulario.value).subscribe({
+      next: (response: any) => {
+        this.sharedService.showMessage(response.message)
+        notificationChannel.postMessage('update')
+        listCountyChannel.postMessage('update')
+      },
+      error: (response: any) => {
+        this.sharedService.showMessage(response.message)
+      },
+      complete: () => {
+        this.dialogRef.closeAll()
+      }
+    })
   }
 
 }

@@ -1,14 +1,33 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CountyService } from '../../../services/county.service';
 import { SharedService } from '../../../services/shared.service';
-import { Router } from '@angular/router';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxMaskDirective } from 'ngx-mask';
+import { MatSelectModule } from '@angular/material/select';
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
+
+const listCountyChannel = new BroadcastChannel('list-county-channel');
+const notificationChannel = new BroadcastChannel('notification-channel');
 
 @Component({
   selector: 'app-edit-county-modal',
@@ -22,57 +41,95 @@ import { Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaskDirective,
   ],
   templateUrl: './edit-county-modal.component.html',
-  styleUrl: './edit-county-modal.component.scss'
+  styleUrl: './edit-county-modal.component.scss',
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ],
 })
 
 export class EditCountyModalComponent implements OnInit {
+
+  fus = [
+    {value: 'AC', viewValue: 'Acre'},
+    {value: 'AL', viewValue: 'Alagoas'},
+    {value: 'AP', viewValue: 'Amapá'},
+    {value: 'AM', viewValue: 'Amazonas'},
+    {value: 'BA', viewValue: 'Bahia'},
+    {value: 'CE', viewValue: 'Ceará'},
+    {value: 'DF', viewValue: 'Distrito Federal'},
+    {value: 'ES', viewValue: 'Espírito Santo'},
+    {value: 'GO', viewValue: 'Goiás'},
+    {value: 'MA', viewValue: 'Maranhão'},
+    {value: 'MT', viewValue: 'Mato Grosso'},
+    {value: 'MS', viewValue: 'Mato Grosso do Sul'},
+    {value: 'MG', viewValue: 'Minas Gerais'},
+    {value: 'PA', viewValue: 'Pará'},
+    {value: 'PB', viewValue: 'Paraíba'},
+    {value: 'PR', viewValue: 'Paraná'},
+    {value: 'PE', viewValue: 'Pernanbuco'},
+    {value: 'PI', viewValue: 'Piauí'},
+    {value: 'RJ', viewValue: 'Rio de Janeiro'},
+    {value: 'RN', viewValue: 'Rio Grande do Norte'},
+    {value: 'RS', viewValue: 'Rio Grande do Sul'},
+    {value: 'RO', viewValue: 'Rondônia'},
+    {value: 'RR', viewValue: 'Roraima'},
+    {value: 'SC', viewValue: 'Santa Catarina'},
+    {value: 'SP', viewValue: 'São Paulo'},
+    {value: 'SE', viewValue: 'Sergipe'},
+    {value: 'TO', viewValue: 'Tocantins'},
+  ];
 
   formulario!: FormGroup
 
   data = inject(MAT_DIALOG_DATA)
   formBuilder = inject(FormBuilder)
-  countyService = inject(CountyService)
   sharedService = inject(SharedService)
-  router = inject(Router)
+  countyService = inject(CountyService)
+  dialogRef = inject(MatDialog)
 
   ngOnInit(): void {
     this.formulario = this.formBuilder.group({
-      ibge: [null, [Validators.required]],
-      name: [null, [Validators.required]],
-      fu: [null, [Validators.required]],
-      tcu_population_base_year: [null, [Validators.required]],
-      population: [null, [Validators.required]],
-      health_region: [null, [Validators.required]],
-      health_region_code: [null, [Validators.required]],
-      macroregion: [null, [Validators.required]],
-      pole_municipality: [null, [Validators.required]],
-      distance_from_pole_municipality: [null, [Validators.required]],
-      distance_from_the_capital: [null, [Validators.required]],
-      img_map: [null, [Validators.required]]
-    })
-    this.countyService.getCounty(this.data.id).subscribe({
-      next: (response: any) => {
-        console.log(response.data)
-        this.formulario.get('ibge')?.patchValue(response.data.ibge)
-        this.formulario.get('name')?.patchValue(response.data.name)
-        this.formulario.get('fu')?.patchValue(response.data.fu)
-        this.formulario.get('tcu_population_base_year')?.patchValue(response.data.tcu_population_base_year)
-        this.formulario.get('population')?.patchValue(response.data.population)
-        this.formulario.get('health_region')?.patchValue(response.data.health_region)
-        this.formulario.get('health_region_code')?.patchValue(response.data.health_region_code)
-        this.formulario.get('macroregion')?.patchValue(response.data.macroregion)
-        this.formulario.get('pole_municipality')?.patchValue(response.data.pole_municipality)
-        this.formulario.get('distance_from_pole_municipality')?.patchValue(response.data.distance_from_pole_municipality)
-        this.formulario.get('distance_from_the_capital')?.patchValue(response.data.distance_from_the_capital)
-        this.formulario.get('img_map')?.patchValue(response.data.img_map)
-      }
+      id: [this.data.info.id, [Validators.required]],
+      ibge: [this.data.info.ibge, [Validators.required]],
+      name: [this.data.info.name, [Validators.required]],
+      fu: [this.data.info.fu, [Validators.required]],
+      tcu_population_base_year: [this.data.info.tcu_population_base_year, [Validators.required]],
+      population: [this.data.info.population, [Validators.required]],
+      health_region: [this.data.info.health_region, [Validators.required]],
+      health_region_code: [this.data.info.health_region_code, [Validators.required]],
+      macroregion: [this.data.info.macroregion, [Validators.required]],
+      pole_municipality: [this.data.info.pole_municipality, [Validators.required]],
+      distance_from_pole_municipality: [this.data.info.distance_from_pole_municipality, [Validators.required]],
+      distance_from_the_capital: [this.data.info.distance_from_the_capital, [Validators.required]],
+      img_map: [this.data.info.img_map, [Validators.required]]
     })
   }
 
   onSubmit() {
-
+    this.countyService.updateCounty(this.formulario.value).subscribe({
+      next: (response: any) => {
+        this.sharedService.showMessage(response.message)
+        listCountyChannel.postMessage('update')
+        notificationChannel.postMessage('update')
+      },
+      error: (response: any) => {
+        this.sharedService.showMessage(response.message)
+      },
+      complete: () => {
+        this.dialogRef.closeAll()
+      }
+    })
   }
 
 }

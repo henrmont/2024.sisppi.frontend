@@ -14,6 +14,8 @@ import { FavoriteService } from '../../services/favorite.service';
 import { NotificationService } from '../../services/notification.service';
 import { AddFavoriteModalComponent } from '../../components/favorite/add-favorite-modal/add-favorite-modal.component';
 
+const notificationChannel = new BroadcastChannel('notification-channel');
+
 @Component({
   selector: 'app-main-toolbar',
   standalone: true,
@@ -50,6 +52,17 @@ export class MainToolbarComponent implements OnInit {
   notifications: any = null
 
   ngOnInit(): void {
+    notificationChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.notificationService.getUnreadNotifications().subscribe({
+          next: (response: any) => {
+            if (response.data.length > 0) {
+              this.notifications = response.data.length
+            }
+          }
+        })
+      }
+    }
     this.notificationService.getUnreadNotifications().subscribe({
       next: (response: any) => {
         if (response.data.length > 0) {

@@ -70,7 +70,6 @@ export class CreateAccountBoxComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.formulario.value)
     this.accountService.createAccount(this.formulario.value).subscribe({
       next: () => {
         this.sharedService.showMessage('Usuário criado com sucesso.')

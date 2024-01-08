@@ -19,4 +19,16 @@ export class CountyService {
   getCounty(data: any): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/counties/get/county/${data}`)
   }
+
+  createCounty(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/counties/create/county`, data)
+  }
+
+  deleteCounty(data: any): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/counties/delete/county/${data}`)
+  }
+
+  updateCounty(data: any): Observable<any> {
+    return this.http.patch<any>(`${environment.apiUrl}/counties/update/county`, data)
+  }
 }

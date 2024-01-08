@@ -12,7 +12,7 @@
   <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
     <mat-form-field appearance="outline">
       <mat-label>IBGE</mat-label>
-      <input matInput type="text" placeholder="código IBGE" formControlName="ibge">
+      <input matInput type="text" placeholder="código IBGE" mask="000000" formControlName="ibge">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -23,18 +23,24 @@
 
   <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
     <mat-form-field appearance="outline">
-      <mat-label>Unidade federativa</mat-label>
-      <input matInput type="text" placeholder="unidade federativa" formControlName="fu">
+      <mat-label>Unidade Federativa</mat-label>
+      <mat-select formControlName="fu">
+        @for (item of fus; track item) {
+          <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+        }
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Data base</mat-label>
-      <input matInput type="text" placeholder="data base" formControlName="tcu_population_base_year">
+      <mat-label>Data</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="tcu_population_base_year" readonly>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>População</mat-label>
-      <input matInput type="text" placeholder="população" formControlName="population">
+      <input matInput type="text" placeholder="população" mask="99999999" formControlName="population">
     </mat-form-field>
   </div>
 
@@ -46,7 +52,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Código da região</mat-label>
-      <input matInput type="text" placeholder="código da região" formControlName="health_region_code">
+      <input matInput type="text" placeholder="código da região" mask="00000" formControlName="health_region_code">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -79,5 +85,5 @@
     </mat-form-field>
   </div>
 
-  <button mat-raised-button class="btn" color="primary" type="submit">ATUALIZAR MUNICÍPIO</button>
+  <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.pristine">ATUALIZAR MUNICÍPIO</button>
 </form>

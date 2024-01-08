@@ -1,10 +1,10 @@
 <mat-toolbar class="title" color="accent">
   <div>
     <mat-icon>manage_accounts</mat-icon>
-    <span>{{county.name}}</span>
+    <span>{{data.info.name}}</span>
   </div>
   <div>
-    <button mat-icon-button (click)="addCountyManager(county.id)">
+    <button mat-icon-button (click)="addCountyManager()">
       <mat-icon>add</mat-icon>
     </button>
     <button mat-icon-button mat-dialog-close>
@@ -14,12 +14,12 @@
 </mat-toolbar>
 <div class="box">
   <mat-list>
-    @for (item of county.users; track item.id) {
+    @for (item of data.info.users; track item.id) {
       <mat-list-item>
         <mat-icon matListItemIcon>folder</mat-icon>
         <div matListItemTitle>{{item.name}}</div>
         <div matListItemLine>{{item.email}}</div>
-        <button mat-icon-button color="warn" style="position: absolute; top: 10%; right: 2%;" (click)="deleteCountyManager(item.id)">
+        <button mat-icon-button color="warn" style="position: absolute; top: 10%; right: 2%;" (click)="deleteCountyManager(item)">
           <mat-icon>delete_outline</mat-icon>
         </button>
       </mat-list-item>

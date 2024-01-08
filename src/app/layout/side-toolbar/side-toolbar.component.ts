@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { NotificationService } from '../../services/notification.service';
 
+const notificationChannel = new BroadcastChannel('notification-channel');
+
 @Component({
   selector: 'app-side-toolbar',
   standalone: true,
@@ -28,6 +30,16 @@ export class SideToolbarComponent implements OnInit {
   notificationsCount: any
 
   ngOnInit(): void {
+    notificationChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.notificationService.getFlashNotifications().subscribe({
+          next: (response: any) => {
+            this.notifications = response.data
+            this.notificationsCount = response.data.length
+          }
+        })
+      }
+    }
     this.notificationService.getFlashNotifications().subscribe({
       next: (response: any) => {
         this.notifications = response.data

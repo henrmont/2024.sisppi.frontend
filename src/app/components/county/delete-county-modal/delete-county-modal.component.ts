@@ -1,10 +1,13 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CountyService } from '../../../services/county.service';
 import { SharedService } from '../../../services/shared.service';
+
+const listCountyChannel = new BroadcastChannel('list-county-channel');
+const notificationChannel = new BroadcastChannel('notification-channel');
 
 @Component({
   selector: 'app-delete-county-modal',
@@ -18,24 +21,27 @@ import { SharedService } from '../../../services/shared.service';
   templateUrl: './delete-county-modal.component.html',
   styleUrl: './delete-county-modal.component.scss'
 })
-export class DeleteCountyModalComponent implements OnInit {
-
-  county: any
+export class DeleteCountyModalComponent {
 
   data = inject(MAT_DIALOG_DATA)
   countyService = inject(CountyService)
   sharedService = inject(SharedService)
-
-  ngOnInit(): void {
-    this.countyService.getCounty(this.data.id).subscribe({
-      next: (response: any) => {
-        this.county = response.data
-      }
-    })
-  }
+  dialogRef = inject(MatDialog)
 
   onSubmit() {
-
+    this.countyService.deleteCounty(this.data.info.id).subscribe({
+      next: (response: any) => {
+        this.sharedService.showMessage(response.message)
+        listCountyChannel.postMessage('update')
+        notificationChannel.postMessage('update')
+      },
+      error: (response: any) => {
+        this.sharedService.showMessage(response.message)
+      },
+      complete: () => {
+        this.dialogRef.closeAll()
+      }
+    })
   }
 
 }

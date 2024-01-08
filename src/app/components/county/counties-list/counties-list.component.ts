@@ -9,12 +9,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CountyService } from '../../../services/county.service';
 import { MatBadgeModule } from '@angular/material/badge';
-import { AddCountyManagerModalComponent } from '../add-county-manager-modal/add-county-manager-modal.component';
 import { ShowCountyModalComponent } from '../show-county-modal/show-county-modal.component';
 import { EditCountyModalComponent } from '../edit-county-modal/edit-county-modal.component';
 import { DeleteCountyModalComponent } from '../delete-county-modal/delete-county-modal.component';
 import { CountyManagerModalComponent } from '../county-manager-modal/county-manager-modal.component';
 
+const listCountyChannel = new BroadcastChannel('list-county-channel');
 
 @Component({
   selector: 'app-counties-list',
@@ -43,6 +43,15 @@ export class CountiesListComponent implements OnInit {
   dataSource: any
 
   ngOnInit(): void {
+    listCountyChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.countyService.getCounties().subscribe({
+          next: (response: any) => {
+            this.dataSource = new MatTableDataSource(response.data)
+          }
+        })
+      }
+    }
     this.countyService.getCounties().subscribe({
       next: (response: any) => {
         this.dataSource = new MatTableDataSource(response.data)
@@ -55,52 +64,54 @@ export class CountiesListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  countyManager(id: number) {
+  countyManager(info: any) {
     this.dialog.open(CountyManagerModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '30%',
       height: 'auto',
       data: {
-        id: id
+        info: info
       }
     })
   }
 
-  showCounty(id: number) {
+  showCounty(info: any) {
     this.dialog.open(ShowCountyModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '60%',
       height: '50%',
       data: {
-        id: id
+        info: info
       }
     })
   }
 
-  editCounty(id: number) {
+  editCounty(info: any) {
     this.dialog.open(EditCountyModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '60%',
       height: '55%',
       data: {
-        id: id
+        info: info
       }
     })
   }
 
-  deleteCounty(id: number) {
+  deleteCounty(info: any) {
     this.dialog.open(DeleteCountyModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '40%',
       height: '20%',
       data: {
-        id: id
+        info: info
       }
     })
   }
+
+
 
 }

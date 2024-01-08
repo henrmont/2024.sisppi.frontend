@@ -23,4 +23,12 @@ export class UserService {
   getEmptyManagerUsers(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/users/get/empty/manager`)
   }
+
+  changeEmptyManagerUser(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/change/empty/manager/${data}`)
+  }
+
+  changeNoEmptyManagerUser(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/users/change/no/empty/manager/`, data)
+  }
 }
