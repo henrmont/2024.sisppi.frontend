@@ -13,6 +13,7 @@ import { RoleUserModalComponent } from '../role-user-modal/role-user-modal.compo
 import { DeleteUserModalComponent } from '../delete-user-modal/delete-user-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+const listUserChannel = new BroadcastChannel('list-user-channel');
 
 @Component({
   selector: 'app-users-list',
@@ -40,10 +41,19 @@ export class UsersListComponent implements OnInit {
   userService = inject(UserService)
   dialog = inject(MatDialog)
 
-  displayedColumns: string[] = ['name', 'cell_phone', 'email', 'is_valid', 'actions'];
+  displayedColumns: string[] = ['name', 'email', 'county', 'is_valid', 'actions'];
   dataSource: any
 
   ngOnInit(): void {
+    listUserChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.userService.getUsers().subscribe({
+          next: (response: any) => {
+            this.dataSource = new MatTableDataSource(response.data)
+          }
+        })
+      }
+    }
     this.userService.getUsers().subscribe({
       next: (response: any) => {
         this.dataSource = new MatTableDataSource(response.data)
@@ -56,26 +66,26 @@ export class UsersListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  showUser(id: number) {
+  showUser(info: any) {
     this.dialog.open(ShowUserModalComponent, {
-      // disableClose: true,
+      disableClose: true,
       autoFocus: false,
-      width: '400px',
-      height: '200px',
+      width: '40%',
+      height: '35%',
       data: {
-        id: id
+        info: info
       }
     })
   }
 
-  editUser(id: number) {
+  editUser(info: any) {
     this.dialog.open(EditUserModalComponent, {
-      // disableClose: true,
+      disableClose: true,
       autoFocus: false,
-      width: '400px',
-      height: '200px',
+      width: '45%',
+      height: '40%',
       data: {
-        id: id
+        info: info
       }
     })
   }
@@ -92,14 +102,14 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  deleteUser(id: number) {
+  deleteUser(info: any) {
     this.dialog.open(DeleteUserModalComponent, {
-      // disableClose: true,
+      disableClose: true,
       autoFocus: false,
-      width: '400px',
-      height: '200px',
+      width: '40%',
+      height: '20%',
       data: {
-        id: id
+        info: info
       }
     })
   }

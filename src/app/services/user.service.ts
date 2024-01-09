@@ -13,11 +13,11 @@ export class UserService {
   ) { }
 
   getUsers(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/users/get/all`)
+    return this.http.get<any>(`${environment.apiUrl}/users/get/users`)
   }
 
   getUser(data: any): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/users/get/${data}`)
+    return this.http.get<any>(`${environment.apiUrl}/users/get/user/${data}`)
   }
 
   getEmptyManagerUsers(): Observable<any> {
@@ -30,5 +30,17 @@ export class UserService {
 
   changeNoEmptyManagerUser(data: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/users/change/no/empty/manager/`, data)
+  }
+
+  createUser(data: any): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/users/create/user`, data)
+  }
+
+  updateUser(data: any): Observable<any> {
+    return this.http.patch<any>(`${environment.apiUrl}/users/update/user`, data)
+  }
+
+  deleteUser(data: any): Observable<any> {
+    return this.http.delete<any>(`${environment.apiUrl}/users/delete/user/${data}`)
   }
 }

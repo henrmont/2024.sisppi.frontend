@@ -1,4 +1,4 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -14,6 +14,7 @@ import { UserService } from '../../../services/user.service';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
 const listCountyChannel = new BroadcastChannel('list-county-channel');
+const listUserChannel = new BroadcastChannel('list-user-channel');
 
 @Component({
   selector: 'app-add-county-manager-modal',
@@ -29,7 +30,6 @@ const listCountyChannel = new BroadcastChannel('list-county-channel');
     MatInputModule,
     MatAutocompleteModule,
     MatDialogModule,
-    AsyncPipe,
   ],
   templateUrl: './add-county-manager-modal.component.html',
   styleUrl: './add-county-manager-modal.component.scss'
@@ -88,6 +88,7 @@ export class AddCountyManagerModalComponent {
         this.sharedService.showMessage(response.message)
         notificationChannel.postMessage('update')
         listCountyChannel.postMessage('update')
+        listUserChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

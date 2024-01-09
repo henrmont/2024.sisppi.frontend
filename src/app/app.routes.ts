@@ -92,7 +92,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./pages/user/all-users-page/all-users-page.component').then((m) => m.AllUsersPageComponent),
+        loadComponent: () => import('./pages/users-page/users-page.component').then((m) => m.UsersPageComponent),
       }
     ]
   },

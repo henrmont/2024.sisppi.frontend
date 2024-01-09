@@ -1,1 +1,13 @@
-<p>delete-user-modal works! {{data.id}}</p>
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>person_remove</mat-icon>
+    <span>Deletar usuário</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  <h1>Deseja excluir o usuário {{data.info.name}}?</h1>
+  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR USUÁRIO</button>
+</div>

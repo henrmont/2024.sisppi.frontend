@@ -10,18 +10,24 @@
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="cell_phone">
-    <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Telefone </th>
-    <td mat-cell *matCellDef="let element"> {{element.cell_phone}} </td>
-  </ng-container>
-
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef style="width: 25%;"> Email </th>
     <td mat-cell *matCellDef="let element"> {{element.email}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="county">
+    <th mat-header-cell *matHeaderCellDef style="width: 25%;"> Gestão </th>
+    <td mat-cell *matCellDef="let element">
+      @if (element.county) {
+        {{element.county.name}}
+      } @else {
+        <span style="color: red">SEM GESTÃO</span>
+      }
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="is_valid">
-    <th mat-header-cell *matHeaderCellDef style="width: 15%; text-align: center;"> Ativo </th>
+    <th mat-header-cell *matHeaderCellDef style="width: 10%; text-align: center;"> Ativo </th>
     <td mat-cell *matCellDef="let element" style="text-align: center;">
       @if (element.is_valid) {
         <mat-icon>done</mat-icon>
@@ -35,16 +41,16 @@
     <th mat-header-cell *matHeaderCellDef style="width: 20%; text-align: center;"> Ações </th>
     <td mat-cell *matCellDef="let element">
       <div class="actions">
-        <button mat-icon-button color="primary" matTooltip="Ver usuário" (click)="showUser(element.id)">
+        <button mat-icon-button color="primary" matTooltip="Ver usuário" (click)="showUser(element)">
           <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-icon-button color="primary" matTooltip="Editar usuário" (click)="editUser(element.id)">
+        <button mat-icon-button color="primary" matTooltip="Editar usuário" (click)="editUser(element)">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="primary" matTooltip="Ver regras do usuário" (click)="roleUser(element.id)">
+        <button mat-icon-button color="primary" matTooltip="Ver regras do usuário" (click)="roleUser(element)">
           <mat-icon>rule</mat-icon>
         </button>
-        <button mat-icon-button color="warn" matTooltip="Deletar usuário" (click)="deleteUser(element.id)">
+        <button mat-icon-button color="warn" matTooltip="Deletar usuário" (click)="deleteUser(element)">
           <mat-icon>delete</mat-icon>
         </button>
       </div>
