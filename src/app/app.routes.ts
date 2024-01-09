@@ -74,13 +74,8 @@ export const routes: Routes = [
     resolve: {auth: authResolve, title: titleResolve},
     children: [
       {
-        path: 'todas',
-        loadComponent: () => import('./pages/notification/all-notifications-page/all-notifications-page.component').then((m) => m.AllNotificationsPageComponent),
-      },
-      {
         path: '',
-        redirectTo: 'todas',
-        pathMatch: 'full'
+        loadComponent: () => import('./pages/notifications-page/notifications-page.component').then((m) => m.NotificationsPageComponent),
       }
     ]
   },
@@ -104,7 +99,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./pages/county/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
+        loadComponent: () => import('./pages/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
       }
     ]
   }

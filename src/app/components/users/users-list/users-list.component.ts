@@ -7,11 +7,11 @@ import { UserService } from '../../../services/user.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ShowUserModalComponent } from '../show-user-modal/show-user-modal.component';
-import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
 import { RoleUserModalComponent } from '../role-user-modal/role-user-modal.component';
 import { DeleteUserModalComponent } from '../delete-user-modal/delete-user-modal.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { UpdateUserModalComponent } from '../update-user-modal/update-user-modal.component';
+import { ReadUserModalComponent } from '../read-user-modal/read-user-modal.component';
 
 const listUserChannel = new BroadcastChannel('list-user-channel');
 
@@ -27,10 +27,6 @@ const listUserChannel = new BroadcastChannel('list-user-channel');
     MatButtonModule,
     MatDialogModule,
     MatTooltipModule,
-    ShowUserModalComponent,
-    EditUserModalComponent,
-    RoleUserModalComponent,
-    DeleteUserModalComponent,
   ],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss'
@@ -66,8 +62,8 @@ export class UsersListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  showUser(info: any) {
-    this.dialog.open(ShowUserModalComponent, {
+  readUser(info: any) {
+    this.dialog.open(ReadUserModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '40%',
@@ -78,8 +74,8 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  editUser(info: any) {
-    this.dialog.open(EditUserModalComponent, {
+  updateUser(info: any) {
+    this.dialog.open(UpdateUserModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '45%',

@@ -41,10 +41,10 @@
     <th mat-header-cell *matHeaderCellDef style="width: 20%; text-align: center;"> Ações </th>
     <td mat-cell *matCellDef="let element">
       <div class="actions">
-        <button mat-icon-button color="primary" matTooltip="Ver usuário" (click)="showUser(element)">
+        <button mat-icon-button color="primary" matTooltip="Ver usuário" (click)="readUser(element)">
           <mat-icon>visibility</mat-icon>
         </button>
-        <button mat-icon-button color="primary" matTooltip="Editar usuário" (click)="editUser(element)">
+        <button mat-icon-button color="primary" matTooltip="Editar usuário" (click)="updateUser(element)">
           <mat-icon>edit</mat-icon>
         </button>
         <button mat-icon-button color="primary" matTooltip="Ver regras do usuário" (click)="roleUser(element)">

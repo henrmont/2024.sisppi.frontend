@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FavoriteService } from '../../services/favorite.service';
 import { NotificationService } from '../../services/notification.service';
-import { AddFavoriteModalComponent } from '../../components/favorite/add-favorite-modal/add-favorite-modal.component';
+import { AddFavoriteModalComponent } from '../../components/favorites/add-favorite-modal/add-favorite-modal.component';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
 
