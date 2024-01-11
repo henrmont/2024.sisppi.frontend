@@ -1,45 +1,47 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { Observable, map, startWith } from 'rxjs';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { FavoriteService } from '../../../services/favorite.service';
 import { SharedService } from '../../../services/shared.service';
+import { UserService } from '../../../services/user.service';
+import { RoleService } from '../../../services/role.service';
+import { Observable, map, startWith } from 'rxjs';
 
-const favoriteChannel = new BroadcastChannel('favorite-channel');
+const notificationChannel = new BroadcastChannel('notification-channel');
+const permissionChannel = new BroadcastChannel('permission-channel');
+const listUserChannel = new BroadcastChannel('list-user-channel');
 
 @Component({
-  selector: 'app-add-favorite-modal',
+  selector: 'app-add-user-permission-modal',
   standalone: true,
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
     MatDialogModule,
-    AsyncPipe,
   ],
-  templateUrl: './add-favorite-modal.component.html',
-  styleUrl: './add-favorite-modal.component.scss'
+  templateUrl: './add-user-permission-modal.component.html',
+  styleUrl: './add-user-permission-modal.component.scss'
 })
+export class AddUserPermissionModalComponent implements OnInit {
 
-export class AddFavoriteModalComponent implements OnInit {
-
-  favoriteService = inject(FavoriteService)
-  sharedService = inject(SharedService)
-  formBuilder = inject(FormBuilder);
   data = inject(MAT_DIALOG_DATA)
+  sharedService = inject(SharedService)
+  userService = inject(UserService)
+  roleService = inject(RoleService)
+  formBuilder = inject(FormBuilder);
   dialogRef = inject(MatDialog)
 
   myControl = new FormControl('');
@@ -48,21 +50,20 @@ export class AddFavoriteModalComponent implements OnInit {
   isKeyUp: boolean = false
 
   formulario: FormGroup = this.formBuilder.group({
-    link_id: [null, Validators.required],
-    user_id: [this.data.id, Validators.required],
+    permission_id: [this.data.info.id, Validators.required],
+    user_id: [null, Validators.required],
   });
 
   ngOnInit(): void {
-    this.favoriteService.getLinks().subscribe({
+    this.userService.getUsersWithoutPermission(this.data.info.id).subscribe({
       next: (response: any) => {
         this.options = response.data
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
-          map(link => (link ? this._filter(link) : this.options.slice())),
+          map(user => (user ? this._filter(user) : this.options.slice())),
         );
       }
     })
-
   }
 
   private _filter(value: string): string[] {
@@ -73,7 +74,7 @@ export class AddFavoriteModalComponent implements OnInit {
 
   onSelect(id: number) {
     this.formulario.patchValue({
-      link_id: id,
+      user_id: id,
     })
     this.isKeyUp = false
   }
@@ -83,10 +84,12 @@ export class AddFavoriteModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.favoriteService.createFavorite(this.formulario.value).subscribe({
+    this.roleService.addUserPermission(this.formulario.value).subscribe({
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
-        favoriteChannel.postMessage('update')
+        notificationChannel.postMessage('update')
+        permissionChannel.postMessage('update')
+        listUserChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

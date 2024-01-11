@@ -1,0 +1,27 @@
+.box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  mat-icon {
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: 20px;
+  }
+}

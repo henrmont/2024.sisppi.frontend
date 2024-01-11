@@ -16,6 +16,14 @@ export class UserService {
     return this.http.get<any>(`${environment.apiUrl}/users/get/users`)
   }
 
+  getUsersWithoutRole(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/get/users/without/role/${data}`)
+  }
+
+  getUsersWithoutPermission(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/get/users/without/permission/${data}`)
+  }
+
   getUser(data: any): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/users/get/user/${data}`)
   }

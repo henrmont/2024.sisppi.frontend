@@ -1,0 +1,42 @@
+<div class="box mat-elevation-z4">
+  <mat-toolbar color="accent">
+    <mat-icon style="margin-right: 20px;">rule</mat-icon>
+    <span>Regras</span>
+  </mat-toolbar>
+  @for (item of roles; track item.id; let last = $last;) {
+    <div class="item">
+      <div>
+        <mat-icon>chevron_right</mat-icon>
+        <span>{{item.name}}</span>
+      </div>
+      <div>
+        <button mat-icon-button color="primary" matTooltip="Usuários" (click)="usersRole(item)">
+          @if (item.users_count == 0) {
+              <mat-icon [matBadge]="item.users_count" matBadgeColor="warn" aria-hidden="false">supervisor_account</mat-icon>
+          } @else {
+              <mat-icon [matBadge]="item.users_count" aria-hidden="false">supervisor_account</mat-icon>
+          }
+        </button>
+        <button mat-icon-button color="primary" matTooltip="Permissões" (click)="updateRole(item)">
+          @if (item.permissions_count == 0) {
+              <mat-icon [matBadge]="item.permissions_count" matBadgeColor="warn" aria-hidden="false">edit_note</mat-icon>
+          } @else {
+              <mat-icon [matBadge]="item.permissions_count" aria-hidden="false">edit_note</mat-icon>
+          }
+        </button>
+        @if (item.id == 1) {
+          <button mat-icon-button color="warn" matTooltip="Deletar" disabled>
+            <mat-icon>delete</mat-icon>
+          </button>
+        } @else {
+          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteRole(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        }
+      </div>
+    </div>
+    @if (!last) {
+      <mat-divider></mat-divider>
+    }
+  }
+</div>

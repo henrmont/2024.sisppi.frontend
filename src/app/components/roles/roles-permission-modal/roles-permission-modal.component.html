@@ -1,0 +1,18 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>rule</mat-icon>
+    <span>Regras da permissão ({{data.info.name}})</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  <mat-chip-set>
+    @for (item of data.info.roles; track item.id) {
+      <mat-chip>
+        {{item.name}}
+      </mat-chip>
+    }
+  </mat-chip-set>
+</div>

@@ -102,5 +102,17 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
       }
     ]
+  },
+  {
+    path: 'regras',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/roles-page/roles-page.component').then((m) => m.RolesPageComponent),
+      }
+    ]
   }
 ];

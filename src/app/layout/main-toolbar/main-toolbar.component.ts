@@ -15,6 +15,7 @@ import { NotificationService } from '../../services/notification.service';
 import { AddFavoriteModalComponent } from '../../components/favorites/add-favorite-modal/add-favorite-modal.component';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
+const favoriteChannel = new BroadcastChannel('favorite-channel');
 
 @Component({
   selector: 'app-main-toolbar',
@@ -70,6 +71,18 @@ export class MainToolbarComponent implements OnInit {
         }
       }
     })
+    favoriteChannel.onmessage = (message) => {
+      if (message.data === 'update') {
+        this.favoriteService.getFavorites(this.user.id).subscribe({
+          next: (response: any) => {
+            this.links = response.data
+            if (this.links.length >= 5) {
+              this.disabled = false
+            }
+          }
+        })
+      }
+    }
     this.favoriteService.getFavorites(this.user.id).subscribe({
       next: (response: any) => {
         this.links = response.data
@@ -89,8 +102,8 @@ export class MainToolbarComponent implements OnInit {
     this.dialog.open(AddFavoriteModalComponent, {
       disableClose: true,
       autoFocus: false,
-      width: '400px',
-      height: '200px',
+      width: '30%',
+      height: '20%',
       data: {
         id: id
       }
