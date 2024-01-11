@@ -86,14 +86,14 @@ export class UsersListComponent implements OnInit {
     })
   }
 
-  roleUser(id: number) {
+  roleUser(info: any) {
     this.dialog.open(RoleUserModalComponent, {
-      // disableClose: true,
+      disableClose: true,
       autoFocus: false,
-      width: '400px',
-      height: '200px',
+      width: '30%',
+      height: 'auto',
       data: {
-        id: id
+        info: info
       }
     })
   }

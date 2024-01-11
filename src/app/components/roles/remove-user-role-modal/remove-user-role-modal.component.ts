@@ -11,7 +11,7 @@ const notificationChannel = new BroadcastChannel('notification-channel');
 const listUserChannel = new BroadcastChannel('list-user-channel');
 
 @Component({
-  selector: 'app-delete-user-role-modal',
+  selector: 'app-remove-user-role-modal',
   standalone: true,
   imports: [
     MatIconModule,
@@ -19,10 +19,10 @@ const listUserChannel = new BroadcastChannel('list-user-channel');
     MatToolbarModule,
     MatDialogModule,
   ],
-  templateUrl: './delete-user-role-modal.component.html',
-  styleUrl: './delete-user-role-modal.component.scss'
+  templateUrl: './remove-user-role-modal.component.html',
+  styleUrl: './remove-user-role-modal.component.scss'
 })
-export class DeleteUserRoleModalComponent {
+export class RemoveUserRoleModalComponent {
 
   data = inject(MAT_DIALOG_DATA)
   roleService = inject(RoleService)

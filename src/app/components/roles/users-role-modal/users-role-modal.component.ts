@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AddUserRoleModalComponent } from '../add-user-role-modal/add-user-role-modal.component';
-import { DeleteUserRoleModalComponent } from '../delete-user-role-modal/delete-user-role-modal.component';
+import { RemoveUserRoleModalComponent } from '../remove-user-role-modal/remove-user-role-modal.component';
 
 @Component({
   selector: 'app-users-role-modal',
@@ -37,8 +37,8 @@ export class UsersRoleModalComponent {
     })
   }
 
-  deleteUserRole(info: any) {
-    this.dialog.open(DeleteUserRoleModalComponent, {
+  removeUserRole(info: any) {
+    this.dialog.open(RemoveUserRoleModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '40%',

@@ -1,1 +1,24 @@
-<p>role-user-modal works! {{data.id}}</p>
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>rule</mat-icon>
+    <span>Regras e permissões ({{data.info.name}})</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  <mat-chip-listbox aria-label="Fish selection">
+    @for (roles of data.info.roles; track roles.id) {
+      <mat-chip-option color="primary">{{roles.name}}</mat-chip-option>
+    }
+    @for (roles of data.info.roles; track roles.id) {
+      @for (item of roles.permissions; track item.id) {
+        <mat-chip-option color="accent">{{item.name}}</mat-chip-option>
+      }
+    }
+    @for (item of data.info.permissions; track item.id) {
+      <mat-chip-option color="accent">{{item.name}}</mat-chip-option>
+    }
+  </mat-chip-listbox>
+</div>
