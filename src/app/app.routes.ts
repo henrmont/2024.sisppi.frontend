@@ -4,6 +4,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { authGuard } from './guards/auth.guard';
 import { authResolve } from './resolves/auth-resolve.guard';
 import { titleResolve } from './resolves/title-resolve.guard';
+import { roleGuard } from './guards/role.guard';
+import { roleResolve } from './resolves/role-resolve.guard';
 
 export const routes: Routes = [
   {
@@ -83,11 +85,13 @@ export const routes: Routes = [
     path: 'usuarios',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve},
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
         path: '',
         loadComponent: () => import('./pages/users-page/users-page.component').then((m) => m.UsersPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: ['usuario criar','usuario atualizar','usuario ver','usuario deletar']}
       }
     ]
   },
@@ -95,11 +99,13 @@ export const routes: Routes = [
     path: 'municipios',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve},
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
         path: '',
         loadComponent: () => import('./pages/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: ['municipio criar','municipio atualizar','municipio ver','municipio deletar']}
       }
     ]
   },
@@ -107,11 +113,13 @@ export const routes: Routes = [
     path: 'regras',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve},
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
         path: '',
         loadComponent: () => import('./pages/roles-page/roles-page.component').then((m) => m.RolesPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: ['regra criar','regra atualizar','regra ver','regra deletar']}
       }
     ]
   }

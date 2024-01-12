@@ -48,7 +48,11 @@ mat-divider {
   width: 100%;
 }
 
-mat-chip-set {
-  display: flex;
-  justify-content: center;
+mat-chip-listbox {
+  width: 90%;
+
+  h3 {
+    text-align: center;
+    width: 100%;
+  }
 }

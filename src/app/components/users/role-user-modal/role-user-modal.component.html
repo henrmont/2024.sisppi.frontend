@@ -11,9 +11,13 @@
   <mat-chip-listbox aria-label="Fish selection">
     @for (item of roles; track item.id) {
       <mat-chip-option color="primary" selected [selectable]="false">{{item.name}}</mat-chip-option>
+    } @empty {
+      <h3>Nenhuma regra atribuída ao usuário.</h3>
     }
     @for (item of permissions; track item.id) {
       <mat-chip-option color="accent" selected [selectable]="false">{{item.name}}</mat-chip-option>
+    } @empty {
+      <h3>Nenhuma permissão atribuída ao usuário.</h3>
     }
   </mat-chip-listbox>
 </div>

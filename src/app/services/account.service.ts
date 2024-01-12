@@ -25,6 +25,13 @@ export class AccountService {
     return this.http.get<Account>(`${environment.apiUrl}/account/get/${data}`)
   }
 
+  getAccountPermissions(): Observable<Account> {
+    const requestOptions = {
+      'Authorization': `Bearer ${window.localStorage.getItem('token')}`
+    }
+    return this.http.get<Account>(`${environment.apiUrl}/auth/permissions`, {headers: requestOptions})
+  }
+
   refreshToken(): Observable<any> {
     const requestOptions = {
       'Authorization': `Bearer ${window.localStorage.getItem('token')}`

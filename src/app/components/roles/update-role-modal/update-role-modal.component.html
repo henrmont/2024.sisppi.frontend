@@ -31,7 +31,7 @@
         (matChipInputTokenEnd)="add($event)"
         [disabled]="data.info.id == 1"/>
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-        @for (item of filteredPermissions | async; track item.id) {
+        @for (item of filteredPermissions | async | slice : 0 : 4; track item.id) {
           <mat-option [value]="item">{{item.name}}</mat-option>
         }
       </mat-autocomplete>
