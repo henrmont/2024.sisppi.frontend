@@ -18,13 +18,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   templateUrl: './roles-permission-modal.component.html',
   styleUrl: './roles-permission-modal.component.scss'
 })
-export class RolesPermissionModalComponent implements OnInit {
+export class RolesPermissionModalComponent {
 
   data = inject(MAT_DIALOG_DATA)
   dialogRef = inject(MatDialog)
-
-  ngOnInit(): void {
-    console.log(this.data)
-  }
 
 }

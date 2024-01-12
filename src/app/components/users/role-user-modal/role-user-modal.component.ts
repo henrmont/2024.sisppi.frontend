@@ -26,10 +26,16 @@ export class RoleUserModalComponent implements OnInit {
   data = inject(MAT_DIALOG_DATA)
   dialogRef = inject(MatDialog)
   userService = inject(UserService)
-  perm: any
+  roles: any
+  permissions: any
 
   ngOnInit(): void {
-    console.log(this.data)
+    this.userService.getUserRoles(this.data.info.id).subscribe({
+      next: (response: any) => {
+        this.roles = response.data.roles
+        this.permissions = response.data.permissions
+      }
+    })
   }
 
 }

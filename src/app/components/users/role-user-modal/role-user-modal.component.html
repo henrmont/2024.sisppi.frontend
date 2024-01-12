@@ -9,16 +9,11 @@
 </mat-toolbar>
 <div class="box">
   <mat-chip-listbox aria-label="Fish selection">
-    @for (roles of data.info.roles; track roles.id) {
-      <mat-chip-option color="primary">{{roles.name}}</mat-chip-option>
+    @for (item of roles; track item.id) {
+      <mat-chip-option color="primary" selected [selectable]="false">{{item.name}}</mat-chip-option>
     }
-    @for (roles of data.info.roles; track roles.id) {
-      @for (item of roles.permissions; track item.id) {
-        <mat-chip-option color="accent">{{item.name}}</mat-chip-option>
-      }
-    }
-    @for (item of data.info.permissions; track item.id) {
-      <mat-chip-option color="accent">{{item.name}}</mat-chip-option>
+    @for (item of permissions; track item.id) {
+      <mat-chip-option color="accent" selected [selectable]="false">{{item.name}}</mat-chip-option>
     }
   </mat-chip-listbox>
 </div>
