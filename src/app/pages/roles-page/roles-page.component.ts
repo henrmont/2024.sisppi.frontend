@@ -6,6 +6,7 @@ import { CreateRoleModalComponent } from '../../components/roles/create-role-mod
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-roles-page',
@@ -24,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class RolesPageComponent {
 
   dialog = inject(MatDialog)
+  route = inject(ActivatedRoute)
 
   breadcrumb = [
     {name: 'Regras e permissões'},

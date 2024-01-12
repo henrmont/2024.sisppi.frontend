@@ -13,6 +13,7 @@ import { CountyManagerModalComponent } from '../county-manager-modal/county-mana
 import { ReadCountyModalComponent } from '../read-county-modal/read-county-modal.component';
 import { UpdateCountyModalComponent } from '../update-county-modal/update-county-modal.component';
 import { DeleteCountyModalComponent } from '../delete-county-modal/delete-county-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 const listCountyChannel = new BroadcastChannel('list-county-channel');
 
@@ -38,6 +39,7 @@ export class CountiesListComponent implements OnInit {
 
   countyService = inject(CountyService)
   dialog = inject(MatDialog)
+  route = inject(ActivatedRoute)
 
   displayedColumns: string[] = ['ibge', 'name', 'health', 'managers', 'actions'];
   dataSource: any

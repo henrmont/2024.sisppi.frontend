@@ -10,18 +10,26 @@
         <span>{{item.name}}</span>
       </div>
       <div>
-        <button mat-icon-button color="primary" matTooltip="Usuários" (click)="usersRole(item)">
-          @if (item.users_count == 0) {
-              <mat-icon [matBadge]="item.users_count" matBadgeColor="warn" aria-hidden="false">supervisor_account</mat-icon>
+        <button mat-icon-button color="primary" matTooltip="Usuários" (click)="usersRole(item)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
+          @if (route.snapshot.data['role'].includes('regra atualizar')) {
+            @if (item.users_count == 0) {
+                <mat-icon [matBadge]="item.users_count" matBadgeColor="warn" aria-hidden="false">supervisor_account</mat-icon>
+            } @else {
+                <mat-icon [matBadge]="item.users_count" aria-hidden="false">supervisor_account</mat-icon>
+            }
           } @else {
-              <mat-icon [matBadge]="item.users_count" aria-hidden="false">supervisor_account</mat-icon>
+            <mat-icon>supervisor_account</mat-icon>
           }
         </button>
-        <button mat-icon-button color="primary" matTooltip="Permissões" (click)="updateRole(item)">
-          @if (item.permissions_count == 0) {
-              <mat-icon [matBadge]="item.permissions_count" matBadgeColor="warn" aria-hidden="false">edit_note</mat-icon>
+        <button mat-icon-button color="primary" matTooltip="Permissões" (click)="updateRole(item)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
+          @if (route.snapshot.data['role'].includes('regra atualizar')) {
+            @if (item.permissions_count == 0) {
+                <mat-icon [matBadge]="item.permissions_count" matBadgeColor="warn" aria-hidden="false">edit_note</mat-icon>
+            } @else {
+                <mat-icon [matBadge]="item.permissions_count" aria-hidden="false">edit_note</mat-icon>
+            }
           } @else {
-              <mat-icon [matBadge]="item.permissions_count" aria-hidden="false">edit_note</mat-icon>
+            <mat-icon>edit_note</mat-icon>
           }
         </button>
         @if (item.id == 1) {
@@ -29,7 +37,7 @@
             <mat-icon>delete</mat-icon>
           </button>
         } @else {
-          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteRole(item)">
+          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteRole(item)" [disabled]="!route.snapshot.data['role'].includes('regra deletar')">
             <mat-icon>delete</mat-icon>
           </button>
         }

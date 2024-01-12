@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FavoriteService } from '../../services/favorite.service';
 import { NotificationService } from '../../services/notification.service';
@@ -43,6 +43,7 @@ export class MainToolbarComponent implements OnInit {
   favoriteService = inject(FavoriteService)
   notificationService = inject(NotificationService)
   dialog = inject(MatDialog)
+  route = inject(ActivatedRoute)
 
   @Input() title: any
   @Input() drawer: any

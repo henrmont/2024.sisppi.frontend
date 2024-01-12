@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UsersPermissionModalComponent } from '../users-permission-modal/users-permission-modal.component';
 import { RolesPermissionModalComponent } from '../roles-permission-modal/roles-permission-modal.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { ActivatedRoute } from '@angular/router';
 
 const permissionChannel = new BroadcastChannel('permission-channel');
 
@@ -30,6 +31,7 @@ export class PermissionsListComponent implements OnInit {
 
   dialog = inject(MatDialog)
   roleService = inject(RoleService)
+  route = inject(ActivatedRoute)
   permissions: any
 
   ngOnInit(): void {

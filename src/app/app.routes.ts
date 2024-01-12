@@ -39,7 +39,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve},
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
         path: 'principal',
@@ -56,7 +56,7 @@ export const routes: Routes = [
     path: 'configuracoes',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve},
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
         path: 'principal',
@@ -73,7 +73,7 @@ export const routes: Routes = [
     path: 'notificacoes',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve},
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
         path: '',

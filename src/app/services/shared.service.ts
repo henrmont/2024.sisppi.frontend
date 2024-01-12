@@ -22,4 +22,8 @@ export class SharedService {
     window.localStorage.clear();
     window.location.reload();
   }
+
+  disabledRole() {
+
+  }
 }

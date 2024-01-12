@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BreadcrumbComponent } from '../../components/shared/breadcrumb/breadcrumb.component';
 import { CountiesListComponent } from '../../components/counties/counties-list/counties-list.component';
 import { CreateCountyModalComponent } from '../../components/counties/create-county-modal/create-county-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-counties-page',
@@ -22,6 +23,7 @@ import { CreateCountyModalComponent } from '../../components/counties/create-cou
 export class CountiesPageComponent {
 
   dialog = inject(MatDialog)
+  route = inject(ActivatedRoute)
 
   breadcrumb = [
     {name: 'Municípios'},

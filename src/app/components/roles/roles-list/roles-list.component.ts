@@ -11,6 +11,7 @@ import { DeleteRoleModalComponent } from '../delete-role-modal/delete-role-modal
 import { UsersRoleModalComponent } from '../users-role-modal/users-role-modal.component';
 import { UpdateRoleModalComponent } from '../update-role-modal/update-role-modal.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { ActivatedRoute } from '@angular/router';
 
 const roleChannel = new BroadcastChannel('role-channel');
 
@@ -33,6 +34,7 @@ export class RolesListComponent implements OnInit {
 
   dialog = inject(MatDialog)
   roleService = inject(RoleService)
+  route = inject(ActivatedRoute)
 
   roles: any
 

@@ -3,6 +3,6 @@
   <app-roles-list></app-roles-list>
   <app-permissions-list></app-permissions-list>
 </section>
-<button mat-fab color="primary" class="new-role" (click)="createRole()">
+<button mat-fab color="primary" class="new-role" (click)="createRole()" [disabled]="!route.snapshot.data['role'].includes('regra criar')">
   <mat-icon>playlist_add</mat-icon>
 </button>

@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BreadcrumbComponent } from '../../components/shared/breadcrumb/breadcrumb.component';
 import { UsersListComponent } from '../../components/users/users-list/users-list.component';
 import { CreateUserModalComponent } from '../../components/users/create-user-modal/create-user-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users-page',
@@ -21,6 +22,7 @@ import { CreateUserModalComponent } from '../../components/users/create-user-mod
 })
 export class UsersPageComponent {
 
+  route = inject(ActivatedRoute)
   dialog = inject(MatDialog)
 
   breadcrumb = [

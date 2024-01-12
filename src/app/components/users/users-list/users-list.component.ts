@@ -12,6 +12,7 @@ import { DeleteUserModalComponent } from '../delete-user-modal/delete-user-modal
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { UpdateUserModalComponent } from '../update-user-modal/update-user-modal.component';
 import { ReadUserModalComponent } from '../read-user-modal/read-user-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 const listUserChannel = new BroadcastChannel('list-user-channel');
 
@@ -36,6 +37,7 @@ export class UsersListComponent implements OnInit {
 
   userService = inject(UserService)
   dialog = inject(MatDialog)
+  route = inject(ActivatedRoute)
 
   displayedColumns: string[] = ['name', 'email', 'county', 'is_valid', 'actions'];
   dataSource: any

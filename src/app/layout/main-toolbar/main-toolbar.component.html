@@ -25,25 +25,20 @@
           <div class="menu-content">
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
               <h3>Usuários e Munícipios</h3>
-              <button mat-menu-item [routerLink]="['/usuarios']">
+              <button mat-menu-item [routerLink]="['/usuarios']"
+                [disabled]="!(route.snapshot.data['role'].includes('usuario criar') || route.snapshot.data['role'].includes('usuario ver') || route.snapshot.data['role'].includes('usuario atualizar') || route.snapshot.data['role'].includes('usuario deletar'))">
                 <mat-icon>groups</mat-icon>
                 <span>Usuários</span>
               </button>
-              <button mat-menu-item [routerLink]="['/regras']">
+              <button mat-menu-item [routerLink]="['/regras']"
+                [disabled]="!(route.snapshot.data['role'].includes('regra criar') || route.snapshot.data['role'].includes('regra ver') || route.snapshot.data['role'].includes('regra atualizar') || route.snapshot.data['role'].includes('regra deletar'))">
                 <mat-icon>rule</mat-icon>
                 <span>Regras e permissões</span>
               </button>
-              <button mat-menu-item [routerLink]="['/municipios']">
+              <button mat-menu-item [routerLink]="['/municipios']"
+                [disabled]="!(route.snapshot.data['role'].includes('municipio criar') || route.snapshot.data['role'].includes('municipio ver') || route.snapshot.data['role'].includes('municipio atualizar') || route.snapshot.data['role'].includes('municipio deletar'))">
                 <mat-icon>place</mat-icon>
                 <span>Municípios</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>vpn_lock</mat-icon>
-                <span>Item 04</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>time_to_leave</mat-icon>
-                <span>Item 05</span>
               </button>
             </div>
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
