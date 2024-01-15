@@ -47,7 +47,10 @@
         <button mat-icon-button color="primary" matTooltip="Editar" (click)="updateCounty(element)" [disabled]="!route.snapshot.data['role'].includes('municipio atualizar')">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteCounty(element)" [disabled]="!route.snapshot.data['role'].includes('municipio deletar')">
+        <!-- <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteCounty(element)" [disabled]="!route.snapshot.data['role'].includes('municipio deletar')">
+          <mat-icon>delete</mat-icon>
+        </button> -->
+        <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteCounty(element)" disabled>
           <mat-icon>delete</mat-icon>
         </button>
       </div>
