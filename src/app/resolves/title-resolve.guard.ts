@@ -29,6 +29,10 @@ export const titleResolve: ResolveFn<any> = (route, state) => {
       title = "Regras e permissões"
       break
     }
+    case "anos/de/exercicio": {
+      title = "Anos de exercício e competências"
+      break
+    }
   }
 
   return title

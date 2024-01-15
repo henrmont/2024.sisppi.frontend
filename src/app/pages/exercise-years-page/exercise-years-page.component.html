@@ -1,0 +1,8 @@
+<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+<section>
+  <app-exercise-years-list></app-exercise-years-list>
+  <app-competencies-list></app-competencies-list>
+</section>
+<button mat-fab color="primary" class="new-exercise-year" (click)="createExeciseYear()" [disabled]="!route.snapshot.data['role'].includes('ano criar')">
+  <mat-icon>calendar_today</mat-icon>
+</button>

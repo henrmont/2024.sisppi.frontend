@@ -1,0 +1,34 @@
+<div class="box mat-elevation-z4">
+  <mat-toolbar color="accent">
+    <mat-icon style="margin-right: 20px;">calendar_month</mat-icon>
+    <span>Anos de exercício</span>
+  </mat-toolbar>
+  @for (item of exerciseYears; track item.id; let last = $last;) {
+    <div class="item">
+      <div>
+        <mat-icon>chevron_right</mat-icon>
+        <span>{{item.exercise_year}}</span>
+      </div>
+      <div>
+        <button mat-icon-button color="primary" matTooltip="Editar" (click)="updateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
+          <mat-icon aria-hidden="false">edit_calendar</mat-icon>
+        </button>
+        @if (item.is_valid) {
+          <button mat-icon-button color="primary" matTooltip="Validar" (click)="validateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
+            <mat-icon>event_available</mat-icon>
+          </button>
+        } @else {
+          <button mat-icon-button color="warn" matTooltip="Invalidar" (click)="validateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
+            <mat-icon>event_busy</mat-icon>
+          </button>
+        }
+        <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano deletar')">
+          <mat-icon aria-hidden="false">delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    @if (!last) {
+      <mat-divider></mat-divider>
+    }
+  }
+</div>

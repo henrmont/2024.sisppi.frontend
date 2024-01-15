@@ -24,7 +24,7 @@
         <mat-menu #fullMenu="matMenu" xPosition="before" class="fullmenu">
           <div class="menu-content">
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
-              <h3>Usuários e Munícipios</h3>
+              <h2>Sistema</h2>
               <button mat-menu-item [routerLink]="['/usuarios']"
                 [disabled]="!(route.snapshot.data['role'].includes('usuario criar') || route.snapshot.data['role'].includes('usuario ver') || route.snapshot.data['role'].includes('usuario atualizar') || route.snapshot.data['role'].includes('usuario deletar'))">
                 <mat-icon>groups</mat-icon>
@@ -40,51 +40,48 @@
                 <mat-icon>place</mat-icon>
                 <span>Municípios</span>
               </button>
+              <button mat-menu-item [routerLink]="['/anos/de/exercicio']"
+                [disabled]="!(route.snapshot.data['role'].includes('ano criar') || route.snapshot.data['role'].includes('ano ver') || route.snapshot.data['role'].includes('ano atualizar') || route.snapshot.data['role'].includes('ano deletar'))">
+                <mat-icon>calendar_month</mat-icon>
+                <span>Anos de exercício e competências</span>
+              </button>
             </div>
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
-              <h3>Grupo 02</h3>
+              <h2>Procedimentos</h2>
               <button mat-menu-item disabled>
-                <mat-icon>wc</mat-icon>
-                <span>Item 01</span>
-              </button>
-              <button mat-menu-item disabled>
-                <mat-icon>mms</mat-icon>
-                <span>Item 02</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>no_encryption_gmailerrorred</mat-icon>
-                <span>Item 03</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>do_disturb_off</mat-icon>
-                <span>Item 04</span>
+                <mat-icon>format_list_numbered</mat-icon>
+                <span>Grupos</span>
               </button>
               <button mat-menu-item disabled>
-                <mat-icon>phone_missed</mat-icon>
-                <span>Item 05</span>
+                <mat-icon>attach_money</mat-icon>
+                <span>Financiamento</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>format_list_bulleted</mat-icon>
+                <span>Procedimentos</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>checklist</mat-icon>
+                <span>Programação de procedimentos</span>
               </button>
             </div>
             <div class="menu-column">
-              <h3>Grupo 03</h3>
+              <h2>Pactuação</h2>
               <button mat-menu-item disabled>
-                <mat-icon>done</mat-icon>
-                <span>Item 01</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>radio_button_checked</mat-icon>
-                <span>Item 02</span>
-              </button>
-              <button mat-menu-item>
-                <mat-icon>calendar_month</mat-icon>
-                <span>Item 03</span>
+                <mat-icon>request_page</mat-icon>
+                <span>Portaria ministerial</span>
               </button>
               <button mat-menu-item disabled>
-                <mat-icon>add_task</mat-icon>
-                <span>Item 04</span>
+                <mat-icon>price_check</mat-icon>
+                <span>Incentivos</span>
               </button>
-              <button mat-menu-item>
-                <mat-icon>expand_circle_down</mat-icon>
-                <span>Item 05</span>
+              <button mat-menu-item disabled>
+                <mat-icon>receipt_long</mat-icon>
+                <span>Proposição operativa</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>history_edu</mat-icon>
+                <span>Resoluções</span>
               </button>
             </div>
           </div>

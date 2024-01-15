@@ -1,0 +1,13 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>free_cancellation</mat-icon>
+    <span>Deletar ano de exercício</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  <h1>Deseja excluir o ano de exercício {{data.info.exercise_year}}?</h1>
+  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR ANO DE EXERCÍCIO</button>
+</div>

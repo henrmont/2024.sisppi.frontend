@@ -122,5 +122,19 @@ export const routes: Routes = [
         data: {permissions: ['regra criar','regra atualizar','regra ver','regra deletar']}
       }
     ]
+  },
+  {
+    path: 'anos/de/exercicio',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/exercise-years-page/exercise-years-page.component').then((m) => m.ExerciseYearsPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: ['ano criar','ano atualizar','ano ver','ano deletar']}
+      }
+    ]
   }
 ];
