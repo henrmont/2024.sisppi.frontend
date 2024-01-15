@@ -1,0 +1,25 @@
+<mat-toolbar class="title" color="accent">
+  @if (data.info.is_valid) {
+    <div>
+      <mat-icon>event_busy</mat-icon>
+      <span>Invalidar competência</span>
+    </div>
+  } @else {
+    <div>
+      <mat-icon>event_available</mat-icon>
+      <span>Validar competência</span>
+    </div>
+  }
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  @if (data.info.is_valid) {
+    <h1>Deseja invalidar a competência {{data.info.competence}}?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">INVALIDAR COMPETÊNCIA</button>
+  } @else {
+    <h1>Deseja validar a competência {{data.info.competence}}?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">VALIDAR COMPETÊNCIA</button>
+  }
+</div>

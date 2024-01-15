@@ -14,11 +14,11 @@
           <mat-icon aria-hidden="false">edit_calendar</mat-icon>
         </button>
         @if (item.is_valid) {
-          <button mat-icon-button color="primary" matTooltip="Validar" (click)="validateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
+          <button mat-icon-button color="primary" matTooltip="Invalidar" (click)="validateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
             <mat-icon>event_available</mat-icon>
           </button>
         } @else {
-          <button mat-icon-button color="warn" matTooltip="Invalidar" (click)="validateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
+          <button mat-icon-button color="warn" matTooltip="Validar" (click)="validateExerciseYear(item)" [disabled]="!route.snapshot.data['role'].includes('ano atualizar')">
             <mat-icon>event_busy</mat-icon>
           </button>
         }

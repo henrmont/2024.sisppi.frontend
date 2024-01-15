@@ -41,7 +41,7 @@
                 <span>Municípios</span>
               </button>
               <button mat-menu-item [routerLink]="['/anos/de/exercicio']"
-                [disabled]="!(route.snapshot.data['role'].includes('ano criar') || route.snapshot.data['role'].includes('ano ver') || route.snapshot.data['role'].includes('ano atualizar') || route.snapshot.data['role'].includes('ano deletar'))">
+                [disabled]="!(route.snapshot.data['role'].includes('ano criar') || route.snapshot.data['role'].includes('ano ver') || route.snapshot.data['role'].includes('ano atualizar') || route.snapshot.data['role'].includes('ano deletar') || route.snapshot.data['role'].includes('competencia criar') || route.snapshot.data['role'].includes('competencia ver') || route.snapshot.data['role'].includes('competencia atualizar') || route.snapshot.data['role'].includes('competencia deletar'))">
                 <mat-icon>calendar_month</mat-icon>
                 <span>Anos de exercício e competências</span>
               </button>

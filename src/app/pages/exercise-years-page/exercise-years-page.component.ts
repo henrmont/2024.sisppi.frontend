@@ -6,7 +6,7 @@ import { CreateExerciseYearsModalComponent } from '../../components/exercise-yea
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ExerciseYearsListComponent } from '../../components/exercise-years/exercise-years-list/exercise-years-list.component';
-import { CompetenciesListComponent } from '../../components/exercise-years/competencies-list/competencies-list.component';
+import { CompetenciesListComponent } from '../../components/competencies/competencies-list/competencies-list.component';
 
 @Component({
   selector: 'app-exercise-years-page',

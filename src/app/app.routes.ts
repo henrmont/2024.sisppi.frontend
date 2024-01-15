@@ -133,7 +133,7 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./pages/exercise-years-page/exercise-years-page.component').then((m) => m.ExerciseYearsPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: ['ano criar','ano atualizar','ano ver','ano deletar']}
+        data: {permissions: ['ano criar','ano atualizar','ano ver','ano deletar','competencia criar','competencia atualizar','competencia ver','competencia deletar']}
       }
     ]
   }
