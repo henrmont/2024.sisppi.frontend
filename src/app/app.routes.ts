@@ -150,5 +150,41 @@ export const routes: Routes = [
         data: {permissions: ['procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar']}
       }
     ]
+  },
+  {
+    path: 'grupos',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/groups-page/groups-page.component').then((m) => m.GroupsPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: [
+          'grupo criar','grupo atualizar','grupo ver','grupo deletar',
+          'subgrupo criar','subgrupo atualizar','subgrupo ver','subgrupo deletar',
+          'forma organizacao criar','forma organizacao atualizar','forma organizacao ver','forma organizacao deletar'
+        ]}
+      }
+    ]
+  },
+  {
+    path: 'financiamentos/modalidades',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/financings-page/financings-page.component').then((m) => m.FinancingsPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: [
+          'financiamento criar','financiamento atualizar','financiamento ver','financiamento deletar',
+          'modalidade criar','modalidade atualizar','modalidade ver','modalidade deletar',
+        ]}
+      }
+    ]
   }
+
 ];

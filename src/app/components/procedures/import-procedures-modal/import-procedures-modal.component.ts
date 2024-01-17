@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 
 const groupChannel = new BroadcastChannel('group-channel');
 const subgroupChannel = new BroadcastChannel('subgroup-channel');
-const formOrganizationChannel = new BroadcastChannel('form-organization-channel');
+const organizationFormChannel = new BroadcastChannel('organization-form-channel');
 const financingChannel = new BroadcastChannel('financing-channel');
 const modalityChannel = new BroadcastChannel('modality-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
@@ -53,7 +53,7 @@ export class ImportProceduresModalComponent {
         this.sharedService.showMessage(response.message)
         groupChannel.postMessage('update')
         subgroupChannel.postMessage('update')
-        formOrganizationChannel.postMessage('update')
+        organizationFormChannel.postMessage('update')
         financingChannel.postMessage('update')
         modalityChannel.postMessage('update')
         notificationChannel.postMessage('update')

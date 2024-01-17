@@ -1,0 +1,10 @@
+:host {
+  width: 70%;
+  height: calc(100vh - 150px);
+}
+
+section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
