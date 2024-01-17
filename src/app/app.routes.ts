@@ -136,5 +136,19 @@ export const routes: Routes = [
         data: {permissions: ['ano criar','ano atualizar','ano ver','ano deletar','competencia criar','competencia atualizar','competencia ver','competencia deletar']}
       }
     ]
+  },
+  {
+    path: 'procedimentos',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/procedures-page/procedures-page.component').then((m) => m.ProceduresPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: ['procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar']}
+      }
+    ]
   }
 ];

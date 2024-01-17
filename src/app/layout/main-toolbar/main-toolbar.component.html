@@ -56,8 +56,9 @@
                 <mat-icon>attach_money</mat-icon>
                 <span>Financiamento</span>
               </button>
-              <button mat-menu-item disabled>
-                <mat-icon>format_list_bulleted</mat-icon>
+              <button mat-menu-item [routerLink]="['/procedimentos']"
+                [disabled]="!(route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar'))">
+                <mat-icon>medical_services</mat-icon>
                 <span>Procedimentos</span>
               </button>
               <button mat-menu-item disabled>
