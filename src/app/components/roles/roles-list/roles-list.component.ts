@@ -12,6 +12,9 @@ import { UsersRoleModalComponent } from '../users-role-modal/users-role-modal.co
 import { UpdateRoleModalComponent } from '../update-role-modal/update-role-modal.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ActivatedRoute } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 const roleChannel = new BroadcastChannel('role-channel');
 
@@ -26,6 +29,9 @@ const roleChannel = new BroadcastChannel('role-channel');
     MatDividerModule,
     MatDialogModule,
     MatBadgeModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
   ],
   templateUrl: './roles-list.component.html',
   styleUrl: './roles-list.component.scss'
@@ -36,26 +42,30 @@ export class RolesListComponent implements OnInit {
   roleService = inject(RoleService)
   route = inject(ActivatedRoute)
 
-  roles: any
+  displayedColumns: string[] = ['name', 'actions'];
+  dataSource: any
 
   ngOnInit(): void {
     roleChannel.onmessage = (message) => {
       if (message.data === 'update') {
         this.roleService.getRoles().subscribe({
           next: (response: any) => {
-            this.roles = response.data
+            this.dataSource = new MatTableDataSource(response.data)
           }
         })
       }
     }
     this.roleService.getRoles().subscribe({
       next: (response: any) => {
-        this.roles = response.data
+        this.dataSource = new MatTableDataSource(response.data)
       }
     })
   }
 
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   deleteRole(info: any) {
     this.dialog.open(DeleteRoleModalComponent, {

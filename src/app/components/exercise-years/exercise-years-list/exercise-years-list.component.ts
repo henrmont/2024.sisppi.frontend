@@ -11,6 +11,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { UpdateExerciseYearModalComponent } from '../update-exercise-year-modal/update-exercise-year-modal.component';
 import { DeleteExerciseYearModalComponent } from '../delete-exercise-year-modal/delete-exercise-year-modal.component';
 import { ValidateExerciseYearModalComponent } from '../validate-exercise-year-modal/validate-exercise-year-modal.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 const exerciseYearChannel = new BroadcastChannel('exercise-year-channel');
 
@@ -25,6 +28,9 @@ const exerciseYearChannel = new BroadcastChannel('exercise-year-channel');
     MatDividerModule,
     MatDialogModule,
     MatBadgeModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
   ],
   templateUrl: './exercise-years-list.component.html',
   styleUrl: './exercise-years-list.component.scss'
@@ -35,23 +41,29 @@ export class ExerciseYearsListComponent implements OnInit {
   exerciseYearService = inject(ExerciseYearService)
   route = inject(ActivatedRoute)
 
-  exerciseYears: any
+  displayedColumns: string[] = ['name', 'actions'];
+  dataSource: any
 
   ngOnInit(): void {
     exerciseYearChannel.onmessage = (message) => {
       if (message.data === 'update') {
         this.exerciseYearService.getExerciseYears().subscribe({
           next: (response: any) => {
-            this.exerciseYears = response.data
+            this.dataSource = new MatTableDataSource(response.data)
           }
         })
       }
     }
     this.exerciseYearService.getExerciseYears().subscribe({
       next: (response: any) => {
-        this.exerciseYears = response.data
+        this.dataSource = new MatTableDataSource(response.data)
       }
     })
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   updateExerciseYear(info: any) {

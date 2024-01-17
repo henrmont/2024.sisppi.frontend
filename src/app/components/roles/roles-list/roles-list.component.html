@@ -1,50 +1,68 @@
 <div class="box mat-elevation-z4">
   <mat-toolbar color="accent">
-    <mat-icon style="margin-right: 20px;">rule</mat-icon>
-    <span>Regras</span>
-  </mat-toolbar>
-  @for (item of roles; track item.id; let last = $last;) {
-    <div class="item">
-      <div>
-        <mat-icon>chevron_right</mat-icon>
-        <span>{{item.name}}</span>
-      </div>
-      <div>
-        <button mat-icon-button color="primary" matTooltip="Usuários" (click)="usersRole(item)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
-          @if (route.snapshot.data['role'].includes('regra atualizar')) {
-            @if (item.users_count == 0) {
-                <mat-icon [matBadge]="item.users_count" matBadgeColor="warn" aria-hidden="false">supervisor_account</mat-icon>
-            } @else {
-                <mat-icon [matBadge]="item.users_count" aria-hidden="false">supervisor_account</mat-icon>
-            }
-          } @else {
-            <mat-icon>supervisor_account</mat-icon>
-          }
-        </button>
-        <button mat-icon-button color="primary" matTooltip="Permissões" (click)="updateRole(item)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
-          @if (route.snapshot.data['role'].includes('regra atualizar')) {
-            @if (item.permissions_count == 0) {
-                <mat-icon [matBadge]="item.permissions_count" matBadgeColor="warn" aria-hidden="false">edit_note</mat-icon>
-            } @else {
-                <mat-icon [matBadge]="item.permissions_count" aria-hidden="false">edit_note</mat-icon>
-            }
-          } @else {
-            <mat-icon>edit_note</mat-icon>
-          }
-        </button>
-        @if (item.id == 1) {
-          <button mat-icon-button color="warn" matTooltip="Deletar" disabled>
-            <mat-icon>delete</mat-icon>
-          </button>
-        } @else {
-          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteRole(item)" [disabled]="!route.snapshot.data['role'].includes('regra deletar')">
-            <mat-icon>delete</mat-icon>
-          </button>
-        }
-      </div>
+    <div>
+      <mat-icon style="margin-right: 20px;">rule</mat-icon>
+      <span>Regras</span>
     </div>
-    @if (!last) {
-      <mat-divider></mat-divider>
-    }
-  }
+    <mat-form-field appearance="outline">
+      <input matInput (keyup)="applyFilter($event)" #input>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </mat-toolbar>
+
+  <table mat-table [dataSource]="dataSource" style="width: 100%;">
+
+    <ng-container matColumnDef="name">
+      <td mat-cell *matCellDef="let element" style="width: 80%;">
+        <div style="display: flex; align-items: center;">
+          <mat-icon style="margin-right: 10px;">chevron_right</mat-icon>
+          {{element.name}}
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <td mat-cell *matCellDef="let element" style="width: 20%;">
+        <div style="display: flex; justify-content: flex-end;">
+          <button mat-icon-button color="primary" matTooltip="Usuários" (click)="usersRole(element)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
+            @if (route.snapshot.data['role'].includes('regra atualizar')) {
+              @if (element.users_count == 0) {
+                  <mat-icon [matBadge]="element.users_count" matBadgeColor="warn" aria-hidden="false">supervisor_account</mat-icon>
+              } @else {
+                  <mat-icon [matBadge]="element.users_count" aria-hidden="false">supervisor_account</mat-icon>
+              }
+            } @else {
+              <mat-icon>supervisor_account</mat-icon>
+            }
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Permissões" (click)="updateRole(element)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
+            @if (route.snapshot.data['role'].includes('regra atualizar')) {
+              @if (element.permissions_count == 0) {
+                  <mat-icon [matBadge]="element.permissions_count" matBadgeColor="warn" aria-hidden="false">edit_note</mat-icon>
+              } @else {
+                  <mat-icon [matBadge]="element.permissions_count" aria-hidden="false">edit_note</mat-icon>
+              }
+            } @else {
+              <mat-icon>edit_note</mat-icon>
+            }
+          </button>
+          @if (element.id == 1) {
+            <button mat-icon-button color="warn" matTooltip="Deletar" disabled>
+              <mat-icon>delete</mat-icon>
+            </button>
+          } @else {
+            <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteRole(element)" [disabled]="!route.snapshot.data['role'].includes('regra deletar')">
+              <mat-icon>delete</mat-icon>
+            </button>
+          }
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="2" style="width: 100%; display: flex; justify-content: center; margin: 10px 0;">Nenhum resultado encontrado</td>
+    </tr>
+  </table>
+
 </div>
