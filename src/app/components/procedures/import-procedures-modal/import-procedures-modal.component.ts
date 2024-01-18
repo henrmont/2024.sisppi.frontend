@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule, ProgressBarMode } from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 const groupChannel = new BroadcastChannel('group-channel');
 const subgroupChannel = new BroadcastChannel('subgroup-channel');
@@ -14,6 +15,7 @@ const organizationFormChannel = new BroadcastChannel('organization-form-channel'
 const financingChannel = new BroadcastChannel('financing-channel');
 const modalityChannel = new BroadcastChannel('modality-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
+const procedureChannel = new BroadcastChannel('procedure-channel');
 
 @Component({
   selector: 'app-import-procedures-modal',
@@ -34,6 +36,7 @@ export class ImportProceduresModalComponent {
   procedureService = inject(ProcedureService)
   sharedService = inject(SharedService)
   dialog = inject(MatDialog)
+  router = inject(Router)
 
   file!:File
   fileName = 'Nenhum arquivo anexado.';
@@ -57,12 +60,14 @@ export class ImportProceduresModalComponent {
         financingChannel.postMessage('update')
         modalityChannel.postMessage('update')
         notificationChannel.postMessage('update')
+        procedureChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)
       },
       complete: () => {
         this.dialog.closeAll()
+        this.router.navigate(['/anos/de/exercicio'])
       }
     })
   }

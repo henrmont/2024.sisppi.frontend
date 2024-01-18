@@ -17,4 +17,8 @@ export class ProcedureService {
     formData.append('file', file)
     return this.http.post<any>(`${environment.apiUrl}/procedures/import/procedures`, formData)
   }
+
+  getProcedures(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/procedures/get/procedures`)
+  }
 }

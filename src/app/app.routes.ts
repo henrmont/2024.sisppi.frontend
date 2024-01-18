@@ -91,7 +91,9 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./pages/users-page/users-page.component').then((m) => m.UsersPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: ['usuario criar','usuario atualizar','usuario ver','usuario deletar']}
+        data: {permissions: [
+          'usuario criar','usuario atualizar','usuario ver','usuario deletar'
+        ]}
       }
     ]
   },
@@ -105,7 +107,9 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./pages/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: ['municipio criar','municipio atualizar','municipio ver','municipio deletar']}
+        data: {permissions: [
+          'municipio criar','municipio atualizar','municipio ver','municipio deletar'
+        ]}
       }
     ]
   },
@@ -119,7 +123,9 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./pages/roles-page/roles-page.component').then((m) => m.RolesPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: ['regra criar','regra atualizar','regra ver','regra deletar']}
+        data: {permissions: [
+          'regra criar','regra atualizar','regra ver','regra deletar'
+        ]}
       }
     ]
   },
@@ -133,7 +139,9 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./pages/exercise-years-page/exercise-years-page.component').then((m) => m.ExerciseYearsPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: ['ano criar','ano atualizar','ano ver','ano deletar','competencia criar','competencia atualizar','competencia ver','competencia deletar']}
+        data: {permissions: [
+          'ano criar','ano atualizar','ano ver','ano deletar','competencia criar','competencia atualizar','competencia ver','competencia deletar'
+        ]}
       }
     ]
   },
@@ -147,7 +155,9 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('./pages/procedures-page/procedures-page.component').then((m) => m.ProceduresPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: ['procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar']}
+        data: {permissions: [
+          'procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'
+        ]}
       }
     ]
   },
@@ -162,9 +172,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/groups-page/groups-page.component').then((m) => m.GroupsPageComponent),
         canActivate: [roleGuard],
         data: {permissions: [
-          'grupo criar','grupo atualizar','grupo ver','grupo deletar',
-          'subgrupo criar','subgrupo atualizar','subgrupo ver','subgrupo deletar',
-          'forma organizacao criar','forma organizacao atualizar','forma organizacao ver','forma organizacao deletar'
+          'procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'
         ]}
       }
     ]
@@ -180,8 +188,7 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/financings-page/financings-page.component').then((m) => m.FinancingsPageComponent),
         canActivate: [roleGuard],
         data: {permissions: [
-          'financiamento criar','financiamento atualizar','financiamento ver','financiamento deletar',
-          'modalidade criar','modalidade atualizar','modalidade ver','modalidade deletar',
+          'procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'
         ]}
       }
     ]

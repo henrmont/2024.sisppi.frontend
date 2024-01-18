@@ -53,16 +53,13 @@
             <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
               <h2>Procedimentos</h2>
               <button mat-menu-item [routerLink]="['/grupos']" [disabled]="!(
-                route.snapshot.data['role'].includes('grupo criar') || route.snapshot.data['role'].includes('grupo ver') || route.snapshot.data['role'].includes('grupo atualizar') || route.snapshot.data['role'].includes('grupo deletar') ||
-                route.snapshot.data['role'].includes('subgrupo criar') || route.snapshot.data['role'].includes('subgrupo ver') || route.snapshot.data['role'].includes('subgrupo atualizar') || route.snapshot.data['role'].includes('subgrupo deletar') ||
-                route.snapshot.data['role'].includes('forma organizacao criar') || route.snapshot.data['role'].includes('forma organizacao ver') || route.snapshot.data['role'].includes('forma organizacao atualizar') || route.snapshot.data['role'].includes('forma organizacao deletar')
+                route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')
               )">
                 <mat-icon>format_list_numbered</mat-icon>
                 <span>Grupos, Subgrupos e Formas de organização</span>
               </button>
               <button mat-menu-item [routerLink]="['/financiamentos/modalidades']" [disabled]="!(
-                route.snapshot.data['role'].includes('financiamento criar') || route.snapshot.data['role'].includes('financiamento ver') || route.snapshot.data['role'].includes('financiamento atualizar') || route.snapshot.data['role'].includes('financiamento deletar') ||
-                route.snapshot.data['role'].includes('modalidade criar') || route.snapshot.data['role'].includes('modalidade ver') || route.snapshot.data['role'].includes('modalidade atualizar') || route.snapshot.data['role'].includes('modalidade deletar')
+                route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')
               )">
                 <mat-icon>attach_money</mat-icon>
                 <span>Financiamento e Modalidades</span>

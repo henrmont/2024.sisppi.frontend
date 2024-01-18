@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BreadcrumbComponent } from '../../components/shared/breadcrumb/breadcrumb.component';
 import { ActivatedRoute } from '@angular/router';
 import { ImportProceduresModalComponent } from '../../components/procedures/import-procedures-modal/import-procedures-modal.component';
+import { ProceduresListComponent } from '../../components/procedures/procedures-list/procedures-list.component';
 
 @Component({
   selector: 'app-procedures-page',
@@ -14,6 +15,7 @@ import { ImportProceduresModalComponent } from '../../components/procedures/impo
     MatIconModule,
     MatDialogModule,
     BreadcrumbComponent,
+    ProceduresListComponent,
   ],
   templateUrl: './procedures-page.component.html',
   styleUrl: './procedures-page.component.scss'
