@@ -16,6 +16,10 @@ export class ExerciseYearService {
     return this.http.get<any>(`${environment.apiUrl}/exercise/years/get/exercise/years`)
   }
 
+  getValidExerciseYears(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/exercise/years/get/valid/exercise/years`)
+  }
+
   createExerciseYear(data: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/exercise/years/create/exercise/year`, data)
   }

@@ -1,0 +1,96 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>playlist_add_check</mat-icon>
+    <span>{{data.info.programing_name}} ({{data.info.county.name}})</span>
+  </div>
+  <div>
+    <button mat-icon-button (click)="addProgramingProcedure()">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-dialog-content class="box">
+  <table mat-table [dataSource]="dataSource" style="width: 100%;">
+
+    <ng-container matColumnDef="competence">
+      <th mat-header-cell *matHeaderCellDef style="width: 12%; text-align: center;"> Ano de exercício </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.procedure.competence.competence}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef style="width: 33%;"> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.procedure.procedure_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef style="width: 14%; text-align: center;"> Valor </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;">
+        @if (element.type == 'AMBULATORIAL') {
+          {{(element.procedure.outpatient_procedure_value) | currency: 'R$'}}
+        } @else if (element.type == 'HOSPITALAR') {
+          {{(+element.procedure.hospital_procedure_value)+(+element.procedure.profissional_procedure_value) | currency: 'R$'}}
+        } @else {
+          {{0 | currency: 'R$'}}
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef style="width: 8%; text-align: center;"> Quantidade </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;">
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="amountProgramingProcedure(element)" [disabled]="!data.role.includes('programacao atualizar')">
+          {{element.amount ? element.amount : 0}}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="partial">
+      <th mat-header-cell *matHeaderCellDef style="width: 14%; text-align: center;"> Total Parcial </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;">
+        @if (element.type == 'AMBULATORIAL') {
+          {{(element.procedure.outpatient_procedure_value)*element.amount | currency: 'R$'}}
+        } @else if (element.type == 'HOSPITALAR') {
+          {{((+element.procedure.hospital_procedure_value)+(+element.procedure.profissional_procedure_value))*element.amount | currency: 'R$'}}
+        } @else {
+          {{0 | currency: 'R$'}}
+        }
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef style="width: 14%; text-align: center;"> Tipo </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center;">
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="typeProgramingProcedure(element)" [disabled]="!data.role.includes('programacao atualizar')">
+          {{element.type ? element.type : 'SEM TIPO'}}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef style="width: 5%; text-align: center;"> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <div class="actions">
+          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="removeProgramingProcedure(element)" [disabled]="!data.role.includes('programacao deletar')">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="center">
+  Total Ambulatorial:&nbsp; <strong>{{totalValueOutpatient | currency: 'R$'}}</strong>
+  <mat-icon style="margin: 0 30px;">swap_horiz</mat-icon>
+  Total Hospitalar:&nbsp; <strong>{{totalValueHospital | currency: 'R$'}}</strong>
+  <mat-icon style="margin: 0 30px;">swap_horiz</mat-icon>
+  Total Geral:&nbsp; <strong style="color: red;">{{totalValue | currency: 'R$'}}</strong>
+</mat-dialog-actions>

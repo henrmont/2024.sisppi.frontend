@@ -1,0 +1,13 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>playlist_remove</mat-icon>
+    <span>Deletar programação</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="box">
+  <h1>Deseja excluir a programação {{data.info.programing_name}}?</h1>
+  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR PROGRAMAÇÃO</button>
+</div>

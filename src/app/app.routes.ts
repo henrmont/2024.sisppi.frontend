@@ -192,6 +192,22 @@ export const routes: Routes = [
         ]}
       }
     ]
-  }
+  },
+  {
+    path: 'programacao',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/programings-page/programings-page.component').then((m) => m.ProgramingsPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: [
+          'programacao criar','programacao atualizar','programacao ver','programacao deletar'
+        ]}
+      }
+    ]
+  },
 
 ];

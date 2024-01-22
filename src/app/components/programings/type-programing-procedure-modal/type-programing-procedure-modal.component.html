@@ -1,0 +1,25 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>cached</mat-icon>
+    <span>Alterar tipo</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="AMBULATORIAL">AMBULATORIAL</mat-option>
+          <mat-option value="HOSPITALAR">HOSPITALAR</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid">ALTERAR TIPO</button>
+  </form>
+</mat-dialog-content>

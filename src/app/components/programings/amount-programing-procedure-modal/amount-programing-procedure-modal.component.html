@@ -1,0 +1,22 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>import_export</mat-icon>
+    <span>Alterar quantidade</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input matInput type="text" placeholder="quantidade" mask="999999" formControlName="amount">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid">ALTERAR QUANTIDADE</button>
+  </form>
+</mat-dialog-content>

@@ -70,7 +70,9 @@
                 <mat-icon>medical_services</mat-icon>
                 <span>Procedimentos</span>
               </button>
-              <button mat-menu-item disabled>
+              <button mat-menu-item [routerLink]="['/programacao']" [disabled]="!(
+                route.snapshot.data['role'].includes('programacao criar') || route.snapshot.data['role'].includes('programacao ver') || route.snapshot.data['role'].includes('programacao atualizar') || route.snapshot.data['role'].includes('programacao deletar')
+              )">
                 <mat-icon>checklist</mat-icon>
                 <span>Programação de procedimentos</span>
               </button>

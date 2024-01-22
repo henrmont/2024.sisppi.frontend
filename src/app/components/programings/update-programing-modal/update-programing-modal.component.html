@@ -1,0 +1,20 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>edit_note</mat-icon>
+    <span>Atualizar programação</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+
+  <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome da programação</mat-label>
+      <input matInput type="text" placeholder="nome da programação" formControlName="programing_name">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid || formulario.pristine">ATUALIZAR PROGRAMAÇÃO</button>
+</form>

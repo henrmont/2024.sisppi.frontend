@@ -1,0 +1,15 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>delete_outline</mat-icon>
+    <span>Remover procedimento</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <div class="box">
+    <h1>Deseja remover o procedimento?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">REMOVER PROCEDIMENTO</button>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,48 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>add_circle_outline</mat-icon>
+    <span>Adicionar procedimento</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form class="box" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input type="text"
+               placeholder="Buscar"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto"
+               (keyup)="onKeyUp()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          @for (option of filteredOptions | async | slice : 0 : 3; track option) {
+            <mat-option [value]="option.procedure_name" (click)="onSelect(option.id)">{{option.procedure_name}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input matInput type="text" placeholder="quantidade" mask="999999" formControlName="amount">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="AMBULATORIAL">AMBULATORIAL</mat-option>
+          <mat-option value="HOSPITALAR">HOSPITALAR</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" class="btn" [disabled]="formulario.invalid || isKeyUp">ADICIONAR PROCEDIMENTO</button>
+  </form>
+</mat-dialog-content>
