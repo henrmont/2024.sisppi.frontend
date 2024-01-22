@@ -7,62 +7,64 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
+<mat-dialog-content>
+  <div class="box">
 
-  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-    <div>
-      <h2>Email</h2>
-      <span>{{data.info.email}}</span>
-    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <h2>Email</h2>
+        <span>{{data.info.email}}</span>
+      </div>
 
-    <div>
-      <h2>Nome</h2>
-      <span>{{data.info.name}}</span>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-    <div>
-      <h2>CPF</h2>
-      <span>{{data.info.cpf | mask: '000.000.000-00'}}</span>
-    </div>
-
-    <div>
-      <h2>Telefone</h2>
-      <span>{{data.info.phone | mask: '(00) 0000-0000'}}</span>
-    </div>
-
-    <div>
-      <h2>Celular</h2>
-      <span>{{data.info.cell_phone | mask: '(00) 00000-0000'}}</span>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-    <div>
-      <h2>Gestão</h2>
-      @if (data.info.county) {
-        <span>{{data.info.county.name}}</span>
-      } @else {
-        <span style="color: red;">SEM GESTÃO</span>
-      }
-    </div>
-
-    <div>
-      <h2>Ativo</h2>
-      <div style="display: flex; align-items: center;">
-      @if (data.info.is_valid) {
-          <mat-icon style="color: green;">check</mat-icon>
-          <span style="color: green;">SIM</span>
-      } @else {
-          <mat-icon style="color: red;">close</mat-icon>
-          <span style="color: red;">NÃO</span>
-        }
+      <div>
+        <h2>Nome</h2>
+        <span>{{data.info.name}}</span>
       </div>
     </div>
+    <mat-divider></mat-divider>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <div>
+        <h2>CPF</h2>
+        <span>{{data.info.cpf | mask: '000.000.000-00'}}</span>
+      </div>
+
+      <div>
+        <h2>Telefone</h2>
+        <span>{{data.info.phone | mask: '(00) 0000-0000'}}</span>
+      </div>
+
+      <div>
+        <h2>Celular</h2>
+        <span>{{data.info.cell_phone | mask: '(00) 00000-0000'}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div>
+        <h2>Gestão</h2>
+        @if (data.info.county) {
+          <span>{{data.info.county.name}}</span>
+        } @else {
+          <span style="color: red;">SEM GESTÃO</span>
+        }
+      </div>
+
+      <div>
+        <h2>Ativo</h2>
+        <div style="display: flex; align-items: center;">
+        @if (data.info.is_valid) {
+            <mat-icon style="color: green;">check</mat-icon>
+            <span style="color: green;">SIM</span>
+        } @else {
+            <mat-icon style="color: red;">close</mat-icon>
+            <span style="color: red;">NÃO</span>
+          }
+        </div>
+      </div>
+
+    </div>
 
   </div>
-
-</div>
+</mat-dialog-content>

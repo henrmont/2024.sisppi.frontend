@@ -1,4 +1,4 @@
-<app-breadcrumb [items]="breadcrumb"></app-breadcrumb>
+<app-bookmark [link]="3"></app-bookmark>
 <app-users-list></app-users-list>
 <button mat-fab color="primary" class="new-user" (click)="createUser()" [disabled]="!route.snapshot.data['role'].includes('usuario criar')">
   <mat-icon>person_add</mat-icon>

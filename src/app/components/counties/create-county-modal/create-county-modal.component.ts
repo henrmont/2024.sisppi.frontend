@@ -26,7 +26,7 @@ export const MY_FORMATS = {
   },
 };
 
-const listCountyChannel = new BroadcastChannel('list-county-channel');
+const countyChannel = new BroadcastChannel('county-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
 
 @Component({
@@ -117,7 +117,7 @@ export class CreateCountyModalComponent implements OnInit {
     this.countyService.createCounty(this.formulario.value).subscribe({
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
-        listCountyChannel.postMessage('update')
+        countyChannel.postMessage('update')
         notificationChannel.postMessage('update')
       },
       error: (response: any) => {

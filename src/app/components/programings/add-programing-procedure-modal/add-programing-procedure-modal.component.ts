@@ -54,8 +54,8 @@ export class AddProgramingProcedureModalComponent implements OnInit {
   formulario: FormGroup = this.formBuilder.group({
     procedure_id: [null, Validators.required],
     programing_id: [this.data.id, Validators.required],
-    amount: [null, Validators.required],
-    type: [null, Validators.required],
+    amount: [null],
+    type: [null],
   });
 
   ngOnInit(): void {

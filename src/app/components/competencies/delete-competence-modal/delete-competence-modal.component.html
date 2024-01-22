@@ -7,7 +7,9 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
-  <h1>Deseja excluir a competência {{data.info.competence}}?</h1>
-  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR COMPETÊNCIA</button>
-</div>
+<mat-dialog-content>
+  <div class="box">
+    <h1>Deseja excluir a competência {{data.info.name}}?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR COMPETÊNCIA</button>
+  </div>
+</mat-dialog-content>

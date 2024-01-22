@@ -39,7 +39,7 @@ export class CreateExerciseYearsModalComponent {
   dialog = inject(MatDialog)
 
   formulario: FormGroup = this.formBuilder.group({
-    exercise_year: [null, Validators.required],
+    name: [null, Validators.required],
   });
 
   onSubmit() {

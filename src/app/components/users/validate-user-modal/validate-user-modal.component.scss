@@ -23,32 +23,22 @@
 }
 
 mat-form-field {
-  margin-top: 10px;
-  width: 90%;
-}
-
-mat-option {
-  div {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 10px 0;
-  }
-
-  span {
-    margin: auto 0;
-    margin-left: 20px;
-  }
+  width: 100%;
 }
 
 .btn {
-  margin-top: 10px;
-  width: 90%;
+  width: 95%;
 }
 
-.example-form {
+.box {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: auto;
+
+  div {
+    margin-bottom: 10px;
+    width: 95%;
+  }
 }

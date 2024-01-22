@@ -12,7 +12,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { FavoriteService } from '../../services/favorite.service';
 import { NotificationService } from '../../services/notification.service';
-import { AddFavoriteModalComponent } from '../../components/favorites/add-favorite-modal/add-favorite-modal.component';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
 const favoriteChannel = new BroadcastChannel('favorite-channel');
@@ -74,7 +73,7 @@ export class MainToolbarComponent implements OnInit {
     })
     favoriteChannel.onmessage = (message) => {
       if (message.data === 'update') {
-        this.favoriteService.getFavorites(this.user.id).subscribe({
+        this.favoriteService.getFavorites().subscribe({
           next: (response: any) => {
             this.links = response.data
             if (this.links.length >= 5) {
@@ -84,7 +83,7 @@ export class MainToolbarComponent implements OnInit {
         })
       }
     }
-    this.favoriteService.getFavorites(this.user.id).subscribe({
+    this.favoriteService.getFavorites().subscribe({
       next: (response: any) => {
         this.links = response.data
         if (this.links.length >= 5) {
@@ -97,18 +96,6 @@ export class MainToolbarComponent implements OnInit {
   readNotifications() {
     this.notifications = null
     this.notificationService.setReadNotifications().subscribe({})
-  }
-
-  addFavorite(id: number) {
-    this.dialog.open(AddFavoriteModalComponent, {
-      disableClose: true,
-      autoFocus: false,
-      width: '30%',
-      height: '20%',
-      data: {
-        id: id
-      }
-    })
   }
 
 }

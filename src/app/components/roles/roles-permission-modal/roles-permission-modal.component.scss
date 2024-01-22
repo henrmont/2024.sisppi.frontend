@@ -22,8 +22,11 @@
 
 }
 
+mat-form-field {
+  width: 100%;
+}
+
 .btn {
-  margin-top: 10px;
   width: 95%;
 }
 
@@ -33,13 +36,9 @@
   align-items: center;
   width: 100%;
   height: auto;
-}
 
-mat-list {
-  width: 100%;
-
-  mat-list-item {
-    display: flex;
-    justify-content: space-between;
+  div {
+    margin-bottom: 20px;
+    width: 95%;
   }
 }

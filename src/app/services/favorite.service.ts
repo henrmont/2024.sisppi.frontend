@@ -12,15 +12,19 @@ export class FavoriteService {
     private http: HttpClient
   ) { }
 
-  createFavorite(data: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/favorite/create`, data)
+  getFavorites(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/favorites/get`)
   }
 
-  getFavorites(id: number): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/favorite/get/${id}`)
+  checkFavorite(id: number): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/favorites/check/${id}`)
   }
 
-  getLinks(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/link/all`)
+  addFavorite(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/favorites/add/${data}`)
+  }
+
+  removeFavorite(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/favorites/remove/${data}`)
   }
 }

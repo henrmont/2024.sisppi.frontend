@@ -13,8 +13,8 @@ export class SharedService {
   showMessage(message: any) {
     this.snackbar.open(message, 'Fechar', {
       duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
     })
   }
 

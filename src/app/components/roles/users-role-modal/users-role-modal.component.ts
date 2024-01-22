@@ -30,7 +30,7 @@ export class UsersRoleModalComponent {
       disableClose: true,
       autoFocus: false,
       width: '30%',
-      height: '20%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -42,7 +42,7 @@ export class UsersRoleModalComponent {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '20%',
+      height: 'auto',
       data: {
         role: this.data.info.id,
         info: info

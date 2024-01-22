@@ -7,12 +7,14 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<form class="example-form" class="box" [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>Ano de exercício</mat-label>
-      <input matInput type="text" placeholder="ano de exercício" mask="0000" formControlName="exercise_year">
-    </mat-form-field>
-  </div>
-  <button mat-raised-button color="primary" class="btn" [disabled]="formulario.invalid">ATUALIZAR ANO DE EXERCÍCIO</button>
-</form>
+<mat-dialog-content>
+  <form class="box" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Ano de exercício</mat-label>
+        <input matInput type="text" placeholder="ano de exercício" mask="0000" formControlName="name">
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="btn" [disabled]="formulario.invalid">ATUALIZAR ANO DE EXERCÍCIO</button>
+  </form>
+</mat-dialog-content>

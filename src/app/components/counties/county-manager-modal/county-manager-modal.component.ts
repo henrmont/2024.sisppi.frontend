@@ -33,7 +33,7 @@ export class CountyManagerModalComponent {
       disableClose: true,
       autoFocus: false,
       width: '25%',
-      height: '20%',
+      height: 'auto',
       data: {
         id: this.data.info.id
       }
@@ -45,7 +45,7 @@ export class CountyManagerModalComponent {
       disableClose: true,
       autoFocus: false,
       width: '25%',
-      height: '20%',
+      height: 'auto',
       data: {
         info: info
       }

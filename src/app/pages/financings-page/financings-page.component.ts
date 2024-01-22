@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { BreadcrumbComponent } from '../../components/shared/breadcrumb/breadcrumb.component';
 import { FinancingsListComponent } from '../../components/financings/financings-list/financings-list.component';
 import { ModalitiesListComponent } from '../../components/modalities/modalities-list/modalities-list.component';
+import { BookmarkComponent } from '../../components/shared/bookmark/bookmark.component';
 
 @Component({
   selector: 'app-financings-page',
@@ -13,7 +13,7 @@ import { ModalitiesListComponent } from '../../components/modalities/modalities-
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    BreadcrumbComponent,
+    BookmarkComponent,
     FinancingsListComponent,
     ModalitiesListComponent,
   ],
@@ -22,8 +22,6 @@ import { ModalitiesListComponent } from '../../components/modalities/modalities-
 })
 export class FinancingsPageComponent {
 
-  breadcrumb = [
-    {name: 'Financiamentos e modalidades'},
-  ]
+  @Input() link: any
 
 }

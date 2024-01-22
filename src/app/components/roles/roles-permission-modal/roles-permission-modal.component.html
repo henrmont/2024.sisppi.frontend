@@ -7,12 +7,14 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
-  <mat-chip-set>
-    @for (item of data.info.roles; track item.id) {
-      <mat-chip>
-        {{item.name}}
-      </mat-chip>
-    }
-  </mat-chip-set>
-</div>
+<mat-dialog-content>
+  <div class="box">
+    <mat-chip-set>
+      @for (item of data.info.roles; track item.id) {
+        <mat-chip>
+          {{item.name}}
+        </mat-chip>
+      }
+    </mat-chip-set>
+  </div>
+</mat-dialog-content>

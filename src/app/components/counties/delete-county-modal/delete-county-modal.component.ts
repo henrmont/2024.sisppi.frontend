@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CountyService } from '../../../services/county.service';
 import { SharedService } from '../../../services/shared.service';
 
-const listCountyChannel = new BroadcastChannel('list-county-channel');
+const countyChannel = new BroadcastChannel('county-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
 
 @Component({
@@ -32,7 +32,7 @@ export class DeleteCountyModalComponent {
     this.countyService.deleteCounty(this.data.info.id).subscribe({
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
-        listCountyChannel.postMessage('update')
+        countyChannel.postMessage('update')
         notificationChannel.postMessage('update')
       },
       error: (response: any) => {

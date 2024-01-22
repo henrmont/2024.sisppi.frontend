@@ -7,22 +7,22 @@
 
   <ng-container matColumnDef="code">
     <th mat-header-cell *matHeaderCellDef style="width: 10%;"> Código </th>
-    <td mat-cell *matCellDef="let element"> {{element.procedure_code}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.code}} </td>
   </ng-container>
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef style="width: 50%;"> Nome </th>
-    <td mat-cell *matCellDef="let element"> {{element.procedure_name}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="financing">
     <th mat-header-cell *matHeaderCellDef style="width: 20%;"> Financiamento </th>
-    <td mat-cell *matCellDef="let element"> {{element.financing.financing_name}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.financing.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="competence">
     <th mat-header-cell *matHeaderCellDef style="width: 10%; text-align: center;"> Competência </th>
-    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.competence.competence}} </td>
+    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.competence.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="actions">

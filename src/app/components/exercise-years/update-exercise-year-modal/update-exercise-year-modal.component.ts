@@ -40,7 +40,7 @@ export class UpdateExerciseYearModalComponent {
 
   formulario: FormGroup = this.formBuilder.group({
     id: [this.data.info.id, Validators.required],
-    exercise_year: [this.data.info.exercise_year, Validators.required],
+    name: [this.data.info.name, Validators.required],
   });
 
   onSubmit() {

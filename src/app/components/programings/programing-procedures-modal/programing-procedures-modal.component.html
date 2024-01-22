@@ -17,12 +17,12 @@
 
     <ng-container matColumnDef="competence">
       <th mat-header-cell *matHeaderCellDef style="width: 12%; text-align: center;"> Ano de exercício </th>
-      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.procedure.competence.competence}} </td>
+      <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.procedure.competence.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef style="width: 33%;"> Nome </th>
-      <td mat-cell *matCellDef="let element"> {{element.procedure.procedure_name}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.procedure.name}} </td>
     </ng-container>
 
     <ng-container matColumnDef="value">

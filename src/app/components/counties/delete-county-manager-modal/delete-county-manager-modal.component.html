@@ -7,7 +7,9 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
-  <h2>Deseja excluir o gestor {{data.info.name}}?</h2>
-  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR GESTOR</button>
-</div>
+<mat-dialog-content>
+  <div class="box">
+    <h2>Deseja excluir o gestor {{data.info.name}}?</h2>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR GESTOR</button>
+  </div>
+</mat-dialog-content>

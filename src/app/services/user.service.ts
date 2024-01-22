@@ -52,6 +52,10 @@ export class UserService {
     return this.http.patch<any>(`${environment.apiUrl}/users/update/user`, data)
   }
 
+  validateUser(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/users/validate/user/${data}`)
+  }
+
   deleteUser(data: any): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/users/delete/user/${data}`)
   }

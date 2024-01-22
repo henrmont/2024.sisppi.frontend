@@ -1,0 +1,27 @@
+<mat-toolbar class="title" color="accent">
+  @if (data.info.is_valid) {
+    <div>
+      <mat-icon>cancel</mat-icon>
+      <span>Invalidar usuário</span>
+    </div>
+  } @else {
+    <div>
+      <mat-icon>check_circle</mat-icon>
+      <span>Validar usuário</span>
+    </div>
+  }
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <div class="box">
+    @if (data.info.is_valid) {
+      <h1>Deseja invalidar o usuário {{data.info.name}}?</h1>
+      <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">INVALIDAR USUÁRIO</button>
+    } @else {
+      <h1>Deseja validar o usuário {{data.info.name}}?</h1>
+      <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">VALIDAR USUÁRIO</button>
+    }
+  </div>
+</mat-dialog-content>

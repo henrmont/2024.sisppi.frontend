@@ -42,7 +42,7 @@ export class CreateProgramingModalComponent implements OnInit {
   exerciseYears: any
 
   formulario: FormGroup = this.formBuilder.group({
-    programing_name: [null, Validators.required],
+    name: [null, Validators.required],
     exercise_year_id: [null, Validators.required],
   });
 

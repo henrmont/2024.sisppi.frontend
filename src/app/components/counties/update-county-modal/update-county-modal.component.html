@@ -7,83 +7,85 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+<mat-dialog-content>
+  <form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
 
-  <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>IBGE</mat-label>
-      <input matInput type="text" placeholder="código IBGE" mask="000000" formControlName="ibge">
-    </mat-form-field>
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>IBGE</mat-label>
+        <input matInput type="text" placeholder="código IBGE" mask="000000" formControlName="ibge">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Município</mat-label>
-      <input matInput type="text" placeholder="nome do município" formControlName="name">
-    </mat-form-field>
-  </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Município</mat-label>
+        <input matInput type="text" placeholder="nome do município" formControlName="name">
+      </mat-form-field>
+    </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>Unidade Federativa</mat-label>
-      <mat-select formControlName="fu">
-        @for (item of fus; track item) {
-          <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Unidade Federativa</mat-label>
+        <mat-select formControlName="fu">
+          @for (item of fus; track item) {
+            <mat-option [value]="item.value">{{item.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Data</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="tcu_population_base_year" readonly>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="tcu_population_base_year" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>População</mat-label>
-      <input matInput type="text" placeholder="população" mask="99999999" formControlName="population">
-    </mat-form-field>
-  </div>
+      <mat-form-field appearance="outline">
+        <mat-label>População</mat-label>
+        <input matInput type="text" placeholder="população" mask="99999999" formControlName="population">
+      </mat-form-field>
+    </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>Região</mat-label>
-      <input matInput type="text" placeholder="região" formControlName="health_region">
-    </mat-form-field>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Região</mat-label>
+        <input matInput type="text" placeholder="região" formControlName="health_region">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Código da região</mat-label>
-      <input matInput type="text" placeholder="código da região" mask="00000" formControlName="health_region_code">
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Código da região</mat-label>
+        <input matInput type="text" placeholder="código da região" mask="00000" formControlName="health_region_code">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Macrorregião</mat-label>
-      <input matInput type="text" placeholder="macroregião" formControlName="macroregion">
-    </mat-form-field>
-  </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Macrorregião</mat-label>
+        <input matInput type="text" placeholder="macroregião" formControlName="macroregion">
+      </mat-form-field>
+    </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>Polo municipal</mat-label>
-      <input matInput type="text" placeholder="polo municipal" formControlName="pole_municipality">
-    </mat-form-field>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Polo municipal</mat-label>
+        <input matInput type="text" placeholder="polo municipal" formControlName="pole_municipality">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Distância do polo municipal</mat-label>
-      <input matInput type="text" placeholder="distância do polo" formControlName="distance_from_pole_municipality">
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Distância do polo municipal</mat-label>
+        <input matInput type="text" placeholder="distância do polo" formControlName="distance_from_pole_municipality">
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Distância da capital</mat-label>
-      <input matInput type="text" placeholder="distância da capital" formControlName="distance_from_the_capital">
-    </mat-form-field>
-  </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Distância da capital</mat-label>
+        <input matInput type="text" placeholder="distância da capital" formControlName="distance_from_the_capital">
+      </mat-form-field>
+    </div>
 
-  <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>Link da imagem</mat-label>
-      <input matInput type="text" placeholder="link da imagem" formControlName="img_map">
-    </mat-form-field>
-  </div>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Link da imagem</mat-label>
+        <input matInput type="text" placeholder="link da imagem" formControlName="img_map">
+      </mat-form-field>
+    </div>
 
-  <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.pristine">ATUALIZAR MUNICÍPIO</button>
-</form>
+    <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.pristine">ATUALIZAR MUNICÍPIO</button>
+  </form>
+</mat-dialog-content>

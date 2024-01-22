@@ -14,12 +14,14 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
-  @if (data.info.is_valid) {
-    <h1>Deseja invalidar a programação {{data.info.programing_name}}?</h1>
-    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">INVALIDAR PROGRAMAÇÃO</button>
-  } @else {
-    <h1>Deseja validar a programação {{data.info.programing_name}}?</h1>
-    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">VALIDAR PROGRAMAÇÃO</button>
-  }
-</div>
+<mat-dialog-content>
+  <div class="box">
+    @if (data.info.is_valid) {
+      <h1>Deseja invalidar a programação {{data.info.name}}?</h1>
+      <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">INVALIDAR PROGRAMAÇÃO</button>
+    } @else {
+      <h1>Deseja validar a programação {{data.info.name}}?</h1>
+      <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">VALIDAR PROGRAMAÇÃO</button>
+    }
+  </div>
+</mat-dialog-content>

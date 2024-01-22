@@ -71,7 +71,7 @@ export class ExerciseYearsListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '30%',
-      height: '22%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -83,7 +83,7 @@ export class ExerciseYearsListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '30%',
-      height: '22%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -95,7 +95,7 @@ export class ExerciseYearsListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '30%',
-      height: '22%',
+      height: 'auto',
       data: {
         info: info
       }

@@ -7,14 +7,16 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+<mat-dialog-content>
+  <form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
 
-  <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-    <mat-form-field appearance="outline">
-      <mat-label>Nome da programação</mat-label>
-      <input matInput type="text" placeholder="nome da programação" formControlName="programing_name">
-    </mat-form-field>
-  </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Nome da programação</mat-label>
+        <input matInput type="text" placeholder="nome da programação" formControlName="name">
+      </mat-form-field>
+    </div>
 
-  <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid || formulario.pristine">ATUALIZAR PROGRAMAÇÃO</button>
-</form>
+    <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid || formulario.pristine">ATUALIZAR PROGRAMAÇÃO</button>
+  </form>
+</mat-dialog-content>

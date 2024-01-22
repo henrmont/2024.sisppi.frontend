@@ -16,8 +16,8 @@ import { SharedService } from '../../../services/shared.service';
 import { Observable, map, startWith } from 'rxjs';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
-const listCountyChannel = new BroadcastChannel('list-county-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const countyChannel = new BroadcastChannel('county-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-create-user-modal',
@@ -100,8 +100,8 @@ export class CreateUserModalComponent implements OnInit {
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
         notificationChannel.postMessage('update')
-        listCountyChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        countyChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

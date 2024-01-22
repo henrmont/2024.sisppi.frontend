@@ -66,8 +66,8 @@ export class ProceduresListComponent implements OnInit {
     this.dialog.open(ReadProcedureModalComponent, {
       disableClose: true,
       autoFocus: false,
-      width: '60%',
-      height: '62%',
+      width: '70%',
+      height: 'auto',
       data: {
         info: info
       }

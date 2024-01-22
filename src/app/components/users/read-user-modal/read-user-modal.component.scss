@@ -23,17 +23,15 @@
 }
 
 mat-form-field {
-  margin-top: 10px;
   width: 100%;
-}
-
-.btn {
-  margin-top: 10px;
-  width: 95%;
 }
 
 mat-divider {
   width: 100%;
+}
+
+.btn {
+  width: 95%;
 }
 
 .box {
@@ -43,8 +41,8 @@ mat-divider {
   width: 100%;
   height: auto;
 
-  .row {
-    margin-top: 10px;
+  div {
+    margin-bottom: 10px;
     width: 95%;
   }
 

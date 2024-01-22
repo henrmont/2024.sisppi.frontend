@@ -53,7 +53,6 @@ export class ProgramingsListComponent implements OnInit {
     }
     this.programingService.getProgramings().subscribe({
       next: (response: any) => {
-        console.log(response.data)
         this.dataSource = new MatTableDataSource(response.data)
       }
     })
@@ -102,7 +101,7 @@ export class ProgramingsListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '30%',
-      height: '22%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -114,7 +113,7 @@ export class ProgramingsListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '22%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -125,8 +124,8 @@ export class ProgramingsListComponent implements OnInit {
     this.dialog.open(ValidateProgramingModalComponent, {
       disableClose: true,
       autoFocus: false,
-      width: '30%',
-      height: '22%',
+      width: '40%',
+      height: 'auto',
       data: {
         info: info
       }

@@ -12,9 +12,9 @@ import { SharedService } from '../../../services/shared.service';
 import { Observable, map, startWith } from 'rxjs';
 import { UserService } from '../../../services/user.service';
 
+const countyChannel = new BroadcastChannel('county-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
-const listCountyChannel = new BroadcastChannel('list-county-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-add-county-manager-modal',
@@ -87,8 +87,8 @@ export class AddCountyManagerModalComponent {
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
         notificationChannel.postMessage('update')
-        listCountyChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        countyChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

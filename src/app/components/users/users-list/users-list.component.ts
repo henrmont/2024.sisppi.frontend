@@ -13,8 +13,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { UpdateUserModalComponent } from '../update-user-modal/update-user-modal.component';
 import { ReadUserModalComponent } from '../read-user-modal/read-user-modal.component';
 import { ActivatedRoute } from '@angular/router';
+import { ValidateUserModalComponent } from '../validate-user-modal/validate-user-modal.component';
 
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-users-list',
@@ -43,7 +44,7 @@ export class UsersListComponent implements OnInit {
   dataSource: any
 
   ngOnInit(): void {
-    listUserChannel.onmessage = (message) => {
+    userChannel.onmessage = (message) => {
       if (message.data === 'update') {
         this.userService.getUsers().subscribe({
           next: (response: any) => {
@@ -69,7 +70,7 @@ export class UsersListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '35%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -81,7 +82,19 @@ export class UsersListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '45%',
-      height: '40%',
+      height: 'auto',
+      data: {
+        info: info
+      }
+    })
+  }
+
+  validateUser(info: any) {
+    this.dialog.open(ValidateUserModalComponent, {
+      disableClose: true,
+      autoFocus: false,
+      width: '40%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -92,7 +105,7 @@ export class UsersListComponent implements OnInit {
     this.dialog.open(RoleUserModalComponent, {
       disableClose: true,
       autoFocus: false,
-      width: '30%',
+      width: '40%',
       height: 'auto',
       data: {
         info: info
@@ -105,7 +118,7 @@ export class UsersListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '20%',
+      height: 'auto',
       data: {
         info: info
       }

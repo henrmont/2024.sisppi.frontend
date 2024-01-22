@@ -7,21 +7,25 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<form class="example-form" [formGroup]="formulario" (ngSubmit)="onSubmit()">
-  <mat-form-field class="example-full-width" appearance="outline">
-    <mat-label>Buscar</mat-label>
-    <input type="text"
-           placeholder="Buscar"
-           aria-label="Number"
-           matInput
-           [formControl]="myControl"
-           [matAutocomplete]="auto"
-           (keyup)="onKeyUp()">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      @for (option of filteredOptions | async | slice : 0 : 3; track option) {
-        <mat-option [value]="option.name" (click)="onSelect(option.id)">{{option.name}}</mat-option>
-      }
-    </mat-autocomplete>
-  </mat-form-field>
-  <button mat-raised-button color="primary" class="btn" [disabled]="formulario.invalid || isKeyUp">ADICIONAR USUÁRIO</button>
-</form>
+<mat-dialog-content>
+  <form class="box" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input type="text"
+               placeholder="Buscar"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto"
+               (keyup)="onKeyUp()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          @for (option of filteredOptions | async | slice : 0 : 3; track option) {
+            <mat-option [value]="option.name" (click)="onSelect(option.id)">{{option.name}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" class="btn" [disabled]="formulario.invalid || isKeyUp">ADICIONAR USUÁRIO</button>
+  </form>
+</mat-dialog-content>

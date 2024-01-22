@@ -40,7 +40,7 @@ export class UpdateProgramingModalComponent {
 
   formulario: FormGroup = this.formBuilder.group({
     id: [this.data.info.id, Validators.required],
-    programing_name: [this.data.info.programing_name, Validators.required],
+    name: [this.data.info.name, Validators.required],
   });
 
   onSubmit() {

@@ -12,19 +12,21 @@
     </button>
   </div>
 </mat-toolbar>
-<div class="box">
-  <mat-list>
-    @for (item of data.info.users; track item.id) {
-      <mat-list-item>
-        <mat-icon matListItemIcon>folder</mat-icon>
-        <div matListItemTitle>{{item.name}}</div>
-        <div matListItemLine>{{item.email}}</div>
-        <button mat-icon-button color="warn" style="position: absolute; top: 10%; right: 2%;" (click)="deleteCountyManager(item)">
-          <mat-icon>delete_outline</mat-icon>
-        </button>
-      </mat-list-item>
-    } @empty {
-      <h1 style="text-align: center;">Nenhum gestor cadastrado.</h1>
-    }
-  </mat-list>
-</div>
+<mat-dialog-content>
+  <div class="box">
+    <mat-list>
+      @for (item of data.info.users; track item.id) {
+        <mat-list-item>
+          <mat-icon matListItemIcon>folder</mat-icon>
+          <div matListItemTitle>{{item.name}}</div>
+          <div matListItemLine>{{item.email}}</div>
+          <button mat-icon-button color="warn" style="position: absolute; top: 10%; right: 2%;" (click)="deleteCountyManager(item)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </mat-list-item>
+      } @empty {
+        <h1 style="text-align: center;">Nenhum gestor cadastrado.</h1>
+      }
+    </mat-list>
+  </div>
+</mat-dialog-content>

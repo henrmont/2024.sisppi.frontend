@@ -72,7 +72,7 @@ export class RolesListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '20%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -96,7 +96,7 @@ export class RolesListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '40%',
+      height: 'auto',
       data: {
         info: info
       }

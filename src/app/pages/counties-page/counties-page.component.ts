@@ -1,11 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { BreadcrumbComponent } from '../../components/shared/breadcrumb/breadcrumb.component';
 import { CountiesListComponent } from '../../components/counties/counties-list/counties-list.component';
 import { CreateCountyModalComponent } from '../../components/counties/create-county-modal/create-county-modal.component';
 import { ActivatedRoute } from '@angular/router';
+import { BookmarkComponent } from '../../components/shared/bookmark/bookmark.component';
 
 @Component({
   selector: 'app-counties-page',
@@ -14,7 +14,7 @@ import { ActivatedRoute } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    BreadcrumbComponent,
+    BookmarkComponent,
     CountiesListComponent,
   ],
   templateUrl: './counties-page.component.html',
@@ -22,20 +22,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CountiesPageComponent {
 
+  @Input() link: any
   dialog = inject(MatDialog)
   route = inject(ActivatedRoute)
-
-  breadcrumb = [
-    {name: 'Municípios'},
-    {name: 'Lista de municípios'}
-  ]
 
   createCounty() {
     this.dialog.open(CreateCountyModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '60%',
-      height: '55%',
+      height: 'auto',
     })
   }
 

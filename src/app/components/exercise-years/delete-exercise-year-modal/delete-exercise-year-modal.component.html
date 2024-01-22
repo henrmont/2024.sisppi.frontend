@@ -7,7 +7,9 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
-  <h1>Deseja excluir o ano de exercício {{data.info.exercise_year}}?</h1>
-  <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR ANO DE EXERCÍCIO</button>
-</div>
+<mat-dialog-content>
+  <div class="box">
+    <h1>Deseja excluir o ano de exercício {{data.info.name}}?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR ANO DE EXERCÍCIO</button>
+  </div>
+</mat-dialog-content>

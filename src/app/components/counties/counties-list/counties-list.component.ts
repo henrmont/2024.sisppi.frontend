@@ -15,7 +15,7 @@ import { UpdateCountyModalComponent } from '../update-county-modal/update-county
 import { DeleteCountyModalComponent } from '../delete-county-modal/delete-county-modal.component';
 import { ActivatedRoute } from '@angular/router';
 
-const listCountyChannel = new BroadcastChannel('list-county-channel');
+const countyChannel = new BroadcastChannel('county-channel');
 
 @Component({
   selector: 'app-counties-list',
@@ -45,7 +45,7 @@ export class CountiesListComponent implements OnInit {
   dataSource: any
 
   ngOnInit(): void {
-    listCountyChannel.onmessage = (message) => {
+    countyChannel.onmessage = (message) => {
       if (message.data === 'update') {
         this.countyService.getCounties().subscribe({
           next: (response: any) => {
@@ -82,8 +82,8 @@ export class CountiesListComponent implements OnInit {
     this.dialog.open(ReadCountyModalComponent, {
       disableClose: true,
       autoFocus: false,
-      width: '60%',
-      height: '50%',
+      width: '70%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -95,7 +95,7 @@ export class CountiesListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '60%',
-      height: '55%',
+      height: 'auto',
       data: {
         info: info
       }
@@ -107,7 +107,7 @@ export class CountiesListComponent implements OnInit {
       disableClose: true,
       autoFocus: false,
       width: '40%',
-      height: '20%',
+      height: 'auto',
       data: {
         info: info
       }

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { BreadcrumbComponent } from '../../components/shared/breadcrumb/breadcrumb.component';
 import { GroupsListComponent } from '../../components/groups/groups-list/groups-list.component';
 import { SubgroupsListComponent } from '../../components/subgroups/subgroups-list/subgroups-list.component';
 import { OrganizationFormsListComponent } from '../../components/organization-forms/organization-forms-list/organization-forms-list.component';
+import { BookmarkComponent } from '../../components/shared/bookmark/bookmark.component';
 
 @Component({
   selector: 'app-groups-page',
@@ -14,7 +14,7 @@ import { OrganizationFormsListComponent } from '../../components/organization-fo
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    BreadcrumbComponent,
+    BookmarkComponent,
     GroupsListComponent,
     SubgroupsListComponent,
     OrganizationFormsListComponent,
@@ -24,8 +24,6 @@ import { OrganizationFormsListComponent } from '../../components/organization-fo
 })
 export class GroupsPageComponent {
 
-  breadcrumb = [
-    {name: 'Grupos, subgrupos e formas de organização'},
-  ]
+  @Input() link: any
 
 }

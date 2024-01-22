@@ -7,8 +7,7 @@ import { UserService } from '../../../services/user.service';
 import { SharedService } from '../../../services/shared.service';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
-const listCountyChannel = new BroadcastChannel('list-county-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-delete-user-modal',
@@ -34,8 +33,7 @@ export class DeleteUserModalComponent {
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
         notificationChannel.postMessage('update')
-        listCountyChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

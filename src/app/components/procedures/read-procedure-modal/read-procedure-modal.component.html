@@ -7,83 +7,83 @@
     <mat-icon>close</mat-icon>
   </button>
 </mat-toolbar>
-<div class="box">
+<mat-dialog-content>
+  <div class="box">
 
-  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-    <div>
-      <h2>Código</h2>
-      <span>{{data.info.procedure_code}}</span>
+    <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <div>
+        <h2>Código</h2>
+        <span>{{data.info.code}}</span>
+      </div>
+
+      <div>
+        <h2>Competência</h2>
+        <span>{{data.info.competence.name}}</span>
+      </div>
+
+      <div>
+        <h2>Financiamento</h2>
+        <span>{{data.info.financing.name}}</span>
+      </div>
     </div>
+    <mat-divider></mat-divider>
 
-    <div>
-      <h2>Competência</h2>
-      <span>{{data.info.competence.competence}}</span>
+    <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <div>
+        <h2>Nome</h2>
+        <span>{{data.info.name}}</span>
+      </div>
     </div>
+    <mat-divider></mat-divider>
 
-    <div>
-      <h2>Financiamento</h2>
-      <span>{{data.info.financing.financing_name}}</span>
+    <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <div>
+        <h2>Valor Ambulatorial</h2>
+        <span i18n>{{data.info.outpatient_procedure_value | currency: 'R$'}}</span>
+      </div>
+
+      <div>
+        <h2>Valor Hospitalar</h2>
+        <span i18n>{{data.info.hospital_procedure_value | currency: 'R$'}}</span>
+      </div>
+
+      <div>
+        <h2>Valor Profissional</h2>
+        <span i18n>{{data.info.profissional_procedure_value | currency: 'R$'}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="row" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+      <div>
+        <h2>Grupo</h2>
+        <span>{{data.info.group.name}}</span>
+      </div>
+
+      <div>
+        <h2>Subgrupo</h2>
+        <span>{{data.info.subgroup.name}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <div>
+        <h2>Forma de organização</h2>
+        <span>{{data.info.organization_form.name}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <div>
+        <h2>Modalidades</h2>
+        <mat-chip-listbox aria-label="Fish selection">
+          @for (item of data.info.modality_code; track item.id) {
+            <mat-chip-option color="primary" selected [selectable]="false">{{item}}</mat-chip-option>
+          }
+        </mat-chip-listbox>
+      </div>
     </div>
   </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-    <div>
-      <h2>Nome</h2>
-      <span>{{data.info.procedure_name}}</span>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-    <div>
-      <h2>Valor Ambulatorial</h2>
-      <span i18n>{{data.info.outpatient_procedure_value | currency: 'R$'}}</span>
-    </div>
-
-    <div>
-      <h2>Valor Hospitalar</h2>
-      <span i18n>{{data.info.hospital_procedure_value | currency: 'R$'}}</span>
-    </div>
-
-    <div>
-      <h2>Valor Profissional</h2>
-      <span i18n>{{data.info.profissional_procedure_value | currency: 'R$'}}</span>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
-    <div>
-      <h2>Grupo</h2>
-      <span>{{data.info.group.group_name}}</span>
-    </div>
-
-    <div>
-      <h2>Subgrupo</h2>
-      <span>{{data.info.subgroup.subgroup_name}}</span>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-    <div>
-      <h2>Forma de organização</h2>
-      <span>{{data.info.organization_form.organization_form_name}}</span>
-    </div>
-  </div>
-  <mat-divider></mat-divider>
-
-  <div class="row" style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-    <div>
-      <h2>Modalidades</h2>
-      <mat-chip-listbox aria-label="Fish selection">
-        @for (item of data.info.modality_code; track item.id) {
-          <mat-chip-option color="primary" selected [selectable]="false">{{item}}</mat-chip-option>
-        }
-      </mat-chip-listbox>
-    </div>
-
-
-  </div>
-</div>
+</mat-dialog-content>
