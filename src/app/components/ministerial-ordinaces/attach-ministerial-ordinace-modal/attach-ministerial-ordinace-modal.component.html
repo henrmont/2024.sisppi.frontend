@@ -1,0 +1,25 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>attachment</mat-icon>
+    <span>Anexar arquivo</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <div class="box">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <input type="file" class="file-input" (change)="onFileChange($event)" #fileUpload accept=".pdf">
+      <button mat-fab extended color="primary" (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+        Anexar
+      </button>
+      <button mat-fab extended color="accent" [disabled]="!data.info.file" (click)="fileSave(data.info.file,data.info.number)">
+        <mat-icon>file_download</mat-icon>
+        Download
+      </button>
+    </div>
+    <button mat-raised-button class="btn" color="primary" (click)="onSubmit()" [disabled]="isAttach">ANEXAR ARQUIVO</button>
+  </div>
+</mat-dialog-content>

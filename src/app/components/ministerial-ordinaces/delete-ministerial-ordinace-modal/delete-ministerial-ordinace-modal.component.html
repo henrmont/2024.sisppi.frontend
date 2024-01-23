@@ -1,0 +1,15 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>delete_outline</mat-icon>
+    <span>Deletar portaria ministerial</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <div class="box">
+    <h1>Deseja excluir a portaria ministerial {{data.info.number}}?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">EXCLUIR PORTARIA MINISTERIAL</button>
+  </div>
+</mat-dialog-content>

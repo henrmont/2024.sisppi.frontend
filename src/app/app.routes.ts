@@ -199,5 +199,21 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'portarias/ministeriais',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/ministerial-ordinaces-page/ministerial-ordinaces-page.component').then((m) => m.MinisterialOrdinacesPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: [
+          'portaria criar','portaria atualizar','portaria ver','portaria deletar'
+        ]}
+      }
+    ]
+  },
 
 ];

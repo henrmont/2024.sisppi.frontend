@@ -72,7 +72,9 @@
             </div>
             <div class="menu-column">
               <h2>Pactuação</h2>
-              <button mat-menu-item disabled>
+              <button mat-menu-item [routerLink]="['/portarias/ministeriais']" [disabled]="!(
+                route.snapshot.data['role'].includes('portaria criar') || route.snapshot.data['role'].includes('portaria ver') || route.snapshot.data['role'].includes('portaria atualizar') || route.snapshot.data['role'].includes('portaria deletar')
+              )">
                 <mat-icon>request_page</mat-icon>
                 <span>Portaria ministerial</span>
               </button>

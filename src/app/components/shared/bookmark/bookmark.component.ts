@@ -28,7 +28,6 @@ export class BookmarkComponent implements OnInit {
     this.favoriteService.checkFavorite(this.link).subscribe({
       next: (response: any) => {
         if (response.data.length == 0) {
-          console.log(response.data.length)
           this.isFavorite = false
         } else {
           this.isFavorite = true

@@ -1,0 +1,5 @@
+<app-bookmark [link]="9"></app-bookmark>
+<app-ministerial-ordinaces-list></app-ministerial-ordinaces-list>
+<button mat-fab color="primary" class="new-ministerial-ordinace" (click)="createMinisterialOrdinace()" [disabled]="!route.snapshot.data['role'].includes('portaria criar')">
+  <mat-icon>note_add</mat-icon>
+</button>

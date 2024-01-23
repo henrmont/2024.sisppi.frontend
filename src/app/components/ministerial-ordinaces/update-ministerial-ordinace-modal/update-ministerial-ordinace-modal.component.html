@@ -1,0 +1,76 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>note_alt</mat-icon>
+    <span>Atualizar portaria ministerial</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Número</mat-label>
+        <input matInput type="text" placeholder="número da portaria" mask="000000" formControlName="number">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput type="text" placeholder="nome da portaria" formControlName="name">
+      </mat-form-field>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" readonly>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" formControlName="value">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="acrescimo">Acréscimo</mat-option>
+          <mat-option value="decrescimo">Decréscimo</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Observação</mat-label>
+        <input matInput type="text" placeholder="observação" formControlName="observation">
+      </mat-form-field>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <mat-form-field appearance="outline">
+        <mat-label>Ano de exercício</mat-label>
+        <mat-select formControlName="exercise_year_id">
+          @for (item of exerciseYears; track item) {
+            <mat-option [value]="item.id">{{item.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Competência</mat-label>
+        <mat-select formControlName="competence_id">
+          @for (item of competencies; track item) {
+            <mat-option [value]="item.id">{{item.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid">ATUALIZAR PORTARIA MINISTERIAL</button>
+  </form>
+</mat-dialog-content>

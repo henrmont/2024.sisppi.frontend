@@ -16,6 +16,10 @@ export class CompetenceService {
     return this.http.get<any>(`${environment.apiUrl}/competencies/get/competencies`)
   }
 
+  getValidCompetencies(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/competencies/get/valid/competencies`)
+  }
+
   deleteCompetence(data: any): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/competencies/delete/competence/${data}`)
   }
