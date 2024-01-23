@@ -36,20 +36,15 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'dashboard',
+    path: 'home',
     component: LayoutComponent,
     canActivateChild: [authGuard],
     resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
-        path: 'principal',
-        loadComponent: () => import('./pages/dashboard/main-dashboard-page/main-dashboard-page.component').then((m) => m.MainDashboardPageComponent),
-      },
-      {
         path: '',
-        redirectTo: 'principal',
-        pathMatch: 'full'
-      }
+        loadComponent: () => import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
+      },
     ]
   },
   {
@@ -59,14 +54,9 @@ export const routes: Routes = [
     resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
     children: [
       {
-        path: 'principal',
-        loadComponent: () => import('./pages/settings/main-settings-page/main-settings-page.component').then((m) => m.MainSettingsPageComponent),
-      },
-      {
         path: '',
-        redirectTo: 'principal',
-        pathMatch: 'full'
-      }
+        loadComponent: () => import('./pages/settings-page/settings-page.component').then((m) => m.SettingsPageComponent),
+      },
     ]
   },
   {

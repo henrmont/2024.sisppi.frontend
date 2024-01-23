@@ -38,12 +38,12 @@
           <button mat-icon-button color="primary" matTooltip="Permissões" (click)="updateRole(element)" [disabled]="!route.snapshot.data['role'].includes('regra atualizar')">
             @if (route.snapshot.data['role'].includes('regra atualizar')) {
               @if (element.permissions_count == 0) {
-                  <mat-icon [matBadge]="element.permissions_count" matBadgeColor="warn" aria-hidden="false">edit_note</mat-icon>
+                  <mat-icon [matBadge]="element.permissions_count" matBadgeColor="warn" aria-hidden="false">edit</mat-icon>
               } @else {
-                  <mat-icon [matBadge]="element.permissions_count" aria-hidden="false">edit_note</mat-icon>
+                  <mat-icon [matBadge]="element.permissions_count" aria-hidden="false">edit</mat-icon>
               }
             } @else {
-              <mat-icon>edit_note</mat-icon>
+              <mat-icon>edit</mat-icon>
             }
           </button>
           @if (element.id == 1) {

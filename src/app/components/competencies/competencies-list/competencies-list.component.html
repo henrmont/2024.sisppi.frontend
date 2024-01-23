@@ -26,11 +26,11 @@
         <div style="display: flex; justify-content: flex-end;">
           @if (element.is_valid) {
             <button mat-icon-button color="primary" matTooltip="Invalidar" (click)="validateCompetence(element)" [disabled]="!route.snapshot.data['role'].includes('competencia atualizar')">
-              <mat-icon>event_available</mat-icon>
+              <mat-icon>check_circle</mat-icon>
             </button>
           } @else {
             <button mat-icon-button color="warn" matTooltip="Validar" (click)="validateCompetence(element)" [disabled]="!route.snapshot.data['role'].includes('competencia atualizar')">
-              <mat-icon>event_busy</mat-icon>
+              <mat-icon>cancel</mat-icon>
             </button>
           }
           <button mat-icon-button color="warn" matTooltip="Deletar" (click)="deleteCompetence(element)" [disabled]="!route.snapshot.data['role'].includes('competencia deletar')">

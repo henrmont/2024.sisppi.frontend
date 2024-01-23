@@ -6,7 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CountyService } from '../../../services/county.service';
 import { MatListModule } from '@angular/material/list';
 import { AddCountyManagerModalComponent } from '../add-county-manager-modal/add-county-manager-modal.component';
-import { DeleteCountyManagerModalComponent } from '../delete-county-manager-modal/delete-county-manager-modal.component';
+import { RemoveCountyManagerModalComponent } from '../remove-county-manager-modal/remove-county-manager-modal.component';
 
 @Component({
   selector: 'app-county-manager-modal',
@@ -40,8 +40,8 @@ export class CountyManagerModalComponent {
     })
   }
 
-  deleteCountyManager(info: any) {
-    this.dialog.open(DeleteCountyManagerModalComponent, {
+  removeCountyManager(info: any) {
+    this.dialog.open(RemoveCountyManagerModalComponent, {
       disableClose: true,
       autoFocus: false,
       width: '25%',

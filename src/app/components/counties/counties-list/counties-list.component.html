@@ -26,12 +26,12 @@
       <button mat-icon-button color="primary" matTooltip="Adicionar gestor" (click)="countyManager(element)" [disabled]="!route.snapshot.data['role'].includes('municipio atualizar')">
         @if (route.snapshot.data['role'].includes('municipio atualizar')) {
           @if (element.users_count == 0) {
-              <mat-icon [matBadge]="element.users_count" matBadgeColor="warn" aria-hidden="false">manage_accounts</mat-icon>
+              <mat-icon [matBadge]="element.users_count" matBadgeColor="warn" aria-hidden="false">supervisor_account</mat-icon>
           } @else {
-              <mat-icon [matBadge]="element.users_count" aria-hidden="false">manage_accounts</mat-icon>
+              <mat-icon [matBadge]="element.users_count" aria-hidden="false">supervisor_account</mat-icon>
           }
         } @else {
-          <mat-icon>manage_accounts</mat-icon>
+          <mat-icon>supervisor_account</mat-icon>
         }
       </button>
     </td>

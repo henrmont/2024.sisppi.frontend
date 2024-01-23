@@ -1,4 +1,4 @@
-<app-bookmark [link]="10"></app-bookmark>
+<app-bookmark [link]="8"></app-bookmark>
 <app-programings-list></app-programings-list>
 <button mat-fab color="primary" class="new-programing" (click)="createPrograming()" [disabled]="!route.snapshot.data['role'].includes('programacao criar') || (route.snapshot.data['auth'].county_id == null)">
   <mat-icon>playlist_add</mat-icon>

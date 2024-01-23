@@ -1,6 +1,6 @@
 <mat-toolbar class="title" color="accent">
   <div>
-    <mat-icon>manage_accounts</mat-icon>
+    <mat-icon>person_pin_circle</mat-icon>
     <span>{{data.info.name}}</span>
   </div>
   <div>
@@ -20,7 +20,7 @@
           <mat-icon matListItemIcon>folder</mat-icon>
           <div matListItemTitle>{{item.name}}</div>
           <div matListItemLine>{{item.email}}</div>
-          <button mat-icon-button color="warn" style="position: absolute; top: 10%; right: 2%;" (click)="deleteCountyManager(item)">
+          <button mat-icon-button color="warn" style="position: absolute; top: 10%; right: 2%;" (click)="removeCountyManager(item)">
             <mat-icon>delete_outline</mat-icon>
           </button>
         </mat-list-item>

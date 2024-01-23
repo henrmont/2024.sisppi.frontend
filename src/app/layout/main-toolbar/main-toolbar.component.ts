@@ -47,7 +47,6 @@ export class MainToolbarComponent implements OnInit {
   @Input() title: any
   @Input() drawer: any
   @Input() user: any
-  searchBar: boolean = false
   links: any
   disabled: boolean = true
   notifications: any = null

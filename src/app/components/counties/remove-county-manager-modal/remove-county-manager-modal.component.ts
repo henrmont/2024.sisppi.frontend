@@ -1,17 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { UserService } from '../../../services/user.service';
 import { SharedService } from '../../../services/shared.service';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 const countyChannel = new BroadcastChannel('county-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
 const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
-  selector: 'app-delete-county-manager-modal',
+  selector: 'app-remove-county-manager-modal',
   standalone: true,
   imports: [
     MatIconModule,
@@ -19,21 +19,15 @@ const userChannel = new BroadcastChannel('user-channel');
     MatDialogModule,
     MatToolbarModule,
   ],
-  templateUrl: './delete-county-manager-modal.component.html',
-  styleUrl: './delete-county-manager-modal.component.scss'
+  templateUrl: './remove-county-manager-modal.component.html',
+  styleUrl: './remove-county-manager-modal.component.scss'
 })
-export class DeleteCountyManagerModalComponent implements OnInit {
-
-  user: any
+export class RemoveCountyManagerModalComponent {
 
   data = inject(MAT_DIALOG_DATA)
   userService = inject(UserService)
   sharedService = inject(SharedService)
-  dialogRef = inject(MatDialog)
-
-  ngOnInit(): void {
-
-  }
+  dialog = inject(MatDialog)
 
   onSubmit() {
     this.userService.changeEmptyManagerUser(this.data.info.id).subscribe({
@@ -47,7 +41,7 @@ export class DeleteCountyManagerModalComponent implements OnInit {
         this.sharedService.showMessage(response.message)
       },
       complete: () => {
-        this.dialogRef.closeAll()
+        this.dialog.closeAll()
       }
     })
 

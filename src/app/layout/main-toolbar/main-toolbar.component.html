@@ -5,18 +5,11 @@
         <mat-icon>pets</mat-icon>
       </button>
       <div>
-        @if (searchBar) {
-          <mat-form-field appearance="outline" color="accent">
-            <input matInput>
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
-        } @else {
-          <h1>{{title}}</h1>
-        }
+        <h1>{{title}}</h1>
       </div>
       <div class="menu">
-        <button mat-icon-button class="btn-main" (click)="searchBar = !searchBar">
-          <mat-icon>search</mat-icon>
+        <button mat-icon-button class="btn-main" [routerLink]="['/home']">
+          <mat-icon>home</mat-icon>
         </button>
         <button mat-icon-button class="btn-main" [matMenuTriggerFor]="fullMenu">
           <mat-icon>menu</mat-icon>
