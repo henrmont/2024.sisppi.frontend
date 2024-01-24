@@ -215,5 +215,21 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'incentivos',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/incentives-page/incentives-page.component').then((m) => m.IncentivesPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: [
+          'incentivo criar','incentivo atualizar','incentivo ver','incentivo deletar'
+        ]}
+      }
+    ]
+  },
 
 ];

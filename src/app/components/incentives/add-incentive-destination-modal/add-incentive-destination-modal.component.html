@@ -1,0 +1,40 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>attach_money</mat-icon>
+    <span>Adicionar destino</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form class="box" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <div>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Buscar</mat-label>
+        <input type="text"
+               placeholder="Buscar"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto"
+               (keyup)="onKeyUp()">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          @for (option of filteredOptions | async | slice : 0 : 3; track option) {
+            <mat-option [value]="option.name" (click)="onSelect(option.id)">{{option.name}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" formControlName="value" (keyup)="checkBalance()">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" class="btn" [disabled]="formulario.invalid || isKeyUp || isValidValue">ADICIONAR DESTINO</button>
+  </form>
+</mat-dialog-content>

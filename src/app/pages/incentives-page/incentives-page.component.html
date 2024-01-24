@@ -1,0 +1,5 @@
+<app-bookmark [link]="10"></app-bookmark>
+<app-incentives-list></app-incentives-list>
+<button mat-fab color="primary" class="new-incentive" (click)="createIncentive()" [disabled]="!route.snapshot.data['role'].includes('incentivo criar')">
+  <mat-icon>price_check</mat-icon>
+</button>

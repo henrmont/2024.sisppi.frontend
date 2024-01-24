@@ -7,13 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { MinisterialOrdinaceDestinationService } from '../../../services/ministerial-ordinace-destination.service';
+import { IncentiveDestinationService } from '../../../services/incentive-destination.service';
 import { SharedService } from '../../../services/shared.service';
 
-const ministerialOrdinaceChannel = new BroadcastChannel('ministerial-ordinace-channel');
+const incentiveChannel = new BroadcastChannel('incentive-channel');
 
 @Component({
-  selector: 'app-value-ministerial-ordinace-destination-modal',
+  selector: 'app-value-incentive-destination-modal',
   standalone: true,
   imports: [
     FormsModule,
@@ -26,16 +26,16 @@ const ministerialOrdinaceChannel = new BroadcastChannel('ministerial-ordinace-ch
     MatDialogModule,
     CurrencyMaskModule,
   ],
-  templateUrl: './value-ministerial-ordinace-destination-modal.component.html',
-  styleUrl: './value-ministerial-ordinace-destination-modal.component.scss'
+  templateUrl: './value-incentive-destination-modal.component.html',
+  styleUrl: './value-incentive-destination-modal.component.scss'
 })
-export class ValueMinisterialOrdinaceDestinationModalComponent implements OnInit {
+export class ValueIncentiveDestinationModalComponent implements OnInit {
 
   data = inject(MAT_DIALOG_DATA)
   formBuilder = inject(FormBuilder);
-  ministerialOrdinaceDestinationService = inject(MinisterialOrdinaceDestinationService)
+  incentiveDestinationService = inject(IncentiveDestinationService)
   sharedService = inject(SharedService)
-  dialog = inject(MatDialogRef<ValueMinisterialOrdinaceDestinationModalComponent>)
+  dialog = inject(MatDialogRef<ValueIncentiveDestinationModalComponent>)
   isValidValue:boolean = true
 
   formulario: FormGroup = this.formBuilder.group({
@@ -48,10 +48,10 @@ export class ValueMinisterialOrdinaceDestinationModalComponent implements OnInit
   }
 
   onSubmit() {
-    this.ministerialOrdinaceDestinationService.valueMinisterialOrdinaceDestination(this.formulario.value).subscribe({
+    this.incentiveDestinationService.valueIncentiveDestination(this.formulario.value).subscribe({
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
-        ministerialOrdinaceChannel.postMessage('update')
+        incentiveChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

@@ -78,7 +78,9 @@
                 <mat-icon>request_page</mat-icon>
                 <span>Portaria ministerial</span>
               </button>
-              <button mat-menu-item disabled>
+              <button mat-menu-item [routerLink]="['/incentivos']" [disabled]="!(
+                route.snapshot.data['role'].includes('incentivo criar') || route.snapshot.data['role'].includes('incentivo ver') || route.snapshot.data['role'].includes('incentivo atualizar') || route.snapshot.data['role'].includes('incentivo deletar')
+              )">
                 <mat-icon>price_check</mat-icon>
                 <span>Incentivos</span>
               </button>

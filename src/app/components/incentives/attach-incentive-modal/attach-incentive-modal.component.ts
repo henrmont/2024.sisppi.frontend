@@ -4,18 +4,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { MatProgressBarModule, ProgressBarMode } from '@angular/material/progress-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MinisterialOrdinaceService } from '../../../services/ministerial-ordinace.service';
+import { IncentiveService } from '../../../services/incentive.service';
 import { SharedService } from '../../../services/shared.service';
 import { saveAs } from 'file-saver';
 
-
-const ministerialOrdinaceChannel = new BroadcastChannel('ministerial-ordinace-channel');
+const incentiveChannel = new BroadcastChannel('incentive-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
 
 @Component({
-  selector: 'app-attach-ministerial-ordinace-modal',
+  selector: 'app-attach-incentive-modal',
   standalone: true,
   imports: [
     CommonModule,
@@ -24,14 +22,14 @@ const notificationChannel = new BroadcastChannel('notification-channel');
     MatToolbarModule,
     MatDialogModule,
   ],
-  templateUrl: './attach-ministerial-ordinace-modal.component.html',
-  styleUrl: './attach-ministerial-ordinace-modal.component.scss'
+  templateUrl: './attach-incentive-modal.component.html',
+  styleUrl: './attach-incentive-modal.component.scss'
 })
-export class AttachMinisterialOrdinaceModalComponent {
+export class AttachIncentiveModalComponent {
 
   data = inject(MAT_DIALOG_DATA)
   formBuilder = inject(FormBuilder);
-  ministerialOrdinaceService = inject(MinisterialOrdinaceService)
+  incentiveService = inject(IncentiveService)
   sharedService = inject(SharedService)
   dialog = inject(MatDialog)
 
@@ -44,10 +42,10 @@ export class AttachMinisterialOrdinaceModalComponent {
   });
 
   onSubmit() {
-    this.ministerialOrdinaceService.attachMinisterialOrdinace(this.formulario.value).subscribe({
+    this.incentiveService.attachIncentive(this.formulario.value).subscribe({
       next: (response: any) => {
         this.sharedService.showMessage(response.message)
-        ministerialOrdinaceChannel.postMessage('update')
+        incentiveChannel.postMessage('update')
         notificationChannel.postMessage('update')
       },
       error: (response: any) => {

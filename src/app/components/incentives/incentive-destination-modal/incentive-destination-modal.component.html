@@ -1,10 +1,10 @@
 <mat-toolbar class="title" color="accent">
   <div>
     <mat-icon>currency_exchange</mat-icon>
-    <span>PORTARIA MINISTERIAL - {{data.info.name}}</span>
+    <span>INCENTIVO - {{data.info.name}}</span>
   </div>
   <div>
-    <button mat-icon-button (click)="addMinisterialOrdinaceDestination()" [disabled]="!data.role.includes('portaria criar')">
+    <button mat-icon-button (click)="addIncentiveDestination()" [disabled]="!data.role.includes('incentivo criar')">
       <mat-icon>add</mat-icon>
     </button>
     <button mat-icon-button mat-dialog-close>
@@ -23,7 +23,7 @@
     <ng-container matColumnDef="value">
       <th mat-header-cell *matHeaderCellDef style="width: 30%; text-align: center;"> Valor </th>
       <td mat-cell *matCellDef="let element" style="text-align: center;">
-        <button mat-raised-button color="primary" style="width: 100%;" (click)="valueMinisterialOrdinaceDestination(element)" [disabled]="!data.role.includes('portaria atualizar')">
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="valueIncentiveDestination(element)" [disabled]="!data.role.includes('incentivo atualizar')">
           {{element.value | currency: 'R$'}}
         </button>
       </td>
@@ -33,7 +33,7 @@
       <th mat-header-cell *matHeaderCellDef style="width: 10%; text-align: center;"> Ações </th>
       <td mat-cell *matCellDef="let element">
         <div class="actions">
-          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="removeMinisterialOrdinaceDestination(element)" [disabled]="!data.role.includes('portaria deletar')">
+          <button mat-icon-button color="warn" matTooltip="Deletar" (click)="removeIncentiveDestination(element)" [disabled]="!data.role.includes('incentivo deletar')">
             <mat-icon>delete</mat-icon>
           </button>
         </div>
