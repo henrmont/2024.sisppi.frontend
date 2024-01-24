@@ -1,0 +1,22 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>monetization_on</mat-icon>
+    <span>Valor destinado</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="formulario" class="box" (ngSubmit)="onSubmit()">
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Valor</mat-label>
+        <input matInput type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" formControlName="value" (keyup)="checkBalance()">
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button class="btn" color="primary" type="submit" [disabled]="formulario.invalid || isValidValue">DESTINAR VALOR</button>
+  </form>
+</mat-dialog-content>

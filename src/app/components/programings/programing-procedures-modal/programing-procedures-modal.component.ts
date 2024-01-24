@@ -42,7 +42,6 @@ export class ProgramingProceduresModalComponent {
   data = inject(MAT_DIALOG_DATA)
   programingProcedureService = inject(ProgramingProcedureService)
   dialog = inject(MatDialog)
-  route = inject(ActivatedRoute)
   totalValueOutpatient:number = 0
   totalValueHospital:number = 0
   totalValue:number = 0

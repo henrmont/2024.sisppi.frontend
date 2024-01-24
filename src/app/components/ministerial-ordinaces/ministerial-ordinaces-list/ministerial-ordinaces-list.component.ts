@@ -66,9 +66,9 @@ export class MinisterialOrdinacesListComponent implements OnInit {
 
   ministerialOrdinaceDestination(info: any) {
     this.dialog.open(MinisterialOrdinaceDestinationModalComponent, {
-      // disableClose: true,
+      disableClose: true,
       autoFocus: false,
-      width: '80%',
+      width: '50%',
       height: 'auto',
       data: {
         info: info,

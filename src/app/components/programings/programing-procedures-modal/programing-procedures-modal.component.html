@@ -4,7 +4,7 @@
     <span>{{data.info.programing_name}} ({{data.info.county.name}})</span>
   </div>
   <div>
-    <button mat-icon-button (click)="addProgramingProcedure()">
+    <button mat-icon-button (click)="addProgramingProcedure()" [disabled]="!data.role.includes('programacao criar')">
       <mat-icon>add</mat-icon>
     </button>
     <button mat-icon-button mat-dialog-close>

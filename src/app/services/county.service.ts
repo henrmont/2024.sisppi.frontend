@@ -20,6 +20,10 @@ export class CountyService {
     return this.http.get<any>(`${environment.apiUrl}/counties/get/county/${data}`)
   }
 
+  getCountiesWithoutMinisterialOrdinace(data: any): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/counties/get/counties/without/ministerial/ordinace/${data}`)
+  }
+
   createCounty(data: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/counties/create/county`, data)
   }

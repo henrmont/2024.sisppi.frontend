@@ -1,0 +1,15 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>money_off</mat-icon>
+    <span>Remover destino</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <div class="box">
+    <h1>Deseja remover o destino da portaria?</h1>
+    <button mat-raised-button class="btn" color="warn" (click)="onSubmit()">REMOVER DESTINO</button>
+  </div>
+</mat-dialog-content>
