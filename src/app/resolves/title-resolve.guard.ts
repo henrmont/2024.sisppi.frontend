@@ -5,8 +5,8 @@ export const titleResolve: ResolveFn<any> = (route, state) => {
   let title: any = ''
 
   switch(route.routeConfig?.path) {
-    case "dashboard": {
-      title = "Dashboard"
+    case "home": {
+      title = "Início"
       break
     }
     case "notificacoes": {

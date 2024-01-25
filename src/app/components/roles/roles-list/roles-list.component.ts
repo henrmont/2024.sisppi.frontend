@@ -95,7 +95,7 @@ export class RolesListComponent implements OnInit {
     this.dialog.open(UpdateRoleModalComponent, {
       disableClose: true,
       autoFocus: false,
-      width: '40%',
+      width: '45%',
       height: 'auto',
       data: {
         info: info

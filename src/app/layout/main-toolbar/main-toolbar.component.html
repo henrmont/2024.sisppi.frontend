@@ -86,7 +86,7 @@
               </button>
               <button mat-menu-item [routerLink]="['/carteira']" [disabled]="!(
                 route.snapshot.data['role'].includes('carteira ver')
-              )">
+              ) || (route.snapshot.data['auth'].county_id == null)">
                 <mat-icon>wallet</mat-icon>
                 <span>Carteira financeira</span>
               </button>
