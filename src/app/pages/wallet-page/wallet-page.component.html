@@ -1,0 +1,7 @@
+<app-bookmark [link]="11"></app-bookmark>
+<mat-accordion multi>
+  @for (item of exerciseYears; track $index) {
+    <app-wallet-item [exerciseYear]="item"></app-wallet-item>
+  }
+</mat-accordion>
+

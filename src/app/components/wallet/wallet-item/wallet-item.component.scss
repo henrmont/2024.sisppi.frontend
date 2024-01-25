@@ -1,0 +1,14 @@
+.item {
+  justify-content: space-between;
+  align-items: center;
+}
+
+mat-expansion-panel {
+  margin-bottom: 10px;
+}
+
+::ng-deep {
+  .mat-mdc-table {
+    background: none !important;
+  }
+}

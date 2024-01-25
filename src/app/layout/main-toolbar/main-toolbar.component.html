@@ -84,13 +84,15 @@
                 <mat-icon>price_check</mat-icon>
                 <span>Incentivos</span>
               </button>
+              <button mat-menu-item [routerLink]="['/carteira']" [disabled]="!(
+                route.snapshot.data['role'].includes('carteira ver')
+              )">
+                <mat-icon>wallet</mat-icon>
+                <span>Carteira financeira</span>
+              </button>
               <button mat-menu-item disabled>
                 <mat-icon>receipt_long</mat-icon>
                 <span>Proposição operativa</span>
-              </button>
-              <button mat-menu-item disabled>
-                <mat-icon>history_edu</mat-icon>
-                <span>Resoluções</span>
               </button>
             </div>
           </div>

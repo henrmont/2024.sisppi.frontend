@@ -231,5 +231,21 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'carteira',
+    component: LayoutComponent,
+    canActivateChild: [authGuard],
+    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/wallet-page/wallet-page.component').then((m) => m.WalletPageComponent),
+        canActivate: [roleGuard],
+        data: {permissions: [
+          'carteira ver'
+        ]}
+      }
+    ]
+  },
 
 ];
