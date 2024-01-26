@@ -15,7 +15,7 @@ import { UserService } from '../../../services/user.service';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
 const roleChannel = new BroadcastChannel('role-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-add-user-role-modal',
@@ -90,7 +90,7 @@ export class AddUserRoleModalComponent {
         this.sharedService.showMessage(response.message)
         notificationChannel.postMessage('update')
         roleChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

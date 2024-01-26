@@ -9,7 +9,7 @@ import { SharedService } from '../../../services/shared.service';
 const roleChannel = new BroadcastChannel('role-channel');
 const permissionChannel = new BroadcastChannel('permission-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-remove-user-permission-modal',
@@ -37,7 +37,7 @@ export class RemoveUserPermissionModalComponent {
         roleChannel.postMessage('update')
         permissionChannel.postMessage('update')
         notificationChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

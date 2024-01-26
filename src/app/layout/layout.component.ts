@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SideToolbarComponent } from './side-toolbar/side-toolbar.component';
+import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @Component({
   selector: 'app-layout',

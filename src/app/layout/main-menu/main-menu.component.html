@@ -1,0 +1,188 @@
+<mat-selection-list [multiple]="false">
+
+  @if (route.snapshot.data['role'].includes('usuario criar') || route.snapshot.data['role'].includes('usuario ver') || route.snapshot.data['role'].includes('usuario atualizar') || route.snapshot.data['role'].includes('usuario deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/usuarios']">
+      <div>
+        <mat-icon>groups</mat-icon>
+        <span>Usuários</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>groups</mat-icon>
+        <span>Usuários</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('regra criar') || route.snapshot.data['role'].includes('regra ver') || route.snapshot.data['role'].includes('regra atualizar') || route.snapshot.data['role'].includes('regra deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/regras']">
+      <div>
+        <mat-icon>rule</mat-icon>
+        <span>Regras e permissões</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>rule</mat-icon>
+        <span>Regras e permissões</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('municipio criar') || route.snapshot.data['role'].includes('municipio ver') || route.snapshot.data['role'].includes('municipio atualizar') || route.snapshot.data['role'].includes('municipio deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/municipios']">
+      <div>
+        <mat-icon>place</mat-icon>
+        <span>Municípios</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>place</mat-icon>
+        <span>Municípios</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('ano criar') || route.snapshot.data['role'].includes('ano ver') || route.snapshot.data['role'].includes('ano atualizar') || route.snapshot.data['role'].includes('ano deletar') || route.snapshot.data['role'].includes('competencia criar') || route.snapshot.data['role'].includes('competencia ver') || route.snapshot.data['role'].includes('competencia atualizar') || route.snapshot.data['role'].includes('competencia deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/anos/de/exercicio']">
+      <div>
+        <mat-icon>calendar_month</mat-icon>
+        <span>Anos de exercício e competências</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>calendar_month</mat-icon>
+        <span>Anos de exercício e competências</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/grupos']">
+      <div>
+        <mat-icon>format_list_numbered</mat-icon>
+        <span>Grupos, Subgrupos e Formas de organização</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>format_list_numbered</mat-icon>
+        <span>Grupos, Subgrupos e Formas de organização</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/financiamentos/modalidades']">
+      <div>
+        <mat-icon>attach_money</mat-icon>
+        <span>Financiamento e Modalidades</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>attach_money</mat-icon>
+        <span>Financiamento e Modalidades</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/procedimentos']">
+      <div>
+        <mat-icon>medical_services</mat-icon>
+        <span>Procedimentos</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>medical_services</mat-icon>
+        <span>Procedimentos</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('programacao criar') || route.snapshot.data['role'].includes('programacao ver') || route.snapshot.data['role'].includes('programacao atualizar') || route.snapshot.data['role'].includes('programacao deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/programacao']">
+      <div>
+        <mat-icon>checklist</mat-icon>
+        <span>Programação de procedimentos</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>checklist</mat-icon>
+        <span>Programação de procedimentos</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('portaria criar') || route.snapshot.data['role'].includes('portaria ver') || route.snapshot.data['role'].includes('portaria atualizar') || route.snapshot.data['role'].includes('portaria deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/portarias/ministeriais']">
+      <div>
+        <mat-icon>request_page</mat-icon>
+        <span>Portaria ministerial</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>request_page</mat-icon>
+        <span>Portaria ministerial</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('incentivo criar') || route.snapshot.data['role'].includes('incentivo ver') || route.snapshot.data['role'].includes('incentivo atualizar') || route.snapshot.data['role'].includes('incentivo deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/incentivos']">
+      <div>
+        <mat-icon>price_check</mat-icon>
+        <span>Incentivos</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>price_check</mat-icon>
+        <span>Incentivos</span>
+      </div>
+    </mat-list-item>
+  }
+
+  @if (route.snapshot.data['role'].includes('carteira ver') && route.snapshot.data['auth'].county_id != null) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/carteira']">
+      <div>
+        <mat-icon>wallet</mat-icon>
+        <span>Carteira financeira</span>
+      </div>
+    </mat-list-item>
+  } @else {
+    <mat-list-item disabled>
+      <div>
+        <mat-icon>wallet</mat-icon>
+        <span>Carteira financeira</span>
+      </div>
+    </mat-list-item>
+  }
+
+  <mat-list-item disabled>
+    <div>
+      <mat-icon>receipt_long</mat-icon>
+      <span>Proposição operativa</span>
+    </div>
+  </mat-list-item>
+
+</mat-selection-list>
+
+

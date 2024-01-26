@@ -1,7 +1,7 @@
 section {
   width: 100%;
-  margin-top: 150px;
-  height: calc(100vh - 150px);
+  margin-top: 64px;
+  height: calc(100vh - 64px);
   display: flex;
   justify-content: center;
   overflow-y: scroll;
@@ -10,7 +10,7 @@ section {
 
 
 mat-drawer {
-  width: 300px;
+  width: 400px;
   height: 100vh;
 
   .content {

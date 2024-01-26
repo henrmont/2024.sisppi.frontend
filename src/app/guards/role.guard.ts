@@ -16,12 +16,12 @@ export const roleGuard: CanActivateFn = (route, state) => {
           obs.next(true);
         } else {
           obs.next(false);
-          router.navigate(['/dashboard'])
+          router.navigate(['/home'])
         }
       },
       error: () => {
         obs.next(false);
-        router.navigate(['/dashboard'])
+        router.navigate(['/home'])
       }
     })
   });

@@ -1,9 +1,9 @@
 <mat-drawer-container>
-  <mat-drawer #drawer mode="over" position="end" [autoFocus]="false">
+  <mat-drawer #drawer mode="over" position="start" [autoFocus]="false">
     <app-side-toolbar [user]="user" [drawer]="drawer"></app-side-toolbar>
   </mat-drawer>
   <mat-drawer-content>
-    <app-main-toolbar [drawer]="drawer" [user]="user" [title]="title"></app-main-toolbar>
+    <app-main-toolbar [drawer]="drawer" [title]="title"></app-main-toolbar>
     <section>
       <router-outlet></router-outlet>
     </section>

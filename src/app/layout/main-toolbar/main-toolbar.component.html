@@ -1,115 +1,13 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
   <section>
-    <div class="main-toolbar">
-      <button mat-icon-button>
-        <mat-icon>pets</mat-icon>
+    <div>
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
       </button>
       <div>
         <h1>{{title}}</h1>
       </div>
-      <div class="menu">
-        <button mat-icon-button class="btn-main" [routerLink]="['/home']">
-          <mat-icon>home</mat-icon>
-        </button>
-        <button mat-icon-button class="btn-main" [matMenuTriggerFor]="fullMenu">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <mat-menu #fullMenu="matMenu" xPosition="before" class="fullmenu">
-          <div class="menu-content">
-            <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
-              <h2>Sistema</h2>
-              <button mat-menu-item [routerLink]="['/usuarios']" [disabled]="!(
-                route.snapshot.data['role'].includes('usuario criar') || route.snapshot.data['role'].includes('usuario ver') || route.snapshot.data['role'].includes('usuario atualizar') || route.snapshot.data['role'].includes('usuario deletar')
-              )">
-                <mat-icon>groups</mat-icon>
-                <span>Usuários</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/regras']" [disabled]="!(
-                route.snapshot.data['role'].includes('regra criar') || route.snapshot.data['role'].includes('regra ver') || route.snapshot.data['role'].includes('regra atualizar') || route.snapshot.data['role'].includes('regra deletar')
-              )">
-                <mat-icon>rule</mat-icon>
-                <span>Regras e permissões</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/municipios']" [disabled]="!(
-                route.snapshot.data['role'].includes('municipio criar') || route.snapshot.data['role'].includes('municipio ver') || route.snapshot.data['role'].includes('municipio atualizar') || route.snapshot.data['role'].includes('municipio deletar')
-              )">
-                <mat-icon>place</mat-icon>
-                <span>Municípios</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/anos/de/exercicio']" [disabled]="!(
-                route.snapshot.data['role'].includes('ano criar') || route.snapshot.data['role'].includes('ano ver') || route.snapshot.data['role'].includes('ano atualizar') || route.snapshot.data['role'].includes('ano deletar') || route.snapshot.data['role'].includes('competencia criar') || route.snapshot.data['role'].includes('competencia ver') || route.snapshot.data['role'].includes('competencia atualizar') || route.snapshot.data['role'].includes('competencia deletar')
-              )">
-                <mat-icon>calendar_month</mat-icon>
-                <span>Anos de exercício e competências</span>
-              </button>
-            </div>
-            <div style="border-right: 1px solid rgb(200,200,200);" class="menu-column">
-              <h2>Procedimentos</h2>
-              <button mat-menu-item [routerLink]="['/grupos']" [disabled]="!(
-                route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')
-              )">
-                <mat-icon>format_list_numbered</mat-icon>
-                <span>Grupos, Subgrupos e Formas de organização</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/financiamentos/modalidades']" [disabled]="!(
-                route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')
-              )">
-                <mat-icon>attach_money</mat-icon>
-                <span>Financiamento e Modalidades</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/procedimentos']" [disabled]="!(
-                route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')
-              )">
-                <mat-icon>medical_services</mat-icon>
-                <span>Procedimentos</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/programacao']" [disabled]="!(
-                route.snapshot.data['role'].includes('programacao criar') || route.snapshot.data['role'].includes('programacao ver') || route.snapshot.data['role'].includes('programacao atualizar') || route.snapshot.data['role'].includes('programacao deletar')
-              )">
-                <mat-icon>checklist</mat-icon>
-                <span>Programação de procedimentos</span>
-              </button>
-            </div>
-            <div class="menu-column">
-              <h2>Pactuação</h2>
-              <button mat-menu-item [routerLink]="['/portarias/ministeriais']" [disabled]="!(
-                route.snapshot.data['role'].includes('portaria criar') || route.snapshot.data['role'].includes('portaria ver') || route.snapshot.data['role'].includes('portaria atualizar') || route.snapshot.data['role'].includes('portaria deletar')
-              )">
-                <mat-icon>request_page</mat-icon>
-                <span>Portaria ministerial</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/incentivos']" [disabled]="!(
-                route.snapshot.data['role'].includes('incentivo criar') || route.snapshot.data['role'].includes('incentivo ver') || route.snapshot.data['role'].includes('incentivo atualizar') || route.snapshot.data['role'].includes('incentivo deletar')
-              )">
-                <mat-icon>price_check</mat-icon>
-                <span>Incentivos</span>
-              </button>
-              <button mat-menu-item [routerLink]="['/carteira']" [disabled]="!(
-                route.snapshot.data['role'].includes('carteira ver')
-              ) || (route.snapshot.data['auth'].county_id == null)">
-                <mat-icon>wallet</mat-icon>
-                <span>Carteira financeira</span>
-              </button>
-              <button mat-menu-item disabled>
-                <mat-icon>receipt_long</mat-icon>
-                <span>Proposição operativa</span>
-              </button>
-            </div>
-          </div>
-        </mat-menu>
-        <button mat-fab extended color="accent" class="btn-main" (click)="drawer.toggle() && readNotifications()">
-          <mat-icon [matBadge]="notifications" matBadgeColor="warn" aria-hidden="false">person_outline</mat-icon>
-          {{user.name}}
-        </button>
-      </div>
-    </div>
-    <div class="menu-toolbar">
-      @for (item of links; track item.id) {
-        <button mat-button [routerLink]="[item.link.url]" color="accent">
-          <mat-icon>{{item.link.icon}}</mat-icon>
-          {{item.link.name}}
-        </button>
-      }
+      <app-notifications-menu></app-notifications-menu>
     </div>
   </section>
 </mat-toolbar>

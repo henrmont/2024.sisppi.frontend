@@ -8,7 +8,7 @@ import { SharedService } from '../../../services/shared.service';
 
 const roleChannel = new BroadcastChannel('role-channel');
 const notificationChannel = new BroadcastChannel('notification-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-remove-user-role-modal',
@@ -35,7 +35,7 @@ export class RemoveUserRoleModalComponent {
         this.sharedService.showMessage(response.message)
         roleChannel.postMessage('update')
         notificationChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

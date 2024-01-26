@@ -8,13 +8,23 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { NotificationService } from '../../services/notification.service';
+import { MainMenuComponent } from '../main-menu/main-menu.component';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
 
 @Component({
   selector: 'app-side-toolbar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatDividerModule, MatListModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule,
+    RouterModule,
+    MainMenuComponent,
+  ],
   templateUrl: './side-toolbar.component.html',
   styleUrl: './side-toolbar.component.scss'
 })

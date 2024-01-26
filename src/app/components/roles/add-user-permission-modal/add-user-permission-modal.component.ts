@@ -15,7 +15,7 @@ import { Observable, map, startWith } from 'rxjs';
 
 const notificationChannel = new BroadcastChannel('notification-channel');
 const permissionChannel = new BroadcastChannel('permission-channel');
-const listUserChannel = new BroadcastChannel('list-user-channel');
+const userChannel = new BroadcastChannel('user-channel');
 
 @Component({
   selector: 'app-add-user-permission-modal',
@@ -89,7 +89,7 @@ export class AddUserPermissionModalComponent implements OnInit {
         this.sharedService.showMessage(response.message)
         notificationChannel.postMessage('update')
         permissionChannel.postMessage('update')
-        listUserChannel.postMessage('update')
+        userChannel.postMessage('update')
       },
       error: (response: any) => {
         this.sharedService.showMessage(response.message)

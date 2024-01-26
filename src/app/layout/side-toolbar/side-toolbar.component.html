@@ -1,14 +1,13 @@
 <section>
-  <mat-toolbar color="primary" class="header-toolbar">
-
-  </mat-toolbar>
+  <mat-toolbar color="primary" class="header-toolbar"></mat-toolbar>
   <div class="content">
-    <img src="assets/img/emptyprofile.png" class="picture mat-elevation-z8">
-    <div class="title">
-      <h3>{{user.name}}</h3>
-      <h5>{{user.email}}</h5>
+    <div style="display: flex; width: 80%; justify-content: space-between; align-items: center;">
+      <img src="assets/img/emptyprofile.png" class="picture mat-elevation-z8">
+      <div class="title">
+        <h2>{{user.name}}</h2>
+        <h4>{{user.email}}</h4>
+      </div>
     </div>
-    <mat-divider></mat-divider>
     <div class="actions">
       <button mat-icon-button color="primary" [routerLink]="['/configuracoes']" (click)="drawer.toggle()">
         <mat-icon>tune</mat-icon>
@@ -18,7 +17,7 @@
       </button>
     </div>
     <mat-divider></mat-divider>
-    <mat-list>
+    <!-- <mat-list>
       <div mat-subheader class="section-title">
         <mat-icon color="warn">notifications</mat-icon>
         Notificações
@@ -40,27 +39,8 @@
     </mat-list>
     <div class="section-footer">
       <button mat-button [routerLink]="['/notificacoes']" (click)="drawer.toggle()">Ver todas as notificações</button>
-    </div>
-    <!-- <mat-divider></mat-divider>
-    <mat-list>
-      <div mat-subheader class="section-title">
-        <mat-icon color="warn">chat</mat-icon>
-        Mensagens
-      </div>
-      <mat-list-item>
-        <img matListItemIcon src="assets/img/emptyprofile.png">
-        <div matListItemTitle>Mensagem 01</div>
-        <div matListItemLine>Teste</div>
-      </mat-list-item>
-      <mat-list-item>
-        <img matListItemIcon src="assets/img/emptyprofile.png">
-        <div matListItemTitle>Mensagem 02</div>
-        <div matListItemLine>Teste</div>
-      </mat-list-item>
-    </mat-list>
-    <div class="section-footer">
-      <button mat-button>Ver todas as mensagens</button>
     </div> -->
+    <app-main-menu [drawer]="drawer"></app-main-menu>
   </div>
   <mat-toolbar class="footer-toolbar">
     <span>Versão: 1.0.0</span>
