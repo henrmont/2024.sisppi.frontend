@@ -4,8 +4,13 @@
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <div>
-        <h1>{{title}}</h1>
+      <div style="display: flex; justify-content: space-around;">
+        @for (item of favorites; track item) {
+          <button mat-button color="accent" [routerLink]="['/app'+item.link.url]">
+            <mat-icon>{{item.link.icon}}</mat-icon>
+            {{item.link.name}}
+          </button>
+        }
       </div>
       <app-notifications-menu></app-notifications-menu>
     </div>

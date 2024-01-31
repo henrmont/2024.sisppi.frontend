@@ -38,18 +38,6 @@ export class NotificationsMenuComponent implements OnInit {
     notificationChannel.onmessage = (message) => {
       if (message.data === 'update') {
         this.ngOnInit()
-        // this.notificationService.getUnreadNotifications().subscribe({
-        //   next: (response: any) => {
-        //     if (response.data.length > 0) {
-        //       this.notifications = response.data.length
-        //     }
-        //   }
-        // })
-        // this.notificationService.getFlashNotifications().subscribe({
-        //   next: (response: any) => {
-        //     this.flashNotifications = response.data
-        //   }
-        // })
       }
     }
     this.notificationService.getUnreadNotifications().subscribe({
@@ -61,7 +49,6 @@ export class NotificationsMenuComponent implements OnInit {
     })
     this.notificationService.getFlashNotifications().subscribe({
       next: (response: any) => {
-        console.log(response)
         this.flashNotifications = response.data
       }
     })

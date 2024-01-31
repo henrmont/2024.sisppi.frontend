@@ -67,7 +67,7 @@ export class ImportProceduresModalComponent {
       },
       complete: () => {
         this.dialog.closeAll()
-        this.router.navigate(['/anos/de/exercicio'])
+        this.router.navigate(['/app/anos/de/exercicio'])
       }
     })
   }

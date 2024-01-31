@@ -16,7 +16,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
+    width: 80%;
     height: 100%;
   }
 }
@@ -53,3 +53,13 @@ mat-form-field {
     }
   }
 }
+
+.favorites {
+  display: flex;
+  justify-content: space-around;
+
+  mat-icon {
+    margin-right: 10px !important;
+  }
+}
+

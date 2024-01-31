@@ -3,7 +3,6 @@ import { noAuthGuard } from './guards/no-auth.guard';
 import { LayoutComponent } from './layout/layout.component';
 import { authGuard } from './guards/auth.guard';
 import { authResolve } from './resolves/auth-resolve.guard';
-import { titleResolve } from './resolves/title-resolve.guard';
 import { roleGuard } from './guards/role.guard';
 import { roleResolve } from './resolves/role-resolve.guard';
 
@@ -36,216 +35,141 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'home',
+    path: 'app',
     component: LayoutComponent,
     canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
+    resolve: {auth: authResolve, role: roleResolve},
     children: [
       {
-        path: '',
+        path: 'home',
         loadComponent: () => import('./pages/home-page/home-page.component').then((m) => m.HomePageComponent),
+        data: {
+          title: 'Início'
+        }
       },
-    ]
-  },
-  {
-    path: 'configuracoes',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
       {
-        path: '',
+        path: 'configuracoes',
         loadComponent: () => import('./pages/settings-page/settings-page.component').then((m) => m.SettingsPageComponent),
       },
-    ]
-  },
-  {
-    path: 'notificacoes',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
       {
-        path: '',
+        path: 'notificacoes',
         loadComponent: () => import('./pages/notifications-page/notifications-page.component').then((m) => m.NotificationsPageComponent),
-      }
-    ]
-  },
-  {
-    path: 'usuarios',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+      },
       {
-        path: '',
+        path: 'usuarios',
         loadComponent: () => import('./pages/users-page/users-page.component').then((m) => m.UsersPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'usuario criar','usuario atualizar','usuario ver','usuario deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'municipios',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['usuario criar','usuario atualizar','usuario ver','usuario deletar'],
+          title: 'Usuários'
+        }
+      },
       {
-        path: '',
+        path: 'municipios',
         loadComponent: () => import('./pages/counties-page/counties-page.component').then((m) => m.CountiesPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'municipio criar','municipio atualizar','municipio ver','municipio deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'regras',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['municipio criar','municipio atualizar','municipio ver','municipio deletar'],
+          title: 'Municípios'
+        }
+      },
       {
-        path: '',
+        path: 'regras',
         loadComponent: () => import('./pages/roles-page/roles-page.component').then((m) => m.RolesPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'regra criar','regra atualizar','regra ver','regra deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'anos/de/exercicio',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['regra criar','regra atualizar','regra ver','regra deletar'],
+          title: 'Regras e permissões'
+        }
+      },
       {
-        path: '',
+        path: 'anos/de/exercicio',
         loadComponent: () => import('./pages/exercise-years-page/exercise-years-page.component').then((m) => m.ExerciseYearsPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'ano criar','ano atualizar','ano ver','ano deletar','competencia criar','competencia atualizar','competencia ver','competencia deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'procedimentos',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['ano competencia criar','ano competencia atualizar','ano competencia ver','ano competencia deletar'],
+          title: 'Anos de exercício e competências'
+        }
+      },
       {
-        path: '',
+        path: 'procedimentos',
         loadComponent: () => import('./pages/procedures-page/procedures-page.component').then((m) => m.ProceduresPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'grupos',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'],
+          title: 'Procedimentos'
+        }
+      },
       {
-        path: '',
+        path: 'grupos',
         loadComponent: () => import('./pages/groups-page/groups-page.component').then((m) => m.GroupsPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'financiamentos/modalidades',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'],
+          title: 'Grupos, subgrupos e formas de organização'
+        }
+      },
       {
-        path: '',
+        path: 'financiamentos/modalidades',
         loadComponent: () => import('./pages/financings-page/financings-page.component').then((m) => m.FinancingsPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'programacao',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['procedimento criar','procedimento atualizar','procedimento ver','procedimento deletar'],
+          title: 'Financiamentos e modalidades'
+        }
+      },
       {
-        path: '',
+        path: 'programacao',
         loadComponent: () => import('./pages/programings-page/programings-page.component').then((m) => m.ProgramingsPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'programacao criar','programacao atualizar','programacao ver','programacao deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'portarias/ministeriais',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {auth: authResolve, role: roleResolve},
+        data: {
+          permissions: ['programacao criar','programacao atualizar','programacao ver','programacao deletar'],
+          title: 'Programação'
+        }
+      },
       {
-        path: '',
+        path: 'portarias/ministeriais',
         loadComponent: () => import('./pages/ministerial-ordinaces-page/ministerial-ordinaces-page.component').then((m) => m.MinisterialOrdinacesPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'portaria criar','portaria atualizar','portaria ver','portaria deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'incentivos',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['portaria criar','portaria atualizar','portaria ver','portaria deletar'],
+          title: 'Portarias ministeriais'
+        }
+      },
       {
-        path: '',
+        path: 'incentivos',
         loadComponent: () => import('./pages/incentives-page/incentives-page.component').then((m) => m.IncentivesPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'incentivo criar','incentivo atualizar','incentivo ver','incentivo deletar'
-        ]}
-      }
-    ]
-  },
-  {
-    path: 'carteira',
-    component: LayoutComponent,
-    canActivateChild: [authGuard],
-    resolve: {auth: authResolve, title: titleResolve, role: roleResolve},
-    children: [
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['incentivo criar','incentivo atualizar','incentivo ver','incentivo deletar'],
+          title: 'Incentivos'
+        }
+      },
       {
-        path: '',
+        path: 'carteira',
         loadComponent: () => import('./pages/wallet-page/wallet-page.component').then((m) => m.WalletPageComponent),
         canActivate: [roleGuard],
-        data: {permissions: [
-          'carteira ver'
-        ]}
+        resolve: {role: roleResolve},
+        data: {
+          permissions: ['carteira ver'],
+          title: 'Carteira financeira'
+        }
+      },
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
       }
     ]
   },
-
 ];

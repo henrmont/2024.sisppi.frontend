@@ -1,8 +1,11 @@
 <section>
   <mat-list>
-    @for (item of notifications; track item.id) {
+    @for (item of notifications; track item.id; let last = $last) {
       @defer (on viewport) {
         <app-notification-item [item]="item"></app-notification-item>
+        @if (!last) {
+          <mat-divider></mat-divider>
+        }
       } @placeholder {
         <div>Carregando...</div>
       }

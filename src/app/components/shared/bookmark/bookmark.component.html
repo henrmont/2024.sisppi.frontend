@@ -1,3 +1,7 @@
+<div class="title">
+  <mat-icon>chevron_right</mat-icon>
+  {{route.snapshot.data['title']}}
+</div>
 @if (isFavorite) {
   <button mat-icon-button color="primary" (click)="removeFavorite()">
     <mat-icon>bookmark</mat-icon>

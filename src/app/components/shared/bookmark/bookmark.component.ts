@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FavoriteService } from '../../../services/favorite.service';
 import { SharedService } from '../../../services/shared.service';
+import { ActivatedRoute } from '@angular/router';
 
 const favoriteChannel = new BroadcastChannel('favorite-channel');
 
@@ -21,6 +22,7 @@ export class BookmarkComponent implements OnInit {
   @Input() link: any
   favoriteService = inject(FavoriteService)
   sharedService = inject(SharedService)
+  route = inject(ActivatedRoute)
   isFavorite!:boolean
   isLimited!:boolean
 

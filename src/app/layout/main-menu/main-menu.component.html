@@ -1,7 +1,7 @@
 <mat-selection-list [multiple]="false">
 
   @if (route.snapshot.data['role'].includes('usuario criar') || route.snapshot.data['role'].includes('usuario ver') || route.snapshot.data['role'].includes('usuario atualizar') || route.snapshot.data['role'].includes('usuario deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/usuarios']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/usuarios']">
       <div>
         <mat-icon>groups</mat-icon>
         <span>Usuários</span>
@@ -17,7 +17,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('regra criar') || route.snapshot.data['role'].includes('regra ver') || route.snapshot.data['role'].includes('regra atualizar') || route.snapshot.data['role'].includes('regra deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/regras']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/regras']">
       <div>
         <mat-icon>rule</mat-icon>
         <span>Regras e permissões</span>
@@ -33,7 +33,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('municipio criar') || route.snapshot.data['role'].includes('municipio ver') || route.snapshot.data['role'].includes('municipio atualizar') || route.snapshot.data['role'].includes('municipio deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/municipios']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/municipios']">
       <div>
         <mat-icon>place</mat-icon>
         <span>Municípios</span>
@@ -48,8 +48,8 @@
     </mat-list-item>
   }
 
-  @if (route.snapshot.data['role'].includes('ano criar') || route.snapshot.data['role'].includes('ano ver') || route.snapshot.data['role'].includes('ano atualizar') || route.snapshot.data['role'].includes('ano deletar') || route.snapshot.data['role'].includes('competencia criar') || route.snapshot.data['role'].includes('competencia ver') || route.snapshot.data['role'].includes('competencia atualizar') || route.snapshot.data['role'].includes('competencia deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/anos/de/exercicio']">
+  @if (route.snapshot.data['role'].includes('ano competencia criar') || route.snapshot.data['role'].includes('ano competencia ver') || route.snapshot.data['role'].includes('ano competencia atualizar') || route.snapshot.data['role'].includes('ano competencia deletar')) {
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/anos/de/exercicio']">
       <div>
         <mat-icon>calendar_month</mat-icon>
         <span>Anos de exercício e competências</span>
@@ -65,7 +65,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/grupos']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/grupos']">
       <div>
         <mat-icon>format_list_numbered</mat-icon>
         <span>Grupos, Subgrupos e Formas de organização</span>
@@ -81,7 +81,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/financiamentos/modalidades']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/financiamentos/modalidades']">
       <div>
         <mat-icon>attach_money</mat-icon>
         <span>Financiamento e Modalidades</span>
@@ -97,7 +97,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('procedimento criar') || route.snapshot.data['role'].includes('procedimento ver') || route.snapshot.data['role'].includes('procedimento atualizar') || route.snapshot.data['role'].includes('procedimento deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/procedimentos']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/procedimentos']">
       <div>
         <mat-icon>medical_services</mat-icon>
         <span>Procedimentos</span>
@@ -113,7 +113,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('programacao criar') || route.snapshot.data['role'].includes('programacao ver') || route.snapshot.data['role'].includes('programacao atualizar') || route.snapshot.data['role'].includes('programacao deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/programacao']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/programacao']">
       <div>
         <mat-icon>checklist</mat-icon>
         <span>Programação de procedimentos</span>
@@ -129,7 +129,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('portaria criar') || route.snapshot.data['role'].includes('portaria ver') || route.snapshot.data['role'].includes('portaria atualizar') || route.snapshot.data['role'].includes('portaria deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/portarias/ministeriais']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/portarias/ministeriais']">
       <div>
         <mat-icon>request_page</mat-icon>
         <span>Portaria ministerial</span>
@@ -145,7 +145,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('incentivo criar') || route.snapshot.data['role'].includes('incentivo ver') || route.snapshot.data['role'].includes('incentivo atualizar') || route.snapshot.data['role'].includes('incentivo deletar')) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/incentivos']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/incentivos']">
       <div>
         <mat-icon>price_check</mat-icon>
         <span>Incentivos</span>
@@ -161,7 +161,7 @@
   }
 
   @if (route.snapshot.data['role'].includes('carteira ver') && route.snapshot.data['auth'].county_id != null) {
-    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/carteira']">
+    <mat-list-item (click)="drawer.toggle()" [routerLink]="['/app/carteira']">
       <div>
         <mat-icon>wallet</mat-icon>
         <span>Carteira financeira</span>

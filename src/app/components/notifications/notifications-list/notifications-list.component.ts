@@ -2,12 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { NotificationService } from '../../../services/notification.service';
 import { MatListModule } from '@angular/material/list';
 import { NotificationItemComponent } from '../notification-item/notification-item.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-notifications-list',
   standalone: true,
   imports: [
     MatListModule,
+    MatDividerModule,
     NotificationItemComponent,
   ],
   templateUrl: './notifications-list.component.html',

@@ -53,7 +53,7 @@ export class LoginAccountBoxComponent implements OnInit {
         this.sharedService.showMessage('Credenciais inválida')
       },
       complete: () => {
-        this.router.navigate(['/home'])
+        this.router.navigate(['/app/home'])
       }
     })
   }

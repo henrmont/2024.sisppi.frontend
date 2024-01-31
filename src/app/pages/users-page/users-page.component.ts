@@ -25,11 +25,6 @@ export class UsersPageComponent {
   route = inject(ActivatedRoute)
   dialog = inject(MatDialog)
 
-  breadcrumb = [
-    {name: 'Usuários'},
-    {name: 'Lista de usuários'}
-  ]
-
   createUser() {
     this.dialog.open(CreateUserModalComponent, {
       disableClose: true,

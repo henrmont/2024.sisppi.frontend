@@ -24,13 +24,11 @@ export class LayoutComponent implements OnInit {
 
   route = inject(ActivatedRoute);
   user: any
-  title!: string
 
   ngOnInit(): void {
     this.route.data.subscribe({
       next: (response: any) => {
         this.user = response.auth
-        this.title = response.title
       }
     })
   }

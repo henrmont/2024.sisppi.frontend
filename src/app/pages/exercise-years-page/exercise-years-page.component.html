@@ -3,6 +3,6 @@
   <app-exercise-years-list></app-exercise-years-list>
   <app-competencies-list></app-competencies-list>
 </section>
-<button mat-fab color="primary" class="new-exercise-year" (click)="createExeciseYear()" [disabled]="!route.snapshot.data['role'].includes('ano criar')">
+<button mat-fab color="primary" class="new-exercise-year" (click)="createExeciseYear()" [disabled]="!route.snapshot.data['role'].includes('ano competencia criar')">
   <mat-icon>event</mat-icon>
 </button>

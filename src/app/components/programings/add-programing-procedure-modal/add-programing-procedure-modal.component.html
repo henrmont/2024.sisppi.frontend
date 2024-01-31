@@ -22,7 +22,7 @@
                (keyup)="onKeyUp()">
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           @for (option of filteredOptions | async | slice : 0 : 3; track option) {
-            <mat-option [value]="option.procedure_name" (click)="onSelect(option.id)">{{option.procedure_name}}</mat-option>
+            <mat-option [value]="option.name" (click)="onSelect(option.id)">{{option.name}}</mat-option>
           }
         </mat-autocomplete>
       </mat-form-field>
