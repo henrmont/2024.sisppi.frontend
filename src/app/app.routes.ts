@@ -50,10 +50,17 @@ export const routes: Routes = [
       {
         path: 'configuracoes',
         loadComponent: () => import('./pages/settings-page/settings-page.component').then((m) => m.SettingsPageComponent),
+        resolve: {auth: authResolve},
+        data: {
+          title: 'Configurações'
+        }
       },
       {
         path: 'notificacoes',
         loadComponent: () => import('./pages/notifications-page/notifications-page.component').then((m) => m.NotificationsPageComponent),
+        data: {
+          title: 'Notificações'
+        }
       },
       {
         path: 'usuarios',

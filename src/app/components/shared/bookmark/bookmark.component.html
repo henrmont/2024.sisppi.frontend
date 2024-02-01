@@ -2,12 +2,14 @@
   <mat-icon>chevron_right</mat-icon>
   {{route.snapshot.data['title']}}
 </div>
-@if (isFavorite) {
-  <button mat-icon-button color="primary" (click)="removeFavorite()">
-    <mat-icon>bookmark</mat-icon>
-  </button>
-} @else {
-  <button mat-icon-button color="primary" [disabled]="isLimited" (click)="addFavorite()">
-    <mat-icon>bookmark_border</mat-icon>
-  </button>
+@if (link) {
+  @if (isFavorite) {
+    <button mat-icon-button color="primary" (click)="removeFavorite()">
+      <mat-icon>bookmark</mat-icon>
+    </button>
+  } @else {
+    <button mat-icon-button color="primary" [disabled]="isLimited" (click)="addFavorite()">
+      <mat-icon>bookmark_border</mat-icon>
+    </button>
+  }
 }

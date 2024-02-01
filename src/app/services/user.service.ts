@@ -59,4 +59,16 @@ export class UserService {
   deleteUser(data: any): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/users/delete/user/${data}`)
   }
+
+  updateProfile(data: any): Observable<any> {
+    return this.http.patch<any>(`${environment.apiUrl}/users/update/profile`, data)
+  }
+
+  changePassword(data: any): Observable<any> {
+    return this.http.patch<any>(`${environment.apiUrl}/users/change/password`, data)
+  }
+
+  changeImageProfile(data: any): Observable<any> {
+    return this.http.patch<any>(`${environment.apiUrl}/users/change/image/profile`, data)
+  }
 }

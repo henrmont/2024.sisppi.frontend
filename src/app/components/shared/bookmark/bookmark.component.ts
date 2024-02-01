@@ -19,7 +19,7 @@ const favoriteChannel = new BroadcastChannel('favorite-channel');
 })
 export class BookmarkComponent implements OnInit {
 
-  @Input() link: any
+  @Input() link: any = null
   favoriteService = inject(FavoriteService)
   sharedService = inject(SharedService)
   route = inject(ActivatedRoute)
@@ -27,18 +27,20 @@ export class BookmarkComponent implements OnInit {
   isLimited!:boolean
 
   ngOnInit(): void {
-    this.favoriteService.checkFavorite(this.link).subscribe({
-      next: (response: any) => {
-        if (response.data.length == 0) {
-          this.isFavorite = false
-        } else {
-          this.isFavorite = true
+    if (this.link) {
+      this.favoriteService.checkFavorite(this.link).subscribe({
+        next: (response: any) => {
+          if (response.data.length == 0) {
+            this.isFavorite = false
+          } else {
+            this.isFavorite = true
+          }
         }
-      }
-    })
+      })
+    }
     this.favoriteService.getFavorites().subscribe({
       next: (response: any) => {
-        if (response.data.length >= 5) {
+        if (response.data.length >= 4) {
           this.isLimited = true
         } else {
           this.isLimited = false

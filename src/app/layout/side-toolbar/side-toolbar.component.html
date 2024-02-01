@@ -2,14 +2,18 @@
   <mat-toolbar color="primary" class="header-toolbar"></mat-toolbar>
   <div class="content">
     <div style="display: flex; width: 80%; justify-content: space-between; align-items: center;">
-      <img src="assets/img/emptyprofile.png" class="picture mat-elevation-z8">
+      @if (user.image) {
+        <img [src]="user.image" class="picture mat-elevation-z8">
+      } @else {
+        <img src="assets/img/emptyprofile.png" class="picture mat-elevation-z8">
+      }
       <div class="title">
         <h2>{{user.name}}</h2>
         <h4>{{user.email}}</h4>
       </div>
     </div>
     <div class="actions">
-      <button mat-icon-button color="primary" [routerLink]="['/configuracoes']" (click)="drawer.toggle()">
+      <button mat-icon-button color="primary" [routerLink]="['/app/configuracoes']" (click)="drawer.toggle()">
         <mat-icon>tune</mat-icon>
       </button>
       <button mat-icon-button color="primary" (click)="sharedService.logout()">
@@ -17,29 +21,6 @@
       </button>
     </div>
     <mat-divider></mat-divider>
-    <!-- <mat-list>
-      <div mat-subheader class="section-title">
-        <mat-icon color="warn">notifications</mat-icon>
-        Notificações
-      </div>
-      @if (notificationsCount != 0) {
-        @for (item of notifications; track item.id) {
-          <mat-list-item>
-            <mat-icon matListItemIcon>notifications_none</mat-icon>
-            <div matListItemTitle>{{item.title}}</div>
-            <div matListItemLine>{{item.content}}</div>
-          </mat-list-item>
-        }
-      }
-      @else {
-        <h3 style="text-align: center;">
-          Sem novas notificações
-        </h3>
-      }
-    </mat-list>
-    <div class="section-footer">
-      <button mat-button [routerLink]="['/notificacoes']" (click)="drawer.toggle()">Ver todas as notificações</button>
-    </div> -->
     <app-main-menu [drawer]="drawer"></app-main-menu>
   </div>
   <mat-toolbar class="footer-toolbar">

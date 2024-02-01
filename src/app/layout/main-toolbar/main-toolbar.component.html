@@ -1,10 +1,10 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
   <section>
-    <div>
+    <div style="display: flex; justify-content: space-between; width: 80%;">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <div style="display: flex; justify-content: space-around;">
+      <div style="display: flex; justify-content: space-around; align-items: center; width: 100%;">
         @for (item of favorites; track item) {
           <button mat-button color="accent" [routerLink]="['/app'+item.link.url]">
             <mat-icon>{{item.link.icon}}</mat-icon>
@@ -12,7 +12,12 @@
           </button>
         }
       </div>
-      <app-notifications-menu></app-notifications-menu>
+      <div style="display: flex; justify-content: space-around; align-items: center;">
+        <app-notifications-menu></app-notifications-menu>
+        <button mat-icon-button [routerLink]="['/app/home']">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
     </div>
   </section>
 </mat-toolbar>

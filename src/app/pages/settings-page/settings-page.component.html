@@ -1,1 +1,58 @@
-<p>settings-page works!</p>
+<app-bookmark></app-bookmark>
+<section class="user-info">
+  @if (route.snapshot.data['auth'].image) {
+    <div class="mat-elevation-z8" [style]="'height: 400px; background-image: url('+route.snapshot.data['auth'].image+'); background-size: contain; background-repeat: no-repeat; border-radius: 100%;'">
+        <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload style="display: none;">
+      <button mat-fab color="primary" (click)="fileUpload.click()" style="position: relative; top: 320px; left: 320px;">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  } @else {
+    <div class="mat-elevation-z8" style="height: 400px; background-image: url(assets/img/emptyprofile.png); background-size: contain; background-repeat: no-repeat; border-radius: 100%;">
+      <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload style="display: none;">
+    <button mat-fab color="primary" (click)="fileUpload.click()" style="position: relative; top: 320px; left: 320px;">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  }
+
+
+  <div style="display: flex; flex-direction: column;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span><strong>Email: </strong>{{route.snapshot.data['auth'].email}}</span>
+      <button mat-icon-button color="primary" style="float: right;" disabled>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span><strong>Nome: </strong>{{route.snapshot.data['auth'].name}}</span>
+      <button mat-icon-button color="primary" (click)="updateProfile(route.snapshot.data['auth'])" style="float: right;">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span><strong>CPF: </strong>{{route.snapshot.data['auth'].cpf | mask: '000.000.000-00'}}</span>
+      <button mat-icon-button color="primary" style="float: right;" disabled>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span><strong>Telefone: </strong>{{route.snapshot.data['auth'].phone | mask: '(00) 0000-0000'}}</span>
+      <button mat-icon-button color="primary" (click)="updateProfile(route.snapshot.data['auth'])" style="float: right;">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span><strong>Celular: </strong>{{route.snapshot.data['auth'].cell_phone | mask: '(00) 00000-0000'}}</span>
+      <button mat-icon-button color="primary" (click)="updateProfile(route.snapshot.data['auth'])" style="float: right;">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-raised-button color="primary" (click)="changePassword(route.snapshot.data['auth'])" style="margin-top: 20px;">ALTERAR SENHA</button>
+  </div>
+</section>

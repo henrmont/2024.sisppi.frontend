@@ -2,3 +2,11 @@
   width: 70%;
   height: calc(100vh - 150px);
 }
+
+.user-info {
+  display: grid;
+  grid-template-columns: 400px auto;
+  gap: 50px;
+  padding: 0 15%;
+}
+

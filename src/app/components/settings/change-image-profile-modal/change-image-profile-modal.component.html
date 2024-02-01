@@ -1,0 +1,29 @@
+<mat-toolbar class="title" color="accent">
+  <div>
+    <mat-icon>image</mat-icon>
+    <span>Alterar imagem do perfil</span>
+  </div>
+  <button mat-icon-button mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-dialog-content>
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 4"
+    [roundCropper]="true"
+    format="png"
+    output="base64"
+    [resizeToWidth]="600"
+    [resizeToHeight]="600"
+    [cropperMinWidth]="100"
+    [cropperMinHeight]="100"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded($event)"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+  ></image-cropper>
+
+  <button mat-raised-button color="primary" style="width: 100%" (click)="onSubmit()">ALTERAR IMAGEM DO PERFIL</button>
+</mat-dialog-content>
